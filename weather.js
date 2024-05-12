@@ -1,3 +1,11 @@
+/*
+* Group: Francis Corona, Ian Stewart
+* Project: Getting to Know JavaScript - Project 1
+* Due: 5/14/24, 1:00 PM EDT
+*/
+
+import boxen from "boxen";
+
 const url = 'https://api.weather.gov/gridpoints/TOP/32,81/forecast' // Weather Forecast API URL
 const request = fetch(url) // Fetching url and making a promise 
                 .then(r => r.json()) // Parsing JSON response
@@ -7,15 +15,13 @@ const request = fetch(url) // Fetching url and making a promise
                         for (let i = 0; i < periods.length; i++){ // For loop to iterate over each period
                                 const period = periods[i]; // Defines new const period for each iteration
 
-                console.log("Current Weather");
-                console.log(" ");
-                console.log("Temperature: " + period.temperature); // Print Temperature
-                console.log("Humidity: " + period.relativeHumidity.value); // Print Humidity
-                console.log("Wind Speed: " + period.windSpeed); // Print Wind Speed
-                console.log(period.shortForecast); // Print short forecast
-                console.log(period.detailedForecast); // Print Long forecast
-                console.log(" ");
-                console.log(" ");
+                console.log(boxen(
+                        "Temperature: " + period.temperature + // Print Temperature
+                        "\nHumidity: " + period.relativeHumidity.value + // Print Humidity
+                        "\nWind Speed: " + period.windSpeed + // Print Wind Speed
+                        "\n\n" + period.shortForecast + // Print short forecast
+                        "\n" + period.detailedForecast, // Print Detailed forecast
+                        {padding: 1, margin: 1, width: 100, title: "Current Weather"})); // Boxen and title
                         }
                 });
 
