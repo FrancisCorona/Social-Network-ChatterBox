@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "boxen": "^7.1.1",
     "yargs": "^17.7.2"
