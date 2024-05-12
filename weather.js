@@ -1,12 +1,42 @@
-const url = 'https://api.weather.gov/gridpoints/TOP/32,81/forecast' // Weather Forecast API URL
-const request = fetch(url) // Fetching url and making a promise 
-                .then(r => r.json()) // Parsing JSON response
+const argv = yargs(hideBin(process.argv))
+        .option('latitude', {
+                alias: 'lat',
+                description: 'Latitude coordinate',
+                type: 'number',
+                demandOption: false // Required option
+        })
+        .option('verbose', {
+                alias: 'v',
+                description: 'Verbose mode',
+                type: 'boolean',
+                default: false // Optional, default value is false
+        })
+        .argv;
 
-                .then(json => {
-                        const periods = json.properties.periods; // Accessing the periods array
-                        for (let i = 0; i < periods.length; i++){ // For loop to iterate over each period
-                                const period = periods[i]; // Defines new const period for each iteration
+// Access the command line arguments
+let {latitude, verbose} = argv;
 
+
+const url = 'https://api.weather.gov/points/39.7456,-97.0892' // Weather Forecast API URL
+const defaultCords = "42.9635,-85.8886"
+
+// Gets forecast url from the primary API
+const requestForecast = fetch(url)
+                .then(r => r.json())
+                .then(json => json.properties.forecast);
+
+// Gets hourly forecast url from the primary API
+const requestForecastHourly = fetch(url)
+                .then(r => r.json())
+                .then(json => json.properties.forecastHourly);
+
+requestForecast.then(forecast => {
+        const forecastURL = forecast;
+        const forecastHourlyURL = forecast + "/hourly";
+
+        const periods = json.properties.periods; // Accessing the periods array
+        for (let i = 0; i < periods.length; i++) { // For loop to iterate over each period
+                const period = periods[i]; // Defines new const period for each iteration
                 console.log("Current Weather");
                 console.log(" ");
                 console.log("Temperature: " + period.temperature); // Print Temperature
@@ -16,17 +46,27 @@ const request = fetch(url) // Fetching url and making a promise
                 console.log(period.detailedForecast); // Print Long forecast
                 console.log(" ");
                 console.log(" ");
-                        }
-                });
+        }
+        });
 
 
 /*
-const url = 'https://v2.jokeapi.dev/joke/Any' 
-const request = fetch(url)
-                .then(r => r.json())
+const forecast = fetch(url) // Fetching url and making a promise 
+                .then(r => r.json()) // Parsing JSON response
+
                 .then(json => {
-                        console.log(json.setup);
-                        setTimeout(x => console.log(json.delivery), 1000);
-                } );
-console.log(request);
-*/
+                        const periods = json.properties.periods; // Accessing the periods array
+                        for (let i = 0; i < periods.length; i++) { // For loop to iterate over each period
+                                const period = periods[i]; // Defines new const period for each iteration
+                                console.log("Current Weather");
+                                console.log(" ");
+                                console.log("Temperature: " + period.temperature); // Print Temperature
+                                console.log("Humidity: " + period.relativeHumidity.value); // Print Humidity
+                                console.log("Wind Speed: " + period.windSpeed); // Print Wind Speed
+                                console.log(period.shortForecast); // Print short forecast
+                                console.log(period.detailedForecast); // Print Long forecast
+                                console.log(" ");
+                                console.log(" ");
+                        }
+                });
+                */
