@@ -6,8 +6,9 @@
 
 import boxen from "boxen";
 import yargs from "yargs";
+import {hideBin} from 'yargs/helpers'
 
-/*
+// Parse command-line arguments to get cordinates
 const argv = yargs(hideBin(process.argv))
         .option('latitude', {
                 alias: 'lat',
@@ -15,21 +16,28 @@ const argv = yargs(hideBin(process.argv))
                 type: 'number',
                 demandOption: false // Required option
         })
-        .option('verbose', {
-                alias: 'v',
-                description: 'Verbose mode',
-                type: 'boolean',
-                default: false // Optional, default value is false
+        .option('longitude', {
+                alias: 'log',
+                description: 'longitude coordinate',
+                type: 'number',
+                demandOption: false // Required option
         })
         .argv;
 
 // Access the command line arguments
-let {latitude, verbose} = argv;
-*/
+let {latitude, longitude} = argv;
 
+// Check to see if user inputted valid cordinates
+const pattern = /^(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/g; //regex pattern for valid latitude value
+let coordinates = "42.9635,-85.8886";
 
-const url = 'https://api.weather.gov/points/39.7456,-97.0892' // Weather Forecast API URL
-const defaultCords = "42.9635,-85.8886"
+if (pattern.test(latitude + "," + longitude)) {
+        coordinates = latitude + "," + longitude;
+} else {
+        console.log("invalid coordinates given, using default values");
+}
+
+const url = 'https://api.weather.gov/points/' + coordinates // Weather Forecast API URL
 
 // Gets forecast url from the primary API
 const requestForecast = fetch(url)
