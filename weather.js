@@ -34,18 +34,18 @@ const argv = yargs(hideBin(process.argv))
 let {latitude, longitude, hourly} = argv;
 
 // Check to see if user inputted valid cordinates
-const pattern = /^(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/g; //regex pattern for valid latitude value
-let coordinates = "42.9635,-85.8886";
+const pattern = /^(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/g; // Regex pattern for valid latitude and longitude values
+let coordinates = "42.9635,-85.8886"; // Default coordinates
 
-if (latitude || longitude == null) {
-        console.log("Using default location:");
-} else if (pattern.test(latitude + "," + longitude)) {
+if (typeof latitude == "undefined" || typeof longitude == "undefined") { // If no coordinates are provided, the default location is used
+        console.log("Coordinates not provided, using default location:");
+} else if (pattern.test(latitude + "," + longitude)) { // If the inputted coordinates are values, there are used
         coordinates = latitude + "," + longitude;
-} else {
-        console.log("Invalid input, using default location:");
+} else { // If the inputted coordinates are not valid, the default location is used
+        console.log("Invalid coordinates, using default location:");
 }
 
-const url = 'https://api.weather.gov/points/' + coordinates // Weather Forecast API URL
+const url = 'https://api.weather.gov/points/' + coordinates // Weather Forecast API URL with coordinates added
 
 
 // Gets forecast url from the primary API
@@ -56,8 +56,12 @@ const requestForecast = fetch(url)
                         return json.properties.forecast;
                 }
                 catch { // Catches api error and returns error message
-                        return json.title;
+                        return json.detail;
                 }
+        })
+        .catch(error => { // Throws error if there is an issue fetching url
+                console.error("Fetch Failed (likely API not found):");
+                throw error;
         });
 
 
@@ -69,8 +73,12 @@ const requestForecastHourly = fetch(url)
                         return json.properties.forecastHourly;
                 }
                 catch { // Catches api error and returns error message
-                        return json.title;
+                        return json.detail;
                 }
+        })
+        .catch(error => { // Throws error if there is an issue fetching url
+                console.error("Fetch Failed (likely API not found):");
+                throw error;
         });
 
 
@@ -99,7 +107,7 @@ if (hourly) {
                         }
                 })
                 .catch(error => {
-                        console.error("Unable to get weather data: " + hourlyForecast); // Throw error message given by the api
+                        console.error("Error getting data: " + hourlyForecast); // Throw error message given by the API
                 });
         });
 
@@ -124,7 +132,7 @@ if (hourly) {
                         }
                 })
                 .catch(error => {
-                        console.error("Unable to get weather: " + forecast); // Throw error message given by the api
+                        console.error("Unable to get weather data: " + forecast); // Throw error message given by the API
                 });
         });
 } 
