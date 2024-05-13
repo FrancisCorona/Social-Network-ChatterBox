@@ -17,7 +17,7 @@ const argv = yargs(hideBin(process.argv))
                 default: 42.9635,
         })
         .option('longitude', {
-                alias: 'log',
+                alias: 'lon',
                 description: 'longitude coordinate',
                 type: 'number',
                 default: -85.8886,
@@ -50,34 +50,44 @@ const url = 'https://api.weather.gov/points/' + coordinates // Weather Forecast 
 
 // Gets forecast url from the primary API
 const requestForecast = fetch(url)
-        .then(r => r.json())
+        .then(r => {
+                if (!r.ok) {
+                        throw new Error("Network Response Error: " + r.statusText);
+                }
+                return r.json();
+        })
         .then(json => {
                 try { // Returns forecast from api
                         return json.properties.forecast;
                 }
                 catch { // Catches api error and returns error message
-                        return json.detail;
+                        throw new Error("Unexpected JSON structure.")
                 }
         })
         .catch(error => { // Throws error if there is an issue fetching url
-                console.error("Fetch Failed (likely API not found):");
+                console.error("Fetch Failed (likely API not found): " + error.message);
                 throw error;
         });
 
 
 // Gets hourly forecast url from the primary API
 const requestForecastHourly = fetch(url)
-        .then(r => r.json())
+        .then(r => {
+                if (!r.ok) {
+                        throw new Error("Network Response Error: " + r.statusText);
+                }
+                return r.json();
+        })
         .then(json => {
                 try { // Returns hourly forecast from api
                         return json.properties.forecastHourly;
                 }
                 catch { // Catches api error and returns error message
-                        return json.detail;
+                        throw new Error("Unexpected JSON structure");
                 }
         })
         .catch(error => { // Throws error if there is an issue fetching url
-                console.error("Fetch Failed (likely API not found):");
+                console.error("Fetch Failed (likely API not found): " + error.message);
                 throw error;
         });
 
@@ -85,8 +95,13 @@ const requestForecastHourly = fetch(url)
 if (hourly) {
         // Parses and returns data for hourly forecast
         requestForecastHourly.then(hourlyForecast => {
-                fetch(hourlyForecast) // Fetching url and making a promise 
-                .then(r => r.json())
+                fetch(hourlyForecast) // Fetching url and making a promise
+                .then(r => {
+                        if (!r.ok) {
+                                throw new Error("Network Response Error: " + r.statusText);
+                        }
+                        return r.json();
+                })
                 .then(json => {
                         const periods = json.properties.periods; // Accessing the periods array
                         for (let i = 0; i < 12; i++){ // For loop to iterate over next 12 hours
@@ -107,15 +122,22 @@ if (hourly) {
                         }
                 })
                 .catch(error => {
-                        console.error("Error getting data: " + hourlyForecast); // Throw error message given by the API
+                        console.error("Error getting data: " + error.message); // Throw error message given by the API
                 });
-        });
+        }).catch(error => {
+                console.error("Error with hourly forecast fetch: " + error.message);
+        })
 
 } else {
         // Parses and returns data for forecast
         requestForecast.then(forecast => {
                 fetch(forecast) // Fetching url and making a promise 
-                .then(r => r.json())
+                .then(r => {
+                        if (!r.ok) {
+                                throw new Error("Network Response Error:" + r.statusText);
+                        }
+                        return r.json();
+                })
                 .then(json => {
                         const periods = json.properties.periods; // Accessing the periods array
                         for (let i = 0; i < periods.length; i++){ // For loop to iterate over each period
@@ -132,7 +154,9 @@ if (hourly) {
                         }
                 })
                 .catch(error => {
-                        console.error("Unable to get weather data: " + forecast); // Throw error message given by the API
+                        console.error("Unable to get weather data: " + error.message); // Throw error message given by the API
                 });
-        });
+        }).catch(error => {
+                console.error("Error with fetch: " + error.message);
+        })
 } 
