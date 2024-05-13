@@ -34,7 +34,7 @@ let coordinates = "42.9635,-85.8886";
 if (pattern.test(latitude + "," + longitude)) {
         coordinates = latitude + "," + longitude;
 } else {
-        console.log("invalid coordinates given, using default values");
+        console.log("Using default values:");
 }
 
 const url = 'https://api.weather.gov/points/' + coordinates // Weather Forecast API URL
@@ -42,19 +42,34 @@ const url = 'https://api.weather.gov/points/' + coordinates // Weather Forecast 
 // Gets forecast url from the primary API
 const requestForecast = fetch(url)
         .then(r => r.json())
-        .then(json => json.properties.forecast);
+        .then(json => {
+                try { // Returns forecast from api
+                        return json.properties.forecast;
+                }
+                catch { // Catches api error and returns error message
+                        return json.title;
+                }
+        });
+
 
 // Gets hourly forecast url from the primary API
 const requestForecastHourly = fetch(url)
         .then(r => r.json())
-        .then(json => json.properties.forecastHourly);
+        .then(json => {
+                try { // Returns hourly forecast from api
+                        return json.properties.forecastHourly;
+                }
+                catch { // Catches api error and returns error message
+                        return json.title;
+                }
+        });
+
 
 
 // Parses and returns data for forecast
 requestForecast.then(forecast => {
         fetch(forecast) // Fetching url and making a promise 
-        .then(r => r.json()) // Parsing JSON response
-
+        .then(r => r.json())
         .then(json => {
                 const periods = json.properties.periods; // Accessing the periods array
                 for (let i = 0; i < periods.length; i++){ // For loop to iterate over each period
@@ -68,5 +83,8 @@ requestForecast.then(forecast => {
                 "\n" + period.detailedForecast, // Print Detailed forecast
                 {padding: 1, margin: 1, width: 100, title: "Current Weather"})); // Boxen and title
                 }
+        })
+        .catch(error => {
+                console.error("Unable to get weather: " + forecast); // Throw error message given by the api
         });
 });
