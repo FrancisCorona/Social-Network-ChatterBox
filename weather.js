@@ -14,13 +14,13 @@ const argv = yargs(hideBin(process.argv))
                 alias: 'lat',
                 description: 'Latitude coordinate',
                 type: 'number',
-                demandOption: false // Required option
+                default: 42.9635,
         })
         .option('longitude', {
                 alias: 'log',
                 description: 'longitude coordinate',
                 type: 'number',
-                demandOption: false // Required option
+                default: -85.8886,
         })
         .option('hourly', {
                 alias: 'H',
@@ -28,22 +28,22 @@ const argv = yargs(hideBin(process.argv))
                 type: 'boolean',
                 default: false // Required option
         })
+
+        .check((argv) => {
+                if (argv.latitude < -90 || argv.longitude > 90) {
+                        throw new Error("Latitude must be between -90 and 90.");
+                }
+                if (argv.longitude < -180 || argv.latitude > 180) {
+                        throw new Error("Longitude must be between -180 and 180.");
+                }
+                return true;
+        })
         .argv;
 
 // Access the command line arguments
 let {latitude, longitude, hourly} = argv;
 
-// Check to see if user inputted valid cordinates
-const pattern = /^(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/g; // Regex pattern for valid latitude and longitude values
-let coordinates = "42.9635,-85.8886"; // Default coordinates
-
-if (typeof latitude == "undefined" || typeof longitude == "undefined") { // If no coordinates are provided, the default location is used
-        console.log("Coordinates not provided, using default location:");
-} else if (pattern.test(latitude + "," + longitude)) { // If the inputted coordinates are values, there are used
-        coordinates = latitude + "," + longitude;
-} else { // If the inputted coordinates are not valid, the default location is used
-        console.log("Invalid coordinates, using default location:");
-}
+const coordinates = argv.latitude + "," + argv.longitude;
 
 const url = 'https://api.weather.gov/points/' + coordinates // Weather Forecast API URL with coordinates added
 
