@@ -37,10 +37,12 @@ let {latitude, longitude, hourly} = argv;
 const pattern = /^(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/g; //regex pattern for valid latitude value
 let coordinates = "42.9635,-85.8886";
 
-if (pattern.test(latitude + "," + longitude)) {
+if (latitude || longitude == null) {
+        console.log("Using default location:");
+} else if (pattern.test(latitude + "," + longitude)) {
         coordinates = latitude + "," + longitude;
 } else {
-        console.log("Using default values:");
+        console.log("Invalid input, using default location:");
 }
 
 const url = 'https://api.weather.gov/points/' + coordinates // Weather Forecast API URL
@@ -81,11 +83,19 @@ if (hourly) {
                         const periods = json.properties.periods; // Accessing the periods array
                         for (let i = 0; i < 12; i++){ // For loop to iterate over next 12 hours
                                 const period = periods[i]; // Defines new const period for each iteration
+                                let time = "Current"; // If period is not 0, 'current' is used in place of a time
+                                if (i != 0) { // Gets the time for the current period and formats it for the boxen title
+                                        const date = new Date(period.startTime);
+                                        const hour = date.getHours();
+                                        const amOrPm = hour >= 12 ? "pm" : "am";
+                                        time = ((hour % 12) || 12).toString() + ":00" + amOrPm;
+                                }
 
-                console.log(boxen(
-                        "Temperature: " + period.temperature + // Print Temperature
-                        "\n\n" + period.shortForecast, // Print short forecast
-                        {padding: 1, margin: 1, width: 100, title: "Current Weather"})); // Boxen and title
+                                console.log(boxen(  // Boxen and title
+                                        "Temperature: " + period.temperature + // Print Temperature
+                                        "\n\n" + period.shortForecast, // Print short forecast
+                                        {padding: 1, margin: 1, width: 100, title: time + " Weather"}
+                                ));
                         }
                 })
                 .catch(error => {
@@ -103,13 +113,14 @@ if (hourly) {
                         for (let i = 0; i < periods.length; i++){ // For loop to iterate over each period
                                 const period = periods[i]; // Defines new const period for each iteration
 
-                console.log(boxen(
-                        "Temperature: " + period.temperature + // Print Temperature
-                        "\nHumidity: " + period.relativeHumidity.value + // Print Humidity
-                        "\nWind Speed: " + period.windSpeed + // Print Wind Speed
-                        "\n\n" + period.shortForecast + // Print short forecast
-                        "\n" + period.detailedForecast, // Print Detailed forecast
-                        {padding: 1, margin: 1, width: 100, title: period.name})); // Boxen and title
+                                console.log(boxen( // Boxen and title
+                                        "Temperature: " + period.temperature + // Print Temperature
+                                        "\nHumidity: " + period.relativeHumidity.value + // Print Humidity
+                                        "\nWind Speed: " + period.windSpeed + // Print Wind Speed
+                                        "\n\n" + period.shortForecast + // Print short forecast
+                                        "\n" + period.detailedForecast, // Print Detailed forecast
+                                        {padding: 1, margin: 1, width: 100, title: period.name}
+                                ));
                         }
                 })
                 .catch(error => {
