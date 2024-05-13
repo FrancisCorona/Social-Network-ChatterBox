@@ -22,10 +22,16 @@ const argv = yargs(hideBin(process.argv))
                 type: 'number',
                 demandOption: false // Required option
         })
+        .option('hourly', {
+                alias: 'H',
+                description: 'view hourly data',
+                type: 'boolean',
+                default: false // Required option
+        })
         .argv;
 
 // Access the command line arguments
-let {latitude, longitude} = argv;
+let {latitude, longitude, hourly} = argv;
 
 // Check to see if user inputted valid cordinates
 const pattern = /^(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/g; //regex pattern for valid latitude value
@@ -38,6 +44,7 @@ if (pattern.test(latitude + "," + longitude)) {
 }
 
 const url = 'https://api.weather.gov/points/' + coordinates // Weather Forecast API URL
+
 
 // Gets forecast url from the primary API
 const requestForecast = fetch(url)
@@ -65,26 +72,48 @@ const requestForecastHourly = fetch(url)
         });
 
 
+if (hourly) {
+        // Parses and returns data for hourly forecast
+        requestForecastHourly.then(hourlyForecast => {
+                fetch(hourlyForecast) // Fetching url and making a promise 
+                .then(r => r.json())
+                .then(json => {
+                        const periods = json.properties.periods; // Accessing the periods array
+                        for (let i = 0; i < 12; i++){ // For loop to iterate over next 12 hours
+                                const period = periods[i]; // Defines new const period for each iteration
 
-// Parses and returns data for forecast
-requestForecast.then(forecast => {
-        fetch(forecast) // Fetching url and making a promise 
-        .then(r => r.json())
-        .then(json => {
-                const periods = json.properties.periods; // Accessing the periods array
-                for (let i = 0; i < periods.length; i++){ // For loop to iterate over each period
-                        const period = periods[i]; // Defines new const period for each iteration
-
-        console.log(boxen(
-                "Temperature: " + period.temperature + // Print Temperature
-                "\nHumidity: " + period.relativeHumidity.value + // Print Humidity
-                "\nWind Speed: " + period.windSpeed + // Print Wind Speed
-                "\n\n" + period.shortForecast + // Print short forecast
-                "\n" + period.detailedForecast, // Print Detailed forecast
-                {padding: 1, margin: 1, width: 100, title: "Current Weather"})); // Boxen and title
-                }
-        })
-        .catch(error => {
-                console.error("Unable to get weather: " + forecast); // Throw error message given by the api
+                console.log(boxen(
+                        "Temperature: " + period.temperature + // Print Temperature
+                        "\n\n" + period.shortForecast, // Print short forecast
+                        {padding: 1, margin: 1, width: 100, title: "Current Weather"})); // Boxen and title
+                        }
+                })
+                .catch(error => {
+                        console.error("Unable to get weather data: " + hourlyForecast); // Throw error message given by the api
+                });
         });
-});
+
+} else {
+        // Parses and returns data for forecast
+        requestForecast.then(forecast => {
+                fetch(forecast) // Fetching url and making a promise 
+                .then(r => r.json())
+                .then(json => {
+                        const periods = json.properties.periods; // Accessing the periods array
+                        for (let i = 0; i < periods.length; i++){ // For loop to iterate over each period
+                                const period = periods[i]; // Defines new const period for each iteration
+
+                console.log(boxen(
+                        "Temperature: " + period.temperature + // Print Temperature
+                        "\nHumidity: " + period.relativeHumidity.value + // Print Humidity
+                        "\nWind Speed: " + period.windSpeed + // Print Wind Speed
+                        "\n\n" + period.shortForecast + // Print short forecast
+                        "\n" + period.detailedForecast, // Print Detailed forecast
+                        {padding: 1, margin: 1, width: 100, title: "Current Weather"})); // Boxen and title
+                        }
+                })
+                .catch(error => {
+                        console.error("Unable to get weather: " + forecast); // Throw error message given by the api
+                });
+        });
+} 
