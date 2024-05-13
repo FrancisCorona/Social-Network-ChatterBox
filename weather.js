@@ -30,10 +30,10 @@ const argv = yargs(hideBin(process.argv))
         })
 
         .check((argv) => {
-                if (argv.latitude < -90 || argv.longitude > 90) {
+                if (argv.latitude < -90 || argv.latitude > 90) {
                         throw new Error("Latitude must be between -90 and 90.");
                 }
-                if (argv.longitude < -180 || argv.latitude > 180) {
+                if (argv.longitude < -180 || argv.longitude > 180) {
                         throw new Error("Longitude must be between -180 and 180.");
                 }
                 return true;
