@@ -109,7 +109,7 @@ if (hourly) {
                         "\nWind Speed: " + period.windSpeed + // Print Wind Speed
                         "\n\n" + period.shortForecast + // Print short forecast
                         "\n" + period.detailedForecast, // Print Detailed forecast
-                        {padding: 1, margin: 1, width: 100, title: "Current Weather"})); // Boxen and title
+                        {padding: 1, margin: 1, width: 100, title: period.name})); // Boxen and title
                         }
                 })
                 .catch(error => {
