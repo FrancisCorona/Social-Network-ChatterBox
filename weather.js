@@ -61,7 +61,7 @@ const requestForecast = fetch(url)
                         return json.properties.forecast;
                 }
                 catch { // Catches api error and returns error message
-                        throw new Error("Unexpected JSON structure.")
+                        throw new Error(json.detail); //return json.detail;
                 }
         })
         .catch(error => { // Throws error if there is an issue fetching url
@@ -83,7 +83,7 @@ const requestForecastHourly = fetch(url)
                         return json.properties.forecastHourly;
                 }
                 catch { // Catches api error and returns error message
-                        throw new Error("Unexpected JSON structure");
+                        throw new Error(json.detail);
                 }
         })
         .catch(error => { // Throws error if there is an issue fetching url
