@@ -1,0 +1,11 @@
+{
+  "name": "connect4_game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "game.js",
+  "scripts": {
+    "start": "node game.mjs"
+  },
+  "author": "",
+  "license": "ISC"
+}
