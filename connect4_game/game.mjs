@@ -1,3 +1,9 @@
+/*
+* Group: Francis Corona, Ian Stewart
+* Project: Learning Express
+* Due Date: 5/21/24, 1:00 PM (EDT)
+*/
+
 import express from 'express';
 import { v4 as uuid } from 'uuid';
 
