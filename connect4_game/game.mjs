@@ -13,22 +13,50 @@ const port = 3000;
 app.use(express.json());
 
 class Game {
-    constuctor(){
+    constructor(){
         this.id = uuid(); // Import uuid function from the uuid library
-        this.hidden_number = Math.floor(Math.random() * 100); // Generate a random number
-        console.log(`NEW GAME CREATED: ${this.id} with number: ${this.hidden_number}.`);
+        this.currentPlayer = 'red'; // Set initial player to red
+        this.board = Array(6).fill().map( () => Array(7).fill('O')); // Create a 6 by 7 array with null values
+        //console.log(`NEW GAME CREATED: ${this.id} with initial player: ${this.currentPlayer}.`);
     }
-    checkGuess(guess){
-        let answer = guess - this.hidden_number;
-        this.num_guesses = this.num_guesses + 1;
-        return answer;
+
+    changePlayer() {
+        this.currentPlayer = this.currentPlayer === 'red' ? 'black' : 'red'; // Changing the player
     }
-    getNumGuesses(){
-        return this.num_guesses;
+
+    // Handle players move
+    dropPiece(column) {
+        if (column < 0 || column >= 7) { // Checks if column number is within range
+            return {message: 'Invalid column'};
+        }
+        for (let row = 5; row >= 0; row--) { // Finds the first available space
+            if (this.board[row][column] === 'O') {// Checks if spot is empty
+                this.board[row][column] = this.currentPlayer; // Places piece
+                
+                const win = this.checkWin(row, column); // Checks if the move won the game
+                if (win) {
+                    return { row, message: `${this.currentPlayer} won the game!` };
+                }
+                this.changePlayer(); // Switches turns
+                return {row, message: null};
+            }
+        } 
+        return {message : 'Column is full' }; // Error when no spaces in column 
     }
 }
 
-let games = {}; // We are just storing the data in our local memory for now
+
+
+
+
+/*
+* Need checking if a player won 
+* Need (get, '/game/:id'),  (post, '/game'), (put, '/game/:id'), (delete, '/game/:id') 
+
+*/
+
+
+/*let games = {}; // We are just storing the data in our local memory for now
 
 app.post('/games', (req, res) => {
     let game = new Game();
@@ -82,3 +110,4 @@ app.delete('/games/:id', (req, res) => {
 app.listen(port, () => {
     console.log(`Our app is listening on port ${port}.`);
 });
+*/
