@@ -29,7 +29,7 @@ class Game {
     // Handle players move
     dropPiece(column) {
         if (column < 0 || column >= 7) { // Checks if column number is within range
-            return {message: 'Invalid column'};
+            return {message: 'Invalid Column'};
         }
         for (let row = 5; row >= 0; row--) { // Finds the first available space
             if (this.board[row][column] === 'O') { // Checks if spot is empty
@@ -43,7 +43,7 @@ class Game {
                 return {row, message: null};
             }
         } 
-        return {message : 'Column is full' }; // Error when no spaces in column 
+        return {message : 'Column is Full' }; // Error when no spaces in column 
     }
 
     // Checks to see if piece placed in a winning piece
@@ -174,9 +174,9 @@ class Game {
 */
 
 app.get('/game/:id', (req, res) => {
-    let id = req.params.id;
+    const id = req.params.id;
     if(typeof games[id] === 'undefined'){
-        res.status(404).send('ID not found');
+        res.status(404).send('ID Not Found');
         return;
     }
     res.send(JSON.stringify(games[id]));
@@ -188,11 +188,13 @@ app.get('/game/:id', (req, res) => {
 *    Write a Game "class" that holds the current player and the board. All logic for the game will go in the Game class.
 *    In your API, store all the Game objects in a hashmap, with the key being the unique id and the value being the Game instance.
 */
+
 app.post ('/game', (req, res) => { // Post route to make a new game
     const newGame = new Game(); // Make a new game
     games[newGame.id] = newGame; // Store the new game in games.
     res.status(201).send({gameId: newGame.id}); // Send status
 });
+
 /*
 * (put, '/game/:id') -
 *    A route that takes a move. You must pass the move as a JSON object to the put request.
@@ -203,26 +205,30 @@ app.post ('/game', (req, res) => { // Post route to make a new game
 *    with a message about who won, for example, '{"message":"Red has won the game!"}.
 */
 
-/*
-app.put('/games/:id', (req, res) => {
-    let guess = req.body.guess;
+
+app.put('/game/:id', (req, res) => {
+    let player = req.body.player;
+    let column = req.body.column;
     let id = req.params.id;
-    if(games[id] === 'undefined'){
-        res.sendStatus(404);
+    if(typeof games[id] === 'undefined'){
+        res.status(404).send('ID Not Found');
         return;
     }
 
     let game = games[id];
-    let value = game.checkGuess(guess);
-    if(value == 0){
-        res.sendStatus(200);
-    } else if(value > 0){
-        res.send(JSON.stringify( { numGuesses: game.getNumGuesses(), message: "Too high." } ));
+    let move;
+    
+    if (game.currentPlayer == player) {
+        move = game.dropPiece(column);
+        res.status(200).send(move);
     } else {
-        res.send(JSON.stringify( { numGuesses: game.getNumGuesses(), message: "Too low." } ));
+        res.status(403).send(`It is ${game.currentPlayer}'s turn`);
     }
+
+    //console.log(games[id].printBoard());
+
 });
-*/
+
 
 // A route that removes a game from memory. Return a 404 if the game id doesn't exist, or a 200 if it does and you delete it.
 
@@ -233,7 +239,7 @@ app.delete ('/game/:id', (req, res) => { // Delete route
         delete games[gameId]; // Delete game
         res.status(200).send('Game Deleted');
     } else {
-        res.status(404).send('Game not found');
+        res.status(404).send('Game Not Found');
     }
 });
 
