@@ -12,52 +12,51 @@ const port = 3000;
 
 app.use(express.json());
 
-let games = {}; // Store the game
+let games = {}; // Store the games
 
 class Game {
-    constructor(){
-        this.id = uuid(); // Import uuid function from the uuid library
-        this.currentPlayer = 'red'; // Set initial player to red
-        this.board = Array(6).fill().map( () => Array(7).fill('O')); // Create a 6 by 7 array with null values
-        //console.log(`NEW GAME CREATED: ${this.id} with initial player: ${this.currentPlayer}.`);
+    constructor() {
+        this.id = uuid(); // Generate a unique ID for the game
+        this.currentPlayer = 'red'; // Set the initial player to red
+        this.board = Array(6).fill().map(() => Array(7).fill('O')); // Create a 6 by 7 array with empty values
+        console.log(`NEW GAME CREATED WITH ID: ${this.id}`);
     }
 
     changePlayer() {
-        this.currentPlayer = this.currentPlayer === 'red' ? 'black' : 'red'; // Changing the player
+        this.currentPlayer = this.currentPlayer === 'red' ? 'black' : 'red'; // Toggle between the players
     }
 
-    // Handle players move
+    // Handle player's move
     dropPiece(column) {
-        if (column < 0 || column >= 7) { // Checks if column number is within range
+        if (column < 0 || column >= 7) { // Check if column number is within range
             return {message: 'Invalid Column'};
         }
-        for (let row = 5; row >= 0; row--) { // Finds the first available space
-            if (this.board[row][column] === 'O') { // Checks if spot is empty
+        for (let row = 5; row >= 0; row--) { // Find the first available space
+            if (this.board[row][column] === 'O') { // Check if spot is empty
                 this.board[row][column] = this.currentPlayer; // Places piece
-                
-                const win = this.checkWin(row, column, this.currentPlayer); // Checks if the move won the game
+                const win = this.checkWin(row, column, this.currentPlayer); // Check if the move won the game
+
                 if (win) {
-                    return { row, message: `${this.currentPlayer} won the game!` };
+                    return {message: `${this.currentPlayer} won the game!`};
                 }
-                this.changePlayer(); // Switches turns
-                return {row, message: null};
+                this.changePlayer(); // Switch turns
+                return {message: `Placed piece at ${row},${column}`};
             }
-        } 
-        return {message : 'Column is Full' }; // Error when no spaces in column 
+        }
+        return {message: 'Column is Full'}; // Error when no spaces in column 
     }
 
-    // Checks to see if piece placed in a winning piece
+    // Check to see if piece placed in a winning piece
     checkWin(row, col, color) {
 
         let win = false;
 
-        // Check Vertical
+        // Check Vertical Adjacent Spots
         let verticalCheck = 1;
         
         for (let i = 1; i < 4; i++) {
-            const c = col;
             const r = row + i;
-            if(r < 6 && this.board[r][c] == color) {
+            if (r < 6 && this.board[r][col] === color) {
                 verticalCheck++;
             } else {
                 break;
@@ -65,13 +64,12 @@ class Game {
         }
         if (verticalCheck >= 4) win = true;
 
-        // Check Horizontal
+        // Check Horizontal Adjacent Spots
         let horizontalCheck = 1;
         
         for (let i = 1; i < 4; i++) {
             const c = col + i;
-            const r = row;
-            if(c < 7 && this.board[r][c] == color) {
+            if (c < 7 && this.board[row][c] === color) {
                 horizontalCheck++;
             } else {
                 break;
@@ -80,8 +78,7 @@ class Game {
 
         for (let i = 1; i < 4; i++) {
             const c = col - i;
-            const r = row;
-            if(c >= 0 && this.board[r][c] == color) {
+            if (c >= 0 && this.board[row][c] === color) {
                 horizontalCheck++;
             } else {
                 break;
@@ -90,13 +87,13 @@ class Game {
 
         if (horizontalCheck >= 4) win = true;
 
-        // Check Right Diagonal /
+        // Check Right Diagonal '/' Adjacent Spots
         let rightDiagonalCheck = 1;
         
         for (let i = 1; i < 4; i++) {
-            const c = col - i;
             const r = row + i;
-            if(c >= 0 && r < 6 && this.board[r][c] == color) {
+            const c = col - i;
+            if (r < 6 && c >= 0 && this.board[r][c] === color) {
                 rightDiagonalCheck++;
             } else {
                 break;
@@ -104,9 +101,9 @@ class Game {
         }
 
         for (let i = 1; i < 4; i++) {
-            const c = col + i;
             const r = row - i;
-            if(c < 7 && r >= 0 && this.board[r][c] == color) {
+            const c = col + i;
+            if (r >= 0 && c < 7 && this.board[r][c] === color) {
                 rightDiagonalCheck++;
             } else {
                 break;
@@ -115,13 +112,13 @@ class Game {
 
         if (rightDiagonalCheck >= 4) win = true;
 
-        // Check Left Diagonal \
+        // Check Left Diagonal '\' Adjacent Spots
         let leftDiagonalCheck = 1;
         
         for (let i = 1; i < 4; i++) {
-            const c = col + i;
             const r = row + i;
-            if(c < 7 && r < 6 && this.board[r][c] == color) {
+            const c = col + i;
+            if (r < 6 && c < 7 && this.board[r][c] === color) {
                 leftDiagonalCheck++;
             } else {
                 break;
@@ -129,9 +126,9 @@ class Game {
         }
 
         for (let i = 1; i < 4; i++) {
-            const c = col - i;
             const r = row - i;
-            if(c >= 0 && r >= 0 && this.board[r][c] == color) {
+            const c = col - i;
+            if (r >= 0 && c >= 0 && this.board[r][c] === color) {
                 leftDiagonalCheck++;
             } else {
                 break;
@@ -142,98 +139,49 @@ class Game {
 
         return win;
     }
-
-    // Temp function for testing, remove before submitting
-    printBoard() {
-        for (let row = 0; row < 6; row++) {
-            let rowStr = '';
-            for (let col = 0; col < 7; col++) {
-                switch (this.board[row][col]) {
-                    case 'red':
-                        rowStr += 'r ';
-                        break;
-                    case 'black':
-                        rowStr += 'b ';
-                        break;
-                    default:
-                        rowStr += '- ';
-                }
-            }
-            console.log(rowStr);
-        }
-        console.log('\n');
-    }
-
 }
 
-/*
-* (get, '/game/:id') -
-*    A route that returns the current game state for the given id,
-*    or a 404 if that id does not exist. A game should be a JSON object that has a color
-*    equal to red or black for the current player's turn, and an array holding the board.
-*/
-
+// GET route for returning the current game state for a given id
 app.get('/game/:id', (req, res) => {
     const id = req.params.id;
-    if(typeof games[id] === 'undefined'){
+    if (typeof games[id] === 'undefined') { // Check if ID is valid and return 404 if not
         res.status(404).send('ID Not Found');
         return;
     }
     res.send(JSON.stringify(games[id]));
 });
 
-/*
-* (post, '/game') -
-*    A route to create a new game. Generate a unique id for the game using the UUID library.
-*    Write a Game "class" that holds the current player and the board. All logic for the game will go in the Game class.
-*    In your API, store all the Game objects in a hashmap, with the key being the unique id and the value being the Game instance.
-*/
-
-app.post ('/game', (req, res) => { // Post route to make a new game
+// POST route for creating a new game with a unique id
+app.post('/game', (req, res) => { // Post route to make a new game
     const newGame = new Game(); // Make a new game
-    games[newGame.id] = newGame; // Store the new game in games.
-    res.status(201).send({gameId: newGame.id}); // Send status
+    games[newGame.id] = newGame; // Store the new game in games
+    res.status(201).send({gameId: newGame.id}); // Send 'Created' status along with ID
 });
 
-/*
-* (put, '/game/:id') -
-*    A route that takes a move. You must pass the move as a JSON object to the put request.
-*    The JSON should look like '{"player":"red", "column":4} (for instance). The id gets passed not as JSON,
-*    but as a parameter in the URL. If the game id does not exist, return a 404. If a player tries to move
-*    and it isn't their turn, return a 403. Make sure your game stores the checker dropped in the correct spot
-*    (i.e. you may need to simulate the checker falling, behind the scenes). If a player wins, return a JSON object
-*    with a message about who won, for example, '{"message":"Red has won the game!"}.
-*/
-
-
+// PUT route that takes a move and attemps to perform it
 app.put('/game/:id', (req, res) => {
-    let player = req.body.player;
-    let column = req.body.column;
-    let id = req.params.id;
-    if(typeof games[id] === 'undefined'){
+    const player = req.body.player; // Get player information from request body
+    const column = req.body.column; // Get column selection from request body
+    const id = req.params.id;
+    if (typeof games[id] === 'undefined'){ // Check if ID is valid and return 404 if not
         res.status(404).send('ID Not Found');
         return;
     }
 
-    let game = games[id];
-    let move;
+    const game = games[id];
     
-    if (game.currentPlayer == player) {
-        move = game.dropPiece(column);
+    if (game.currentPlayer === player) { // Check if it is the player's turn
+        const move = game.dropPiece(column);
         res.status(200).send(move);
     } else {
         res.status(403).send(`It is ${game.currentPlayer}'s turn`);
     }
 
-    //console.log(games[id].printBoard());
-
 });
 
-
-// A route that removes a game from memory. Return a 404 if the game id doesn't exist, or a 200 if it does and you delete it.
-
-app.delete ('/game/:id', (req, res) => { // Delete route
-    let gameId = req.params.id; // Get game ID
+// DELETE route that removes a game from memory
+app.delete('/game/:id', (req, res) => { // Delete route
+    const gameId = req.params.id; // Get game ID
     
     if (games[gameId]) { // Check if game exists
         delete games[gameId]; // Delete game
@@ -243,6 +191,7 @@ app.delete ('/game/:id', (req, res) => { // Delete route
     }
 });
 
+// Listener for the open port
 app.listen(port, () => {
     console.log(`Our app is listening on port ${port}.`);
 });
