@@ -179,7 +179,11 @@ class Game {
 *    Write a Game "class" that holds the current player and the board. All logic for the game will go in the Game class.
 *    In your API, store all the Game objects in a hashmap, with the key being the unique id and the value being the Game instance.
 */
-
+app.post ('/game', (req, res) => { // Post route to make a new game
+    const newGame = new Game(); // Make a new game
+    games[newGame.id] = newGame; // Store the new game in games.
+    res.status(201).send({gameId: newGame.id}); // Send status
+});
 /*
 * (put, '/game/:id') -
 *    A route that takes a move. You must pass the move as a JSON object to the put request.
