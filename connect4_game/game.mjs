@@ -12,6 +12,8 @@ const port = 3000;
 
 app.use(express.json());
 
+const games = {}; // Store the game
+
 class Game {
     constructor(){
         this.id = uuid(); // Import uuid function from the uuid library
@@ -191,7 +193,18 @@ class Game {
 /*
 * (delete, '/game/:id') -
 *    A route that removes a game from memory. Return a 404 if the game id doesn't exist, or a 200 if it does and you delete it.
-*/
+}
+
+app.delete ('/game/:id', (req, res) => { // Delete route
+    const gameId = req.params.id; // Get game ID
+    
+    if (games[gameId]) { // Check if game exists
+        delete games[gameId]; // Delete game
+        res.status(200).send('Game Deleted');
+    } else {
+        res.status(404).send('Game not found');
+    }
+});
 
 
 /*
