@@ -193,7 +193,7 @@ class Game {
 /*
 * (delete, '/game/:id') -
 *    A route that removes a game from memory. Return a 404 if the game id doesn't exist, or a 200 if it does and you delete it.
-}
+*/
 
 app.delete ('/game/:id', (req, res) => { // Delete route
     const gameId = req.params.id; // Get game ID
