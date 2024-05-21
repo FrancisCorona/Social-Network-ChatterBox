@@ -12,7 +12,7 @@ const port = 3000;
 
 app.use(express.json());
 
-const games = {}; // Store the game
+let games = {}; // Store the game
 
 class Game {
     constructor(){
@@ -173,6 +173,15 @@ class Game {
 *    equal to red or black for the current player's turn, and an array holding the board.
 */
 
+app.get('/game/:id', (req, res) => {
+    let id = req.params.id;
+    if(typeof games[id] === 'undefined'){
+        res.status(404).send('ID not found');
+        return;
+    }
+    res.send(JSON.stringify(games[id]));
+});
+
 /*
 * (post, '/game') -
 *    A route to create a new game. Generate a unique id for the game using the UUID library.
@@ -191,47 +200,6 @@ class Game {
 */
 
 /*
-* (delete, '/game/:id') -
-*    A route that removes a game from memory. Return a 404 if the game id doesn't exist, or a 200 if it does and you delete it.
-*/
-
-app.delete ('/game/:id', (req, res) => { // Delete route
-    const gameId = req.params.id; // Get game ID
-    
-    if (games[gameId]) { // Check if game exists
-        delete games[gameId]; // Delete game
-        res.status(200).send('Game Deleted');
-    } else {
-        res.status(404).send('Game not found');
-    }
-});
-
-
-/*
-
-let games = {}; // We are just storing the data in our local memory for now
-
-app.post('/games', (req, res) => {
-    let game = new Game();
-    games[game.id] = game;
-    res.send(JSON.stringify( { id: game.id } ) );
-});
-
-app.get('/games/:id', (req, res) => {
-    let id = req.params.id;
-    if(games[id] === 'undefined'){
-        res.sendStatus(404);
-        return;
-    }
-    let game = games[id];
-    res.send(JSON.stringify(game.getNumGuesses()));
-
-});
-
-app.get('/games', (req, res) => {
-    res.send(JSON.stringify(games));
-});
-
 app.put('/games/:id', (req, res) => {
     let guess = req.body.guess;
     let id = req.params.id;
@@ -250,17 +218,21 @@ app.put('/games/:id', (req, res) => {
         res.send(JSON.stringify( { numGuesses: game.getNumGuesses(), message: "Too low." } ));
     }
 });
+*/
 
-app.delete('/games/:id', (req, res) => {
-    let id = req.params.id;
-    if(games[id] === 'undefined'){
-        res.sendStatus(404);
-        return;
+// A route that removes a game from memory. Return a 404 if the game id doesn't exist, or a 200 if it does and you delete it.
+
+app.delete ('/game/:id', (req, res) => { // Delete route
+    let gameId = req.params.id; // Get game ID
+    
+    if (games[gameId]) { // Check if game exists
+        delete games[gameId]; // Delete game
+        res.status(200).send('Game Deleted');
+    } else {
+        res.status(404).send('Game not found');
     }
-    delete(games[id]);
 });
 
 app.listen(port, () => {
     console.log(`Our app is listening on port ${port}.`);
 });
-*/
