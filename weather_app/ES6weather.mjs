@@ -37,85 +37,83 @@ const argv = yargs(hideBin(process.argv))
 let {latitude, longitude, hourly} = argv;
 
 const coordinates = argv.latitude + "," + argv.longitude;
-
 const url = 'https://api.weather.gov/points/' + coordinates // Weather Forecast API URL with coordinates added
 
-
-// Gets forecast url from the primary API
-const requestForecast =  await fetch(url);
-const requestForecastJson = await requestForecast.json()
-let forecastURL;
-
-try { // Returns forecast from api
-        forecastURL = requestForecastJson.properties.forecast;
+async function requestForecast() {
+        try { // Returns forecast from api
+                const requestForecast =  await fetch(url);
+                const requestForecastJson = await requestForecast.json();
+                return requestForecastJson;
+        }
+        catch (error) { // Catches api error and returns error message
+                console.error("Fetch Failed (likely API not found): " + error.message);
+                throw error;
+        }
 }
-catch { // Catches api error and returns error message
-        forecastURL = requestForecastJson.detail;
-}
-
-
-// Gets hourly forecast url from the primary API
-const requestForecastHourly = await fetch(url)
-const requestForecastHourlyJson = await requestForecastHourly.json()
-let hourlyForecastURL;
-
-try { // Returns hourly forecast from api
-        hourlyForecastURL = requestForecastHourlyJson.properties.forecastHourly;
-}
-catch { // Catches api error and returns error message
-        hourlyForecastURL = requestForecastHourlyJson.detail;
-}
-
 
 if (hourly) {
-        // Parses and returns data for hourly forecast
-        const hourlyForecast = await fetch(hourlyForecastURL)
-        const hourlyForecastJson = await hourlyForecast.json()
-
+        let json;
         try {
-                const periods = hourlyForecastJson.properties.periods; // Accessing the periods array
-                for (let i = 0; i < 12; i++){ // For loop to iterate over next 12 hours
-                        const period = periods[i]; // Defines new const period for each iteration
-                        let time = "Current"; // If period is not 0, 'current' is used in place of a time
-                        if (i != 0) { // Gets the time for the current period and formats it for the boxen title
-                                const date = new Date(period.startTime);
-                                const hour = date.getHours();
-                                const amOrPm = hour >= 12 ? "pm" : "am";
-                                time = ((hour % 12) || 12).toString() + ":00" + amOrPm;
+                // Parses and returns data for hourly forecast
+                json = await requestForecast();
+                const forecastURL = json.properties.forecastHourly;
+        
+                try {
+                        const hourlyForecast = await fetch(forecastURL)
+                        const forecastJson = await hourlyForecast.json()
+                        const periods = forecastJson.properties.periods; // Accessing the periods array
+                        for (let i = 0; i < 12; i++){ // For loop to iterate over next 12 hours
+                                const period = periods[i]; // Defines new const period for each iteration
+                                let time = "Current"; // If period is not 0, 'current' is used in place of a time
+                                if (i != 0) { // Gets the time for the current period and formats it for the boxen title
+                                        const date = new Date(period.startTime);
+                                        const hour = date.getHours();
+                                        const amOrPm = hour >= 12 ? "pm" : "am";
+                                        time = ((hour % 12) || 12).toString() + ":00" + amOrPm;
+                                }
+        
+                                console.log(boxen(  // Boxen and title
+                                        "Temperature: " + period.temperature + // Print Temperature
+                                        "\n\n" + period.shortForecast, // Print short forecast
+                                        {padding: 1, margin: 1, width: 100, title: time + " Weather"}
+                                ));
                         }
-
-                        console.log(boxen(  // Boxen and title
-                                "Temperature: " + period.temperature + // Print Temperature
-                                "\n\n" + period.shortForecast, // Print short forecast
-                                {padding: 1, margin: 1, width: 100, title: time + " Weather"}
-                        ));
                 }
-        }
-        catch {
-                console.error("Error getting data: " + hourlyForecastJson.detail);
+                catch (error) {
+                        console.error("Error getting data: " + error.message);
+                }
+        } catch {
+                console.error("Error getting data: " + json.detail);
         }
 
 } else {
-        // Parses and returns data for forecast
-        const forecast = await fetch(forecastURL)
-        const forecastJson = await forecast.json()
-
+        let json;
         try {
-                const periods = forecastJson.properties.periods; // Accessing the periods array
-                for (let i = 0; i < periods.length; i++){ // For loop to iterate over each period
-                        const period = periods[i]; // Defines new const period for each iteration
-
-                        console.log(boxen( // Boxen and title
-                                "Temperature: " + period.temperature + // Print Temperature
-                                "\nHumidity: " + period.relativeHumidity.value + // Print Humidity
-                                "\nWind Speed: " + period.windSpeed + // Print Wind Speed
-                                "\n\n" + period.shortForecast + // Print short forecast
-                                "\n" + period.detailedForecast, // Print Detailed forecast
-                                {padding: 1, margin: 1, width: 100, title: period.name}
-                        ));
+                // Parses and returns data for forecast
+                json = await requestForecast();
+                const forecastURL = json.properties.forecast;
+        
+                try {
+                        const forecast = await fetch(forecastURL)
+                        const forecastJson = await forecast.json()
+                        const periods = forecastJson.properties.periods; // Accessing the periods array
+                        for (let i = 0; i < periods.length; i++){ // For loop to iterate over each period
+                                const period = periods[i]; // Defines new const period for each iteration
+        
+                                console.log(boxen( // Boxen and title
+                                        "Temperature: " + period.temperature + // Print Temperature
+                                        "\nHumidity: " + period.relativeHumidity.value + // Print Humidity
+                                        "\nWind Speed: " + period.windSpeed + // Print Wind Speed
+                                        "\n\n" + period.shortForecast + // Print short forecast
+                                        "\n" + period.detailedForecast, // Print Detailed forecast
+                                        {padding: 1, margin: 1, width: 100, title: period.name}
+                                ));
+                        }
                 }
-        }
-        catch {
-                console.error("Error getting data: " + forecastJson.detail);
+                catch (error) {
+                        console.error("Error getting data: " + error.message);
+                }
+        } catch {
+                console.error("Error getting data: " + json.detail);
         }
 } 
