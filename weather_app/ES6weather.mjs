@@ -39,6 +39,7 @@ let {latitude, longitude, hourly} = argv;
 const coordinates = argv.latitude + "," + argv.longitude;
 const url = 'https://api.weather.gov/points/' + coordinates // Weather Forecast API URL with coordinates added
 
+// Fetches forecast data from url and returns it
 async function requestForecast() {
         try { // Returns forecast from api
                 const requestForecast =  await fetch(url);
@@ -52,15 +53,15 @@ async function requestForecast() {
 }
 
 if (hourly) {
+        // Parses and returns data for hourly forecast
         let json;
         try {
-                // Parses and returns data for hourly forecast
-                json = await requestForecast();
-                const forecastURL = json.properties.forecastHourly;
+                json = await requestForecast(); // Calls function to fetch forecast data
+                const forecastURL = json.properties.forecastHourly; // Gets forecast url from above data
         
                 try {
-                        const hourlyForecast = await fetch(forecastURL)
-                        const forecastJson = await hourlyForecast.json()
+                        const hourlyForecast = await fetch(forecastURL) // Fetches hourly forecast from forecast url
+                        const forecastJson = await hourlyForecast.json() // Convert to json
                         const periods = forecastJson.properties.periods; // Accessing the periods array
                         for (let i = 0; i < 12; i++){ // For loop to iterate over next 12 hours
                                 const period = periods[i]; // Defines new const period for each iteration
@@ -79,23 +80,23 @@ if (hourly) {
                                 ));
                         }
                 }
-                catch (error) {
+                catch (error) { // Catches api error and returns error message
                         console.error("Error getting data: " + error.message);
                 }
-        } catch {
+        } catch { // Catches api error and returns error message
                 console.error("Error getting data: " + json.detail);
         }
 
 } else {
+        // Parses and returns data for forecast
         let json;
         try {
-                // Parses and returns data for forecast
-                json = await requestForecast();
-                const forecastURL = json.properties.forecast;
+                json = await requestForecast(); // Calls function to fetch forecast data
+                const forecastURL = json.properties.forecast; // Gets forecast url from above data
         
                 try {
-                        const forecast = await fetch(forecastURL)
-                        const forecastJson = await forecast.json()
+                        const forecast = await fetch(forecastURL) // Fetches forecast from forecast url
+                        const forecastJson = await forecast.json() // Convert to json
                         const periods = forecastJson.properties.periods; // Accessing the periods array
                         for (let i = 0; i < periods.length; i++){ // For loop to iterate over each period
                                 const period = periods[i]; // Defines new const period for each iteration
@@ -110,10 +111,10 @@ if (hourly) {
                                 ));
                         }
                 }
-                catch (error) {
+                catch (error) { // Catches api error and returns error message
                         console.error("Error getting data: " + error.message);
                 }
-        } catch {
+        } catch { // Catches api error and returns error message
                 console.error("Error getting data: " + json.detail);
         }
 } 
