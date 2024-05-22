@@ -84,7 +84,7 @@ if (hourly) {
                         console.error("Error getting data: " + error.message);
                 }
         } catch { // Catches api error and returns error message
-                console.error("Error getting data: " + json.detail);
+                console.error("Error getting data: " + (json.detail || error.message));
         }
 
 } else {
@@ -114,7 +114,7 @@ if (hourly) {
                 catch (error) { // Catches api error and returns error message
                         console.error("Error getting data: " + error.message);
                 }
-        } catch { // Catches api error and returns error message
-                console.error("Error getting data: " + json.detail);
+        } catch (error) { // Catches api error and returns error message
+                console.error("Error getting data: " + (json.detail || error.message));
         }
 } 
