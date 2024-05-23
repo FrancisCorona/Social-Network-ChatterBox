@@ -1,9 +1,11 @@
+import express from 'express';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-// Initalize the passport session
+const app = express();
+
 app.use(passport.initialize());
     
 // Connection string from our instance on Atlas:
