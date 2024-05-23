@@ -117,4 +117,4 @@ if (hourly) {
         } catch (error) { // Catches api error and returns error message
                 console.error("Error getting data: " + (json.detail || error.message));
         }
-} 
+}
