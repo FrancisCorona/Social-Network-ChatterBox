@@ -1,19 +1,51 @@
 import express from 'express';
+import session from 'express-session';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import mongoose from 'mongoose';
+import MongoDBStoreFactory from 'connect-mongodb-session';
+
 const { Schema, Document } = mongoose;
 
 const app = express();
 
-app.use(passport.initialize());
-    
+// Tell Express to use sessions
+app.use(passport.session());
+
+
+const MongoDBStore = MongoDBStoreFactory(session);
+
 // Connection string from our instance on Atlas:
 const uri = "mongodb+srv://stewian:0zxyte7v7Oj6cQwp@cluster0.olbot2z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // Database and Collection
 const dbName = 'mobileapp';
 const collectionName = 'mobileapp';
+
+// Create a MongoDBStore instance
+const Store = new MongoDBStore({
+	uri: uri, // MongoDB connection URI
+	databaseName: dbName,
+	collection: 'sessions' // Collection name for storing sessions
+});
+
+// Catch errors
+Store.on('error', function(error) {
+	console.error('MongoDBStore error:', error);
+});
+
+// Configure express-session middleware
+app.use(session({
+	secret: '12345', // Secret key for session encryption
+	resave: false,
+	saveUninitialized: false,
+	store: Store, // Use MongoDBStore as the session store
+	cookie: {
+		maxAge: 1000 * 60 * 60 * 24 // Session expiration time (1 day)
+	}
+}));
+
+app.use(passport.initialize());
  
 async function connectDB() {
 	try {
@@ -27,6 +59,17 @@ async function connectDB() {
 }
  
 connectDB();
+
+app.use(session({
+	// We don't want the cookie manipulated. Encrypt it
+	// with a secret key.
+	secret: 'your_secret_key',
+	// Resave on every request? If true will update the
+	// expiration time on each request, but will take more time.
+	resave: false,
+	// Create a session for every visitor, even if not logged on?
+	saveUninitialized: false
+	}));
  
 // Create the User Schema
 const userSchema = new Schema({
