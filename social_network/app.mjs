@@ -18,8 +18,7 @@ const collectionName = 'mobileapp';
 async function connectDB() {
 	try {
 		await mongoose.connect(uri, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true
+			dbName: dbName,
 		});
 		console.log('Connected to MongoDB!');
 	} catch (error) {
@@ -31,9 +30,10 @@ connectDB();
  
 // User Schema
 const userSchema = new Schema({
-    username: { type: String, required: true, unique: true },
+    username: { type: String, required: true, unique: true},
+	id: {type: Number, required: true, unique: true},
     password: { type: String, required: true },
-    salt: { type: String, required: true },
+    salt: { type: Number, required: true },
     email: { type: String,
         required: false,
         unique: true,
@@ -52,6 +52,7 @@ async function createUser() {
 		const user = new User({
 			username: "Jenny",
 			password: "password123",
+			id: 987654321,
 			salt: 123456789,
 			email: "jenny@jenandben.com"
 		});
@@ -59,7 +60,7 @@ async function createUser() {
 		await user.save();
 	} catch (err){
 		// If we have an error, print the message.
-		console.log(err.errors.message);
+		console.log(err);
 	}
 }
  
