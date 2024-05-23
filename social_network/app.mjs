@@ -7,7 +7,11 @@ const { Schema } = mongoose;
 app.use(passport.initialize());
     
 // Connection string from our instance on Atlas:
-const uri = "mongodb+srv://mrwoodring:somepassword@cluster0.2rcbnok.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = "mongodb+srv://stewian:0zxyte7v7Oj6cQwp@cluster0.olbot2z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+// Database and Collection
+const dbName = 'mobileapp';
+const collectionName = 'mobileapp';
  
 async function connectDB() {
 	try {
@@ -21,15 +25,13 @@ async function connectDB() {
 	}
 }
  
- 
 connectDB();
- 
  
 // User Schema
 const userSchema = new Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    salt: { type: String, required: true }
+    salt: { type: String, required: true },
     email: { type: String,
         required: false,
         unique: true,
@@ -38,30 +40,31 @@ const userSchema = new Schema({
  
  
 // Compile the model
-const Student = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 export default User;
  
  
-async function createStudent() {
+async function createUser() {
 	try {
 		// Create a new instance of the model
-		const student = new Student({
-			name: "Jenny Fromtheblock",
-			email: "jenny@jenandben.com",
-			gNumber: 11223837,	// Notice the bad gNumber!
-			gpa: 4.0
+		const user = new User({
+			username: "Jenny",
+			password: "password123",
+			salt: 123456789,
+			email: "jenny@jenandben.com"
 		});
 		// Try to save
-		await student.save();
+		await user.save();
 	} catch (err){
-		// If we have an error (for instance here we used a bad
-		// gNumber), print the message.
-		console.log(err.errors['gNumber'].message);
+		// If we have an error, print the message.
+		console.log(err.errors.message);
 	}
 }
  
  
-createStudent();
+createUser();
+
+
 // Create a Post Schema and Model. A Post should link to the User that created it; so it must have a user field of type mongoose.Schema.Types.ObjectId, and a ref of 'User'. You can read more about linking here.
 // Install Passport and the Passport Local Strategy.
 // Install Express Session middleware and setup to use your database as the session store.
