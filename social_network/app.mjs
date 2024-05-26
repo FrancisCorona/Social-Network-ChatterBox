@@ -9,6 +9,8 @@ const { Schema, Document } = mongoose;
 
 const app = express();
 
+// Passport local strategy for handling auth
+app.use(passport.initialize());
 // Tell Express to use sessions
 app.use(passport.session());
 
@@ -44,8 +46,6 @@ app.use(session({
 		maxAge: 1000 * 60 * 60 * 24 // Session expiration time (1 day)
 	}
 }));
-
-app.use(passport.initialize()); // Passport local strategy for handling auth
  
 async function connectDB() {
 	try {
@@ -59,17 +59,6 @@ async function connectDB() {
 }
  
 connectDB();
-
-app.use(session({
-	// We don't want the cookie manipulated. Encrypt it
-	// with a secret key.
-	secret: 'your_secret_key',
-	// Resave on every request? If true will update the
-	// expiration time on each request, but will take more time.
-	resave: false,
-	// Create a session for every visitor, even if not logged on?
-	saveUninitialized: false
-	}));
  
 // Create the User Schema
 const userSchema = new Schema({
