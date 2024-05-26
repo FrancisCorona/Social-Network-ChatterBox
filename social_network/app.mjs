@@ -107,7 +107,7 @@ const postSchema = new Schema({
 	caption: {type: String, required: false},
 	content: {type: String, required: true},
 	timestamp: {type: Date, default: Date.now, required: true},
-	user: {type: Schema.Types.ObjectId, ref: 'User', required: true} // Reference User schema
+	// user: {type: Schema.Types.ObjectId, ref: 'User', required: true} // Reference User schema
     });
  
 
@@ -117,6 +117,7 @@ const Post = mongoose.model('Post', postSchema);
 // Create post using schema
 async function createPost() {
 	try {
+
 		// Create a new instance of the model
 		const post = new Post({
 			title: "Hello",
@@ -136,7 +137,6 @@ async function createPost() {
 createPost();
 
 // Passport Local Strategy for authentication
-
 passport.use(new LocalStrategy(
     async (username, password, done) => { // Verify callback function for Local Strategy
         try {
@@ -144,11 +144,16 @@ passport.use(new LocalStrategy(
             if (!user) { // If user not found
                 return done(null, false, { message: 'Incorrect username.' }); // Return error message
             }
-            const isMatch = await bcrypt.compare(password, user.password); // Compare password with stored hashed password
-            if (!isMatch) { // If password does not match
-                return done(null, false, { message: 'Incorrect password.' }); // Return error message
-            }
-            return done(null, user); // Authentication successful, return user
+			// If we get here, the user is in the Db. Salt the
+			// given password and compare to the Db.
+			const hashedPassword = await bcrypt.hash(password, user.salt);
+			if (hashedPassword === user.password) {
+				// We're good here!
+				return done(null, user);
+			} else {
+				// Bad password.
+				return done(null, false, { message: 'Incorrect password.' });
+			}
         } catch (err) {
             return done(err); // Return any errors
         }
@@ -173,9 +178,22 @@ passport.deserializeUser(async (id, done) => {
 	}
 });
 
+// Create a function that can be called to check our auth status
+function isAuthenticated(req, res, next) {
+	if (req.isAuthenticated()) {
+		return next();
+	}
+	res.redirect('/login');
+}
+// When a user tries to go to /profile, we check authentication first.
+app.get('/profile', isAuthenticated, (req, res) => {
+	res.send(`Hello ${req.user.username}, you are authenticated!`);
+});
 
-// Add a function that will be used for authentication to protect routes that need it.
+
+
+
+
 // Add a GET and POST route to a registration form.
 // Add a GET and POST route to a login form.
 // Add a GET and POST route for new posts. On the GET page, display all the previous posts added by the current user.
-
