@@ -107,6 +107,7 @@ const postSchema = new Schema({
 	caption: {type: String, required: false},
 	content: {type: String, required: true},
 	timestamp: {type: Date, default: Date.now, required: true},
+	user: {type: Schema.Types.ObjectId, ref: 'User', required: true} // Reference User schema
     });
  
 
