@@ -45,7 +45,7 @@ app.use(session({
 	}
 }));
 
-app.use(passport.initialize());
+app.use(passport.initialize()); // Passport local strategy for handling auth
  
 async function connectDB() {
 	try {
@@ -145,10 +145,45 @@ async function createPost() {
  
 createPost();
 
+// Passport Local Strategy for authentication
 
-// Install Passport and the Passport Local Strategy.
-// Install Express Session middleware and setup to use your database as the session store.
-// Add your Passport serialize and deserialize functions.
+passport.use(new LocalStrategy(
+    async (username, password, done) => { // Verify callback function for Local Strategy
+        try {
+            const user = await User.findOne({ username }); // Find user by username
+            if (!user) { // If user not found
+                return done(null, false, { message: 'Incorrect username.' }); // Return error message
+            }
+            const isMatch = await bcrypt.compare(password, user.password); // Compare password with stored hashed password
+            if (!isMatch) { // If password does not match
+                return done(null, false, { message: 'Incorrect password.' }); // Return error message
+            }
+            return done(null, user); // Authentication successful, return user
+        } catch (err) {
+            return done(err); // Return any errors
+        }
+    }
+));
+
+// Serialize user to store in session
+passport.serializeUser((user, done) => {
+	// Just storing the id in the session.
+	done(null, user.id);
+});
+
+// Deserialize user from session
+passport.deserializeUser(async (id, done) => {
+	try {
+	// Pull the User data from the database
+	// given the id in the session.
+		const user = await User.findById(id);
+		done(null, user);
+	} catch (err) {
+		done(err);
+	}
+});
+
+
 // Add a function that will be used for authentication to protect routes that need it.
 // Add a GET and POST route to a registration form.
 // Add a GET and POST route to a login form.
