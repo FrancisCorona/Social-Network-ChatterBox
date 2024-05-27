@@ -4,16 +4,13 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import mongoose from 'mongoose';
 import MongoDBStoreFactory from 'connect-mongodb-session';
+import bcrypt from 'bcrypt';
+import bodyParser from 'body-parser';
 
-const { Schema, Document } = mongoose;
+const { Schema } = mongoose;
 
 const app = express();
-
-// Passport local strategy for handling auth
-app.use(passport.initialize());
-// Tell Express to use sessions
-app.use(passport.session());
-
+const port = 3000;
 
 const MongoDBStore = MongoDBStoreFactory(session);
 
@@ -36,6 +33,18 @@ Store.on('error', function(error) {
 	console.error('MongoDBStore error:', error);
 });
 
+// Listen on port for calls
+app.listen(port, () => {
+     console.log(`Our app is listening on port ${port}.`);
+	 });
+
+// Use bodyParser middleware for form data parsing
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Use express.json middleware for json parsing
+app.use(express.json());
+
 // Configure express-session middleware
 app.use(session({
 	secret: '12345', // Secret key for session encryption
@@ -46,6 +55,12 @@ app.use(session({
 		maxAge: 1000 * 60 * 60 * 24 // Session expiration time (1 day)
 	}
 }));
+
+// Passport local strategy for handling auth
+app.use(passport.initialize());
+
+// Tell Express to use sessions
+app.use(passport.session());
  
 async function connectDB() {
 	try {
@@ -64,27 +79,25 @@ connectDB();
 const userSchema = new Schema({
     username: {type: String, required: true, unique: true},
     password: {type: String, required: true},
-    salt: {type: Number, required: true},
-    email: {type: String,
-        required: false,
-        unique: true,
-        match: [/.+\@.+\..+/, 'Please fill a valid email address']}
-    });
- 
+    salt: {type: String, required: true},
+    email: {type: String, unique: true, match: [/.+\@.+\..+/, 'Please fill a valid email address']}
+});
  
 // Compile the model
 const User = mongoose.model('User', userSchema);
 
- 
 // Create user using schema
 async function createUser() {
 	try {
+		const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash("password", salt);
+
 		// Create a new instance of the model
 		const user = new User({
-			username: "Jenny",
-			password: "password123",
-			salt: 123456789,
-			email: "jenny@jenandben.com"
+			username: "user",
+			password: hashedPassword,
+			salt: salt,
+			email: "test@test.com"
 		});
 		// Try to save
 		await user.save();
@@ -93,10 +106,9 @@ async function createUser() {
 		console.log(err);
 	}
 }
- 
- 
-createUser();
 
+// Only call if you want to create a new test user
+createUser();
 
 // Create a Post Schema and Model. A Post should link to the User that created it; so it must have a user field of type mongoose.Schema.Types.ObjectId, and a ref of 'User'. You can read more about linking here.
 
@@ -133,28 +145,32 @@ async function createPost() {
 	}
 }
  
- 
-createPost();
+//createPost();
 
 // Passport Local Strategy for authentication
 passport.use(new LocalStrategy(
     async (username, password, done) => { // Verify callback function for Local Strategy
+		console.log("entered user")
         try {
             const user = await User.findOne({ username }); // Find user by username
             if (!user) { // If user not found
+				console.log('Incorrect username.');
                 return done(null, false, { message: 'Incorrect username.' }); // Return error message
             }
 			// If we get here, the user is in the Db. Salt the
 			// given password and compare to the Db.
-			const hashedPassword = await bcrypt.hash(password, user.salt);
-			if (hashedPassword === user.password) {
+			const isMatch = await bcrypt.compare(password, user.password);
+			if (isMatch) {
 				// We're good here!
+				console.log('Login successful.');
 				return done(null, user);
 			} else {
 				// Bad password.
+				console.log('Incorrect password.');
 				return done(null, false, { message: 'Incorrect password.' });
 			}
         } catch (err) {
+			console.log('Error during authentication:', err);
             return done(err); // Return any errors
         }
     }
@@ -185,12 +201,58 @@ function isAuthenticated(req, res, next) {
 	}
 	res.redirect('/login');
 }
+
+app.get('/register', (req, res) => {
+    res.send(`
+        <form action="/register" method="post">
+            <br/>Username: <input type="text" name="username">
+			<br/>Email: <input type="text" name="email">
+            <br/>Password: <input type="password" name="password">
+            <br/><button type="submit">Register</button>
+        </form>
+    `);
+});
+
+app.get('/login', (req, res) => {
+	res.send(`
+		<form action="/login" method="post">
+			<br/>Username: <input type="text" name="username">
+			<br/>Password: <input type="password" name="password">
+			<br/><button type="submit">Login</button>
+		</form>
+        <a href="/register">Click to register</a>
+	`);
+});
+
+app.post('/login', passport.authenticate('local', {
+	successRedirect: '/profile',
+	failureRedirect: '/login'
+}));
+
+app.post('/register', async (req, res) => {
+    const { username, email, password } = req.body;
+    try {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        const user = new User({
+            username,
+            password: hashedPassword,
+            salt: salt,
+            email
+        });
+
+        await user.save();
+        res.redirect('/login');
+    } catch (err) {
+        res.status(500).send('Error registering user.');
+    }
+});
+
 // When a user tries to go to /profile, we check authentication first.
 app.get('/profile', isAuthenticated, (req, res) => {
 	res.send(`Hello ${req.user.username}, you are authenticated!`);
 });
-
-
 
 
 
