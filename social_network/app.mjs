@@ -112,13 +112,12 @@ async function createUser() {
 
 // Create the Post Schema
 const postSchema = new Schema({
-//	_id: { type: Schema.Types.ObjectId, ref: "User" },
-	title: {type: String, required: true},
-	caption: {type: String, required: false},
-	content: {type: String, required: true},
-	timestamp: {type: Date, default: Date.now, required: true},
-	// user: {type: Schema.Types.ObjectId, ref: 'User', required: true} // Reference User schema
-    });
+    title: { type: String, required: true },
+    caption: { type: String },
+    content: { type: String },
+    timestamp: { type: Date, default: Date.now, required: true },
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true } // Reference User schema
+});
  
 
 // Compile the model
@@ -149,11 +148,16 @@ async function createPost() {
 passport.use(new LocalStrategy(
     async (username, password, done) => { // Verify callback function for Local Strategy
         try {
+			console.log(`Attempting to find user: ${username}`);
             const user = await User.findOne({ username }); // Find user by username
             if (!user) { // If user not found
 				console.log('User not found');
                 return done(null, false, { message: 'User not found' }); // Return error message
             }
+
+			// If we get here, the user is in the Db.
+            console.log('User found:', user);
+			
 			// If we get here, the user is in the Db. Salt the
 			// given password and compare to the Db.
 			const isMatch = await bcrypt.compare(password, user.password);
@@ -277,8 +281,9 @@ app.post('/register', async (req, res) => {
 // When a user tries to go to /profile, we check authentication first.
 app.get('/profile', isAuthenticated, async (req, res) => {
     try {
-        // Retrieve posts from the database
-        const posts = await Post.find().sort({ timestamp: -1 });
+
+		// Retrieve posts from the database
+        const posts = await Post.find({ user: req.user._id }).sort({ timestamp: -1 }).populate('user', 'username');
 
         // Generate HTML to display posts
         let postListHTML = '<h1>Posts</h1>';
@@ -324,7 +329,7 @@ app.post('/post', isAuthenticated, async (req, res) => {
 			title: title,
 			caption: caption,
 			content: content,
-			user: req.user.username
+			user: req.user._id
 		});
 		// Try to save
 		await post.save();
