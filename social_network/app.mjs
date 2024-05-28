@@ -12,7 +12,7 @@ import mongoose from 'mongoose';
 import MongoDBStoreFactory from 'connect-mongodb-session';
 import bcrypt from 'bcrypt';
 import winston from 'winston';
-import GoogleStrategy from 'passport-google-oauth20';
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
 const { Schema } = mongoose;
 
@@ -78,8 +78,8 @@ connectDB(); // Call the function to connect to MongoDB
 // Define the user schema
 const userSchema = new Schema({
     username: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    salt: { type: String, required: true },
+    password: { type: String },
+    salt: { type: String },
     email: { type: String, match: [/.+\@.+\..+/, 'Please fill a valid email address'] } // Email must match the specified regex pattern
 });
  
@@ -94,7 +94,7 @@ const postSchema = new Schema({
     timestamp: { type: Date, default: Date.now, required: true },
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true } // Reference to user model
 });
- 
+
 // Create a post model using the schema
 const Post = mongoose.model('Post', postSchema);
 
@@ -145,6 +145,28 @@ passport.deserializeUser(async (id, done) => {
 	}
 });
 
+// Google OAuth Strategy
+passport.use(new GoogleStrategy({
+    clientID: '282243348983-hq7ctjclaa9l8bt9q7m7oh8b794gtmvk.apps.googleusercontent.com',
+	clientSecret: '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',
+    callbackURL: "http://localhost/auth/google/callback"
+}, async (accessToken, refreshToken, profile, cb) => {
+    try {
+        let user = await User.findOne({ email: profile.emails[0].value });
+        if (!user) {
+            user = new User({
+                googleId: profile.id,
+                username: profile.displayName,
+                email: profile.emails[0].value,
+            });
+            await user.save();
+        }
+        return cb(null, user);
+    } catch (err) {
+        return cb(err);
+    }
+}));
+
 // Middleware to check authentication
 function isAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {
@@ -157,6 +179,19 @@ function isAuthenticated(req, res, next) {
 app.get('/', (req, res) => {
     res.redirect('/login');
 });
+
+// Route to start Google OAuth 2.0 authentication
+app.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] })
+);
+
+// Route to handle the callback from Google OAuth 2.0
+app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    (req, res) => {
+        res.redirect('/profile');
+    }
+);
 
 // Route to display registration form
 app.get('/register', (req, res) => {
@@ -185,7 +220,8 @@ app.get('/login', (req, res) => {
 			<br>Password: <input type="password" name="password">
 			<br><button type="submit">Login</button>
 		</form>
-        <a href="/register">Click to Register</a>
+        <a href="/register">Click to Register</a>&nbsp&nbsp
+		<a href="/auth/google">Login with Google</a>
 	`); // Display login form and any error messages
 });
 
@@ -336,13 +372,3 @@ new winston.transports.Console()
 new winston.transports.File({filename: 'logs/errors.log'});
 // Remote HTTP server
 new winston.transports.Http({ host: 'https://myLogServer.com', port: 443 })
-
-passport.use(new GoogleStrategy({
-	clientID: '282243348983-hq7ctjclaa9l8bt9q7m7oh8b794gtmvk.apps.googleusercontent.com',
-	clientSecret: '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',
-	callbackURL: "http://www.example.com/auth/google/callback"
-	},
-	function(accessToken, refreshToken, profile, cb) {
-	}
-	));
-	
