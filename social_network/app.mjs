@@ -152,7 +152,10 @@ app.get('/', (req, res) => {
 
 // Route to display registration form
 app.get('/register', (req, res) => {
+	// Get any error messages from the query string
+	const errorMessage = req.query.error ? `<span style="color:red;">Error: ${req.query.error}</span>` : '';
     res.send(`
+		${errorMessage}
         <form action="/register" method="post">
             <br>Username: <input type="text" name="username">
 			<br>Email: <input type="email" name="email">
@@ -160,7 +163,7 @@ app.get('/register', (req, res) => {
             <br><button type="submit">Register</button>
         </form>
 		<a href="/login">Return to Login</a>
-    `); // Display registration form
+    `); // Display registration form and any error messages
 });
 
 // Route to display login form
@@ -175,7 +178,7 @@ app.get('/login', (req, res) => {
 			<br><button type="submit">Login</button>
 		</form>
         <a href="/register">Click to Register</a>
-	`); // Display login form
+	`); // Display login form and any error messages
 });
 
 // Handle login requests with custom callback
@@ -233,10 +236,8 @@ app.post('/register', async (req, res) => {
            errorMessage = 'User already exists, please login'; // Specific error message for duplicate username
         }
 		console.error('Registration Error:', errorMessage);
-        res.status(500).send(`
-            <p style="color:red;">${errorMessage}</p>
-            <a href="/register"><button>Back to Register</button></a>
-        `);
+		// Redirect to registration page with error message if error
+		res.redirect(`/register?error=${encodeURIComponent(errorMessage)}`);
     }
 });
 
@@ -275,7 +276,7 @@ app.get('/profile', isAuthenticated, async (req, res) => {
 				<br><button type="submit">Post</button>
             </form><br><br>
             ${postListHTML}
-        `); // Display profile and posts
+        `); // Display profile, posts, and any error messages
 		
     } catch (err) {
         console.err('Error fetching posts:', err);
@@ -308,9 +309,5 @@ app.post('/post', isAuthenticated, async (req, res) => {
 		console.error('Post Error:', errorMessage);
 		// Redirect to profile page with error message if authentication fails
 		res.redirect(`/profile?error=${encodeURIComponent(errorMessage)}`);
-        // res.status(500).send(`
-        //     <p style="color:red;">${errorMessage}</p>
-		// 	<a href="/profile"><button>Go Back</button></a>
-        // `); // Display error message if there's an issue creating post
     }
 });
