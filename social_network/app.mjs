@@ -11,6 +11,7 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import mongoose from 'mongoose';
 import MongoDBStoreFactory from 'connect-mongodb-session';
 import bcrypt from 'bcrypt';
+import winston from winston;
 
 const { Schema } = mongoose;
 
@@ -317,3 +318,22 @@ app.post('/post', isAuthenticated, async (req, res) => {
 		res.redirect(`/profile?error=${encodeURIComponent(errorMessage)}`);
     }
 });
+
+const winston = require('winston');
+
+const logger = winston.createLogger({
+	level: 'info',
+	format: winston.format.json(),
+	defaultMeta: { service: 'user-service' },
+	transports: [
+		new winston.transports.File({ filename: 'combined.log' }),
+		new winston.transports.Console({ format: winston.format.simple(), }),
+	],
+});
+
+// Console
+new winston.transports.Console()
+// File named 'errors.log'
+new winston.transports.File({filename: 'errors.log'});
+// Remote HTTP server
+new winston.transports.Http({ host: 'https://myLogServer.com', port: 443 })
