@@ -1,3 +1,9 @@
+/*
+* Group: Francis Corona, Ian Stewart
+* Project: Social Network - Phase 1
+* Due: 5/28/24, 11:59 PM EDT
+*/
+
 import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
