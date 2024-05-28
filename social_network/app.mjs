@@ -1,7 +1,7 @@
 /*
 * Group: Francis Corona, Ian Stewart
-* Project: Social Network - Phase 1
-* Due: 5/28/24, 11:59 PM EDT
+* Project: Social Network - Phase 2
+* Due: 6/4/24, 11:59 PM EDT
 */
 
 import express from 'express';
