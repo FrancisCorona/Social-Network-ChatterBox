@@ -1,0 +1,4 @@
+social_network/.gitignore
+social_network/node_modules
+social_network/package-lock.json
+.DS_Store
