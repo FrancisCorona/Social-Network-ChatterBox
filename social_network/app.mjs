@@ -12,6 +12,7 @@ import mongoose from 'mongoose';
 import MongoDBStoreFactory from 'connect-mongodb-session';
 import bcrypt from 'bcrypt';
 import winston from 'winston';
+import GoogleStrategy from 'passport-google-oauth20';
 
 const { Schema } = mongoose;
 
@@ -335,3 +336,13 @@ new winston.transports.Console()
 new winston.transports.File({filename: 'errors.log'});
 // Remote HTTP server
 new winston.transports.Http({ host: 'https://myLogServer.com', port: 443 })
+
+passport.use(new GoogleStrategy({
+	clientID: '282243348983-hq7ctjclaa9l8bt9q7m7oh8b794gtmvk.apps.googleusercontent.com',
+	clientSecret: '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',
+	callbackURL: "http://www.example.com/auth/google/callback"
+	},
+	function(accessToken, refreshToken, profile, cb) {
+	}
+	));
+	
