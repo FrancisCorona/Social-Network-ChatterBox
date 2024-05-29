@@ -17,7 +17,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 const { Schema } = mongoose;
 
 const app = express(); // Create an instance of Express
-const port = 80; // Set port number for the server
+const port = 3000; // Set port number for the server
 
 const MongoDBStore = MongoDBStoreFactory(session);
 
@@ -34,12 +34,12 @@ const Store = new MongoDBStore({
 
 // Catch errors from MongoDBStore
 Store.on('error', function(error) {
-	console.error('MongoDBStore error:', error);
+	logger.error('MongoDBStore error:', error);
 });
 
 // Start the server and listen on the specified port
 app.listen(port, () => {
-     console.log(`Our app is listening on port ${port}`);
+     logger.info(`Our app is listening on port ${port}`);
 });
 
 // Middleware for parsing URL-encoded data (from forms)
@@ -67,9 +67,9 @@ app.use(passport.session());
 async function connectDB() {
 	try {
 		await mongoose.connect(uri, { dbName: dbName }); // Connect to MongoDB with the specified URI and database name
-		console.log('Connected to MongoDB!');
+		logger.info('Connected to MongoDB!');
 	} catch (error) {
-		console.error('Connection error', error);
+		logger.error('Connection error', error);
 	}
 }
  
@@ -102,29 +102,29 @@ const Post = mongoose.model('Post', postSchema);
 passport.use(new LocalStrategy(
     async (username, password, done) => {
         try {
-			console.log(`Attempting to find user: ${username}`);
+			logger.info(`Attempting to find user: ${username}`);
             const user = await User.findOne({ username }); // Find user by username
             if (!user) { // If user not found
-				console.log('User not found');
+				logger.info('User not found');
                 return done(null, false, { message: 'User not found' }); // Return error message
             }
 
 			// If we get here, the user is in the DB
-            console.log('User found:', user);
+            logger.info('User found:', user);
 			
 			// If we get here, the user is in the DB. Salt the given password and compare to the DB
 			const isMatch = await bcrypt.compare(password, user.password);
 			if (isMatch) {
 				// We're good here!
-				console.log('Login successful');
+				logger.info('Login successful');
 				return done(null, user);
 			} else {
 				// Bad password
-				console.log('Incorrect password');
+				logger.info('Incorrect password');
 				return done(null, false, { message: 'Incorrect password' });
 			}
         } catch (err) {
-			console.log('Error during authentication:', err);
+			logger.info('Error during authentication:', err);
             return done(err); // Error during authentication
         }
     }
@@ -264,7 +264,7 @@ app.post('/register', async (req, res) => {
         });
 
         await user.save(); // Save the new user to the database
-		console.log('Successfully registered user:', username);
+		logger.info('Successfully registered user:', username);
         res.redirect('/login'); // Redirect to login page on successful registration
     } catch (err) {
         let errorMessage = 'Error registering user'; // Default error message
@@ -279,7 +279,7 @@ app.post('/register', async (req, res) => {
         } else if (err.code === 11000) { // Duplicate key error code
            errorMessage = 'User already exists, please login'; // Specific error message for duplicate username
         }
-		console.error('Registration Error:', errorMessage);
+		logger.error('Registration Error:', errorMessage);
 		// Redirect to registration page with error message if error
 		res.redirect(`/register?error=${encodeURIComponent(errorMessage)}`);
     }
@@ -323,7 +323,7 @@ app.get('/profile', isAuthenticated, async (req, res) => {
         `); // Display profile, posts, and any error messages
 		
     } catch (err) {
-        console.err('Error fetching posts:', err);
+        logger.error('Error fetching posts:', err);
         res.status(500).send('Error fetching posts'); // Display error message if there's an issue fetching posts
     }
 });
@@ -350,7 +350,7 @@ app.post('/post', isAuthenticated, async (req, res) => {
                 errorMessage = 'Post content required'; // Specific error message for missing content
             }
         }
-		console.error('Post Error:', errorMessage);
+		logger.error('Post Error:', errorMessage);
 		// Redirect to profile page with error message if authentication fails
 		res.redirect(`/profile?error=${encodeURIComponent(errorMessage)}`);
     }
@@ -365,10 +365,3 @@ const logger = winston.createLogger({
 		new winston.transports.Console({ format: winston.format.simple(), }),
 	],
 });
-
-// Console
-new winston.transports.Console()
-// File named 'errors.log'
-new winston.transports.File({filename: 'logs/errors.log'});
-// Remote HTTP server
-new winston.transports.Http({ host: 'https://myLogServer.com', port: 443 })
