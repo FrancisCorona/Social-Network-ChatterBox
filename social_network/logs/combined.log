@@ -1,2 +1,24 @@
 {"level":"info","message":"Our app is listening on port 3000","service":"user-service"}
 {"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 3000","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 3000","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Attempting to find user: test","service":"user-service"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","email":"init","password":"init","salt":"init","username":"init"},"states":{"init":{"__v":true,"_id":true,"email":true,"password":true,"salt":true,"username":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":0,"_id":"66553c326527a823652fc256","email":"","password":"$2b$10$waJGN3anYETdHxA.Lmt7AOQxWm6A3NhFRdrv3kh2l3I3bYnLkAJw.","salt":"$2b$10$waJGN3anYETdHxA.Lmt7AO","username":"test"},"level":"info","message":"User found:","service":"user-service"}
+{"level":"info","message":"Incorrect password","service":"user-service"}
+{"level":"info","message":"Attempting to find user: test","service":"user-service"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","email":"init","password":"init","salt":"init","username":"init"},"states":{"init":{"__v":true,"_id":true,"email":true,"password":true,"salt":true,"username":true},"require":{}}},"skipId":true},"$isNew":false,"_doc":{"__v":0,"_id":"66553c326527a823652fc256","email":"","password":"$2b$10$waJGN3anYETdHxA.Lmt7AOQxWm6A3NhFRdrv3kh2l3I3bYnLkAJw.","salt":"$2b$10$waJGN3anYETdHxA.Lmt7AO","username":"test"},"level":"info","message":"User found:","service":"user-service"}
+{"level":"info","message":"Incorrect password","service":"user-service"}
+{"level":"error","message":"Post Error:","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
