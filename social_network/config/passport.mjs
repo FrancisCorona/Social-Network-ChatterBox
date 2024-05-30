@@ -39,23 +39,22 @@ passport.use(new LocalStrategy(
 
 // Google OAuth Strategy
 passport.use(new GoogleStrategy({
-    clientID: '282243348983-hq7ctjclaa9l8bt9q7m7oh8b794gtmvk.apps.googleusercontent.com',
-	clientSecret: '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',
+    clientID: '282243348983-1o0t5lssu3gnh0oga6mvem9q0vm5cof4.apps.googleusercontent.com',
+	clientSecret: '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',
     callbackURL: "http://localhost/auth/google/callback"
-}, async (accessToken, refreshToken, profile, cb) => {
+}, async (accessToken, refreshToken, profile, done) => {
     try {
         let user = await User.findOne({ email: profile.emails[0].value });
         if (!user) {
             user = new User({
-                googleId: profile.id,
                 username: profile.displayName,
                 email: profile.emails[0].value,
             });
             await user.save();
         }
-        return cb(null, user);
+        return done(null, user);
     } catch (err) {
-        return cb(err);
+        return done(err);
     }
 }));
 

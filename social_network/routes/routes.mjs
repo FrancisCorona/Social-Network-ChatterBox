@@ -3,6 +3,7 @@ import passport from 'passport';
 import isAuthenticated from '../middleware/auth.mjs';
 import { registerUser, loginUser } from '../controllers/authController.mjs';
 import { getProfile, createPost } from '../controllers/postController.mjs';
+import logger from '../config/logger.mjs';
 
 const router = express.Router();
 
@@ -67,5 +68,16 @@ router.get('/auth/google/callback',
         res.redirect('/profile');
     }
 );
+
+// Route to logout user
+router.get('/logout', (req, res) => {
+    req.logout(err => {
+        if (err) {
+            logger.into('Logout error:', err);
+            return res.status(500).send('Logout error');
+        }
+        res.redirect('/login');
+    });
+});
 
 export default router;
