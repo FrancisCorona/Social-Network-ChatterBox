@@ -59,9 +59,9 @@ export const getProfile = async (req, res) => {
 
         // Display the generated HTML
         res.send(`
-            Hello ${req.user.username}! &#128515<br><br>
+            Hello ${req.user.name}! &#128515&nbsp&nbsp
             <a href="/logout">Logout</a>
-			${errorMessage}
+			<br>${errorMessage}
             <form action="/post" method="post">
             	<br>Title: <input type="text" name="title">
 				<br>Caption: <input type="text" name="caption">

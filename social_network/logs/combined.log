@@ -60,3 +60,161 @@
 {"level":"info","message":"Connected to MongoDB!","service":"user-service"}
 {"level":"info","message":"Our app is listening on port 80","service":"user-service"}
 {"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Successfully registered email:","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Registration Error:","service":"user-service"}
+{"level":"error","message":"Registration Error:","service":"user-service"}
+{"level":"error","message":"Registration Error:","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Registration Error:","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Registration Error: Error registering user","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Registration Error: Error registering user","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Registration Error (Error registering user): Error: mismatched passwords","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Registration Error (Passwords do not match): Error: mismatched passwords","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Registration Error (Password is required): Error: password required","service":"user-service"}
+{"level":"error","message":"Registration Error (Password is required): Error: password required","service":"user-service"}
+{"level":"error","message":"Registration Error (Passwords do not match): Error: mismatched passwords","service":"user-service"}
+{"level":"error","message":"Registration Error (Email is required): ValidationError: name: Path `name` is required., email: Path `email` is required.","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Registration Error (Password is required): Error: password required","service":"user-service"}
+{"level":"error","message":"Registration Error (Email is required): ValidationError: email: Path `email` is required.","service":"user-service"}
+{"level":"error","message":"Registration Error (Passwords do not match): Error: mismatched passwords","service":"user-service"}
+{"level":"info","message":"Successfully registered email:","service":"user-service"}
+{"level":"info","message":"Attempting to find user: ian","service":"user-service"}
+{"$__":{"activePaths":{"paths":{"__v":"init","_id":"init","email":"init","name":"require","password":"init","salt":"init"},"states":{"init":{"__v":true,"_id":true,"email":true,"password":true,"salt":true},"require":{"name":true}}},"skipId":true},"$isNew":false,"_doc":{"__v":0,"_id":"66564015a7e123ad2e9d16d7","email":"","password":"$2b$10$Pk0XOjxGMxmIz06ZKubNDO3QrTxLundJf3Ztu4ic8CxPxJP1a1F8S","salt":"$2b$10$Pk0XOjxGMxmIz06ZKubNDO","username":"ian"},"level":"info","message":"User found:","service":"user-service"}
+{"level":"info","message":"Incorrect password","service":"user-service"}
+{"level":"info","message":"Attempting to find user: ianastewart1021@gmail.com","service":"user-service"}
+{"level":"info","message":"User not found","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Registration Error (Email already has account, please login): MongoServerError: E11000 duplicate key error collection: mobileapp.users index: username_1 dup key: { username: null }","service":"user-service"}
+{"level":"error","message":"Registration Error (Email already has account, please login): MongoServerError: E11000 duplicate key error collection: mobileapp.users index: username_1 dup key: { username: null }","service":"user-service"}
+{"level":"info","message":"Successfully registered email:","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Login error: null","service":"user-service"}
+{"level":"error","message":"Login error: null","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Login error: Missing credentials","service":"user-service"}
+{"level":"error","message":"Login error: Missing credentials","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Login error: Missing credentials","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Login error: Missing credentials","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Attempting to find email: ianastewart1021@gmail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Login successful","service":"user-service"}
+{"level":"error","message":"Login error: Missing credentials","service":"user-service"}
+{"level":"info","message":"Attempting to find email: ianastewart1021@gmail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Incorrect password","service":"user-service"}
+{"level":"error","message":"Login error: Incorrect password","service":"user-service"}
+{"level":"info","message":"Attempting to find email: ianastewart1021@gmail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Incorrect password","service":"user-service"}
+{"level":"error","message":"Login error: Incorrect password","service":"user-service"}
+{"level":"info","message":"Attempting to find email: ianastewart1021@gmail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Login successful","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Attempting to find email: ianastewart1021@gmail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Login successful","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Attempting to find email: ianastewart1021@gmail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Login successful","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Registration Error (Email already has account, please login): MongoServerError: E11000 duplicate key error collection: mobileapp.users index: username_1 dup key: { username: null }","service":"user-service"}
+{"level":"info","message":"Attempting to find email: ianastewart1021@gmail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Error during authentication: data and hash arguments required","service":"user-service","stack":"Error: data and hash arguments required\n    at Object.compare (/Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/node_modules/bcrypt/bcrypt.js:208:17)\n    at /Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/node_modules/bcrypt/promises.js:29:12\n    at new Promise (<anonymous>)\n    at module.exports.promise (/Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/node_modules/bcrypt/promises.js:20:12)\n    at Object.compare (/Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/node_modules/bcrypt/bcrypt.js:204:25)\n    at Strategy._verify (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/config/passport.mjs:30:33)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Login error: Missing credentials","service":"user-service"}
+{"level":"info","message":"Attempting to find email: ianastewart1021@gmail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Password comparison failed since they don't exist in db. User may need to log in with OAuth.","service":"user-service"}
+{"level":"error","message":"Login error: Please log in with OAuth","service":"user-service"}
+{"level":"error","message":"Login error: Missing credentials","service":"user-service"}
+{"level":"info","message":"Attempting to find email: ianastewart1021@gmail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Password comparison failed since they don't exist in db. User may need to log in with OAuth.","service":"user-service"}
+{"level":"error","message":"Login error: Please log in with OAuth","service":"user-service"}
+{"level":"error","message":"Post Error:","service":"user-service"}
+{"level":"error","message":"Post Error:","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Post Error:","service":"user-service"}
+{"level":"error","message":"Post Error:","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}

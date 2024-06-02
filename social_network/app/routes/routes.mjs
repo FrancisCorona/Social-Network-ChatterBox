@@ -31,9 +31,10 @@ router.get('/register', (req, res) => {
     res.send(`
 		${errorMessage}
         <form action="/register" method="post">
-            <br>Username: <input type="text" name="username">
+            <br>Name: <input type="text" name="name">
 			<br>Email: <input type="email" name="email">
             <br>Password: <input type="password" name="password">
+            <br>Retype Password: <input type="password" name="password2">
             <br><button type="submit">Register</button>
         </form>
 		<a href="/login">Return to Login</a>
@@ -48,29 +49,46 @@ router.get('/login', (req, res) => {
 	// Get any error messages from the query string
 	const errorMessage = req.query.error ? `<span style="color:red;">Error: ${req.query.error}</span>` : '';
 	res.send(`
-		${errorMessage}
+        Welcome!! Please log in! &#128526
+		<br>${errorMessage}
 		<form action="/login" method="post">
-			<br>Username: <input type="text" name="username">
+			<br>Email: <input type="email" name="username">
 			<br>Password: <input type="password" name="password">
 			<br><button type="submit">Login</button>
 		</form>
-        <a href="/register">Click to Register</a>&nbsp&nbsp
-		<a href="/auth/google">Login with Google</a>
+        <a href="/register">Click to Register</a>&nbsp|
+		<a href="/auth/google">Log in with Google</a>&nbsp|
+        <a href="/auth/github">Log in with Github</a>
 	`); // Display login form and any error messages
 });
 
 // Handle login requests
 router.post('/login', loginUser);
 
-// Route to start Google OAuth 2.0 authentication
+// Route to start Google OAuth auth
 router.get('/auth/google',
     passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-// Route to handle the callback from Google OAuth 2.0
+// Route to handle the callback from Google OAuth
 router.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
     (req, res) => {
+        // Successful authentication, redirect to profile.
+        res.redirect('/profile');
+    }
+);
+
+// Route to start Github OAuth auth
+router.get('/auth/github',
+    passport.authenticate('github', { scope: [ 'user:email' ] })
+);
+
+// Route to handle the callback from Github OAuth
+router.get('/auth/github/callback', 
+    passport.authenticate('github', { failureRedirect: '/login' }),
+    (req, res) => {
+        // Successful authentication, redirect to profile.
         res.redirect('/profile');
     }
 );
