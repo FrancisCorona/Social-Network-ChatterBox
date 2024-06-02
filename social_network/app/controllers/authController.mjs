@@ -1,3 +1,9 @@
+/*
+* Group: Francis Corona, Ian Stewart
+* Project: Social Network - Phase 2
+* Due: 6/4/24, 11:59 PM EDT
+*/
+
 import passport from 'passport';
 import bcrypt from 'bcrypt';
 import logger from '../config/logger.mjs';
@@ -12,7 +18,7 @@ export const registerUser = async (req, res) => {
 
         const salt = await bcrypt.genSalt(); // Generate salt for hashing password
         const hashedPassword = await bcrypt.hash(password, salt); // Hash the password with the generated salt
-
+        // Create a new instance of the model
         const user = new User({
             username,
             password: hashedPassword,

@@ -5,11 +5,11 @@
 */
 
 import express from 'express';
-import passport from './config/passport.mjs';
-import connectDB from './config/db.mjs';
-import sessionMiddleware from './config/session.mjs';
-import Routes from './routes/routes.mjs';
-import logger from './config/logger.mjs';
+import passport from './app/config/passport.mjs';
+import connectDB from './app/config/db.mjs';
+import sessionMiddleware from './app/config/session.mjs';
+import Routes from './app/routes/routes.mjs';
+import logger from './app/config/logger.mjs';
 
 const app = express(); // Create an instance of Express
 const port = 80; // Set port number for the server

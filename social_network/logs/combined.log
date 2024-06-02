@@ -58,3 +58,5 @@
 {"level":"info","message":"Connected to MongoDB!","service":"user-service"}
 {"level":"info","message":"Our app is listening on port 80","service":"user-service"}
 {"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}

@@ -1,3 +1,9 @@
+/*
+* Group: Francis Corona, Ian Stewart
+* Project: Social Network - Phase 2
+* Due: 6/4/24, 11:59 PM EDT
+*/
+
 import Post from '../models/post.mjs';
 import logger from '../config/logger.mjs';
 

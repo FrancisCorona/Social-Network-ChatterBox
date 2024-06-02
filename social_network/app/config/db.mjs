@@ -1,7 +1,13 @@
+/*
+* Group: Francis Corona, Ian Stewart
+* Project: Social Network - Phase 2
+* Due: 6/4/24, 11:59 PM EDT
+*/
+
 import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoDBStoreFactory from 'connect-mongodb-session';
-import logger from '../config/logger.mjs';
+import logger from './logger.mjs';
 
 const MongoDBStore = MongoDBStoreFactory(session);
 

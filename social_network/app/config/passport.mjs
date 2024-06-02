@@ -1,9 +1,15 @@
+/*
+* Group: Francis Corona, Ian Stewart
+* Project: Social Network - Phase 2
+* Due: 6/4/24, 11:59 PM EDT
+*/
+
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import bcrypt from 'bcrypt';
 import User from '../models/user.mjs';
-import logger from '../config/logger.mjs';
+import logger from './logger.mjs';
 
 // Passport Local Strategy for authentication
 passport.use(new LocalStrategy(
