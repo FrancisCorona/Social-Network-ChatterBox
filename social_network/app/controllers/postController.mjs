@@ -5,6 +5,7 @@
 */
 
 import Post from '../models/post.mjs';
+import User from '../models/user.mjs';
 import logger from '../config/logger.mjs';
 
 export const createPost = async (req, res) => {
@@ -54,6 +55,24 @@ export const getProfile = async (req, res) => {
             });
             postListHTML += '</ul>';
         }
+        
+        // Find friends (all users)
+        const users = await User.find({ _id: { $ne: req.user._id } }).sort({ username: 1 });
+
+        // Generate HTML to display friends (all users)
+        let friendsListHTML = '<h1>Friends</h1>';
+        if (users.length === 0) {
+            friendsListHTML += '<p>You have no friends &#128557</p>'; // Display message if no posts are available
+        } else {
+            friendsListHTML += '<ul>';
+            users.forEach(user => {
+                friendsListHTML += `
+                        <strong>${user.name}</strong><br>
+                `;
+            });
+            friendsListHTML += '</ul>';
+        }
+
 		// Get any error messages from the query string
 		const errorMessage = req.query.error ? `<span style="color:red;">Error: ${req.query.error}</span>` : '';
 
@@ -68,6 +87,7 @@ export const getProfile = async (req, res) => {
 				<br>Content: <input type="text" name="content">
 				<br><button type="submit">Post</button>
             </form><br><br>
+            ${friendsListHTML}<br><br>
             ${postListHTML}
         `); // Display profile, posts, and any error messages
 		

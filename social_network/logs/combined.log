@@ -218,3 +218,39 @@
 {"level":"info","message":"Connected to MongoDB!","service":"user-service"}
 {"level":"info","message":"Our app is listening on port 80","service":"user-service"}
 {"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Error fetching posts: users is not defined","service":"user-service","stack":"ReferenceError: users is not defined\n    at getProfile (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:60:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Error fetching posts: users is not defined","service":"user-service","stack":"ReferenceError: users is not defined\n    at getProfile (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:60:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Error fetching posts: users is not defined","service":"user-service","stack":"ReferenceError: users is not defined\n    at getProfile (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:67:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Error fetching posts: users is not defined","service":"user-service","stack":"ReferenceError: users is not defined\n    at getProfile (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:67:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Error fetching posts: users is not defined","service":"user-service","stack":"ReferenceError: users is not defined\n    at getProfile (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:67:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Registration Error (Email already has account, please log in): MongoServerError: E11000 duplicate key error collection: mobileapp.users index: username_1 dup key: { username: null }","service":"user-service"}
+{"level":"info","message":"Successfully registered email:","service":"user-service"}
+{"level":"info","message":"Attempting to find email: frank@mail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Login successful","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Successfully registered email:","service":"user-service"}
+{"level":"info","message":"Attempting to find email: fred@mail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Login successful","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
