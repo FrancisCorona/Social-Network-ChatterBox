@@ -14,7 +14,7 @@ export const registerUser = async (req, res) => {
     try {
 		if (!password) { // Check if the password is empty
         	throw new Error('password required');
-        } else if (password != password2) { // Check if the passwords match
+        } else if (password !== password2) { // Check if the passwords match
             throw new Error('mismatched passwords');
         }
 

@@ -6,6 +6,7 @@
 
 import Post from '../models/post.mjs';
 import User from '../models/user.mjs';
+import Friends from '../models/friends.mjs';
 import logger from '../config/logger.mjs';
 
 export const createPost = async (req, res) => {
@@ -65,11 +66,24 @@ export const getProfile = async (req, res) => {
             friendsListHTML += '<p>You have no friends &#128557</p>'; // Display message if no posts are available
         } else {
             friendsListHTML += '<ul>';
-            users.forEach(user => {
-                friendsListHTML += `
-                        <strong>${user.name}</strong><br>
-                `;
-            });
+            for (const user of users) {
+                const isFriend = await Friends.findOne({ user: req.user._id, friends: user._id }) !== null;
+                if (isFriend) {
+                    friendsListHTML += `
+                        <strong>${user.name}</strong>&nbsp&nbsp
+                        <form action="/unfriend/${user._id}" method="post">
+                            <input type="submit" name="unfriend" value="unfriend" />
+                        </form><br>
+                    `;
+                } else {
+                    friendsListHTML += `
+                        <strong>${user.name}</strong>&nbsp&nbsp
+                        <form action="/friend/${user._id}" method="post">
+                            <input type="submit" name="friend" value="friend" />
+                        </form><br>
+                    `;
+                }
+            }
             friendsListHTML += '</ul>';
         }
 

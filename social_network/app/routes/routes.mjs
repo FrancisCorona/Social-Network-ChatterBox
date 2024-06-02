@@ -9,6 +9,7 @@ import passport from 'passport';
 import isAuthenticated from '../middleware/auth.mjs';
 import { registerUser, loginUser } from '../controllers/authController.mjs';
 import { getProfile, createPost } from '../controllers/postController.mjs';
+import { addFriend, removeFriend } from '../controllers/friendsController.mjs';
 import logger from '../config/logger.mjs';
 
 const router = express.Router();
@@ -23,6 +24,12 @@ router.get('/profile', isAuthenticated, getProfile);
 
 // Handle post creation requests
 router.post('/post', isAuthenticated, createPost);
+
+// Handle adding friends
+router.post('/friend/:id', isAuthenticated, addFriend);
+
+// Handle removing friends
+router.post('/unfriend/:id', isAuthenticated, removeFriend);
 
 // Route to display registration form
 router.get('/register', (req, res) => {

@@ -254,3 +254,76 @@
 {"level":"info","message":"Login successful","service":"user-service"}
 {"level":"info","message":"Our app is listening on port 80","service":"user-service"}
 {"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Friend, undefined, added to fred's friend list","service":"user-service"}
+{"level":"info","message":"Friend, undefined, added to fred's friend list","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Friend, undefined, added to fred's friend list","service":"user-service"}
+{"level":"info","message":"Friend, undefined, added to fred's friend list","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Friend, [object Object], added to fred's friend list","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Friend, 665cc149017e337e21378c2b, added to fred's friend list","service":"user-service"}
+{"level":"info","message":"Friend, 665cc163017e337e21378c33, added to fred's friend list","service":"user-service"}
+{"level":"info","message":"Friend, 665cc149017e337e21378c2b, added to fred's friend list","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Error adding friend: ReferenceError: User is not defined","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Frank added to fred's friend list","service":"user-service"}
+{"level":"info","message":"Frank added to fred's friend list","service":"user-service"}
+{"level":"error","message":"User tried friending invalid user","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Error fetching posts: Cannot read properties of undefined (reading 'includes')","service":"user-service","stack":"TypeError: Cannot read properties of undefined (reading 'includes')\n    at file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:69:34\n    at Array.forEach (<anonymous>)\n    at getProfile (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:68:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Error fetching posts: Cannot read properties of undefined (reading 'includes')","service":"user-service","stack":"TypeError: Cannot read properties of undefined (reading 'includes')\n    at file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:69:34\n    at Array.forEach (<anonymous>)\n    at getProfile (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:68:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Error fetching posts: friends is not defined","service":"user-service","stack":"ReferenceError: friends is not defined\n    at file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:69:17\n    at Array.forEach (<anonymous>)\n    at getProfile (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:68:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Error fetching posts: Friends.includes is not a function","service":"user-service","stack":"TypeError: Friends.includes is not a function\n    at file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:70:29\n    at Array.forEach (<anonymous>)\n    at getProfile (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:69:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Error fetching posts: Friends.present is not a function","service":"user-service","stack":"TypeError: Friends.present is not a function\n    at file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:70:29\n    at Array.forEach (<anonymous>)\n    at getProfile (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:69:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"error","message":"Error fetching posts: Friends.findone is not a function","service":"user-service","stack":"TypeError: Friends.findone is not a function\n    at file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:70:29\n    at Array.forEach (<anonymous>)\n    at getProfile (file:///Users/ianstewart/Dev/CIS371/CIS371-Code/social_network/app/controllers/postController.mjs:69:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Ian Stewart removed from fred's friend list","service":"user-service"}
+{"level":"info","message":"Ian Stewart removed from fred's friend list","service":"user-service"}
+{"level":"info","message":"Friends record not found","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Successfully registered email:","service":"user-service"}
+{"level":"info","message":"Attempting to find email: jeff@mail.com","service":"user-service"}
+{"level":"info","message":"Email found:","service":"user-service"}
+{"level":"info","message":"Login successful","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Ian Stewart added to jeff's friend list","service":"user-service"}
+{"level":"info","message":"fred added to jeff's friend list","service":"user-service"}
+{"level":"info","message":"Ian Stewart removed from jeff's friend list","service":"user-service"}
+{"level":"info","message":"Ian Stewart added to jeff's friend list","service":"user-service"}
+{"level":"info","message":"fred removed from jeff's friend list","service":"user-service"}
+{"level":"info","message":"Ian Stewart removed from jeff's friend list","service":"user-service"}
