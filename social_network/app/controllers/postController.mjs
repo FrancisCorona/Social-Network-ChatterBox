@@ -39,23 +39,40 @@ export const createPost = async (req, res) => {
 export const getProfile = async (req, res) => {
     try {
 		// Find posts by user ID and sort by timestamp
-        const posts = await Post.find({ user: req.user._id }).sort({ timestamp: -1 }).populate('user', 'username');
+        const userPosts = await Post.find({ user: req.user._id }).sort({ timestamp: -1 }).populate('user', 'name'); //
+
+        // Find the user's friends
+        const friendsRecord = await Friends.findOne({ user: req.user._id }).populate('friends');
+        
+        // Initialize an array to store friends' posts
+        let friendsPosts = [];
+
+        if (friendsRecord && friendsRecord.friends.length > 0) {
+            const friendsIds = friendsRecord.friends.map(friend => friend._id);
+
+            // Find the posts of all friends
+            friendsPosts = await Post.find({ user: { $in: friendsIds } }).sort({ timestamp: -1 }).populate('user', 'name');
+        }
+
+        // Combine user's posts and friends' posts and sort them by timestamp
+        const allPosts = userPosts.concat(friendsPosts).sort((a, b) => b.timestamp - a.timestamp); 
 
         // Generate HTML to display posts
         let postListHTML = '<h1>Posts</h1>';
-        if (posts.length === 0) {
-            postListHTML += '<p>No posts available &#128546</p>'; // Display message if no posts are available
+        if (allPosts.length === 0) {
+            postListHTML += '<p>No posts available &#128546;</p>'; // Display message if no posts are available
         } else {
             postListHTML += '<ul>';
-            posts.forEach(post => {
+            allPosts.forEach(post => {
                 postListHTML += `
-                        <h2>${post.title}</h2>
-                        ${post.caption ? `<p><strong>Caption:</strong> ${post.caption}</p>` : ''}
-                        <p><strong>Content:</strong> ${post.content}</p><br>
+                    <h2>${post.title}</h2>
+                    ${post.caption ? `<p><strong>Caption:</strong> ${post.caption}</p>` : ''}
+                    <p><strong>Content:</strong> ${post.content}</p>
+                    <p><em>Posted by: ${post.user.name}</em></p><br>
                 `; // Only display caption if not blank
             });
             postListHTML += '</ul>';
-        }
+        }        
         
         // Find friends (all users)
         const users = await User.find({ _id: { $ne: req.user._id } }).sort({ username: 1 });
