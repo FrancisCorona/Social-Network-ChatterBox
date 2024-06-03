@@ -40,18 +40,25 @@ export const getProfile = async (req, res) => {
     try {
 		// Find posts by user ID and sort by timestamp
         const userPosts = await Post.find({ user: req.user._id }).sort({ timestamp: -1 }).populate('user', 'name'); //
+        
+        logger.info(`Found ${userPosts.length} posts for user: ${req.user._id}`);
 
         // Find the user's friends
         const friendsRecord = await Friends.findOne({ user: req.user._id }).populate('friends');
+
+        logger.info(`Found friends record for user: ${req.user._id}`);
         
         // Initialize an array to store friends' posts
         let friendsPosts = [];
 
         if (friendsRecord && friendsRecord.friends.length > 0) {
             const friendsIds = friendsRecord.friends.map(friend => friend._id);
+            logger.info(`User ${req.user._id} has ${friendsIds.length} friends`);
+            
 
             // Find the posts of all friends
             friendsPosts = await Post.find({ user: { $in: friendsIds } }).sort({ timestamp: -1 }).populate('user', 'name');
+            logger.info(`Found ${friendsPosts.length} posts from friends of user: ${req.user._id}`);
         }
 
         // Combine user's posts and friends' posts and sort them by timestamp
@@ -75,7 +82,7 @@ export const getProfile = async (req, res) => {
         }        
         
         // Find friends (all users)
-        const users = await User.find({ _id: { $ne: req.user._id } }).sort({ username: 1 });
+        const users = await User.find({ _id: { $ne: req.user._id } }).sort({ name: 1 });
 
         // Generate HTML to display friends (all users)
         let friendsListHTML = '<h1>Friends</h1>';

@@ -19,3 +19,9 @@
 {"level":"info","message":"Ian Stewart added to Francis Corona's friend list","service":"user-service"}
 {"level":"info","message":"Our app is listening on port 80","service":"user-service"}
 {"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Found 3 posts for user: 665d0a6561164ca03acaa9dc","service":"user-service"}
+{"level":"info","message":"Found friends record for user: 665d0a6561164ca03acaa9dc","service":"user-service"}
+{"level":"info","message":"User 665d0a6561164ca03acaa9dc has 2 friends","service":"user-service"}
+{"level":"info","message":"Found 4 posts from friends of user: 665d0a6561164ca03acaa9dc","service":"user-service"}
