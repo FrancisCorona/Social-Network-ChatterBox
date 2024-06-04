@@ -462,3 +462,123 @@
 [32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
 [32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 4 friends
 [32minfo[39m: [postController-module] Found 5 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [authController-module] Successfully registered email: ian@mail.com
+[32minfo[39m: [passport-module] Attempting to find user by email: ian@mail.com
+[32minfo[39m: [passport-module] User found in database: ian@mail.com
+[32minfo[39m: [passport-module] Login successful: ian@mail.com
+[32minfo[39m: [postController-module] Found 0 posts for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] Found friends record for user: 665f5c69d9622e88039eab12
+[31merror[39m: [postController-module] Post Error: 665f5c69d9622e88039eab12 {Post content required}
+[32minfo[39m: [postController-module] Found 0 posts for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] Found friends record for user: 665f5c69d9622e88039eab12
+[31merror[39m: [postController-module] Post Error: 665f5c69d9622e88039eab12 {Post title required}
+[32minfo[39m: [postController-module] Found 0 posts for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] Found friends record for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] Found 1 posts for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] Found friends record for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] Found 2 posts for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] Found friends record for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [friendsController-module] jeff added to ian's friend list
+[32minfo[39m: [postController-module] Found 2 posts for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] Found friends record for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] User 665f5c69d9622e88039eab12 has 1 friends
+[32minfo[39m: [postController-module] Found 1 posts from friends of user: 665f5c69d9622e88039eab12
+[31merror[39m: [passport-module] Error during Google OAuth authentication: {email is not defined}
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [passport-module] User authenticated with Google OAuth: {
+  _id: new ObjectId('665cc163017e337e21378c33'),
+  name: 'Ian Stewart',
+  email: 'ianastewart1021@gmail.com',
+  __v: 0
+}
+[32minfo[39m: [postController-module] Found 3 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 4 friends
+[32minfo[39m: [postController-module] Found 5 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 4 friends
+[32minfo[39m: [postController-module] Found 5 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [friendsController-module] Francis Corona removed from Ian Stewart's friend list
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 3 friends
+[32minfo[39m: [postController-module] Found 2 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [friendsController-module] ian added to Ian Stewart's friend list
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 4 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [friendsController-module] ian removed from Ian Stewart's friend list
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 3 friends
+[32minfo[39m: [postController-module] Found 2 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [friendsController-module] fred removed from Ian Stewart's friend list
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 2 friends
+[32minfo[39m: [postController-module] Found 2 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [friendsController-module] Todd  removed from Ian Stewart's friend list
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 1 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [friendsController-module] jeff removed from Ian Stewart's friend list
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [authController-module] Successfully registered email: john@mail.com
+[32minfo[39m: [passport-module] Attempting to find user by email: john@mail.com
+[32minfo[39m: [passport-module] User found in database: john@mail.com
+[32minfo[39m: [passport-module] Login successful: john@mail.com
+[32minfo[39m: [postController-module] Found 0 posts for user: 665f5d5dd2273b10369a4b3b
+[32minfo[39m: [postController-module] Found friends record for user: 665f5d5dd2273b10369a4b3b
+[32minfo[39m: [passport-module] Attempting to find user by email: john@mail.com
+[32minfo[39m: [passport-module] User found in database: john@mail.com
+[32minfo[39m: [passport-module] Login successful: john@mail.com
+[32minfo[39m: [postController-module] Found 0 posts for user: 665f5d5dd2273b10369a4b3b
+[32minfo[39m: [postController-module] Found friends record for user: 665f5d5dd2273b10369a4b3b
+[31merror[39m: [authController-module] Login error: Missing credentials
+[32minfo[39m: [passport-module] Attempting to find user by email: ian@mail.com
+[32minfo[39m: [passport-module] User found in database: ian@mail.com
+[32minfo[39m: [passport-module] Login successful: ian@mail.com
+[32minfo[39m: [postController-module] Found 2 posts for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] Found friends record for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] User 665f5c69d9622e88039eab12 has 1 friends
+[32minfo[39m: [postController-module] Found 1 posts from friends of user: 665f5c69d9622e88039eab12
+[32minfo[39m: [passport-module] Attempting to find user by email: asdas@asd.vet
+[33mwarn[39m: [passport-module] User not found in database: asdas@asd.vet
+[31merror[39m: [authController-module] Login error: User not found
+[32minfo[39m: [passport-module] Attempting to find user by email: ianastewart1021@gmail.com
+[32minfo[39m: [passport-module] User found in database: ianastewart1021@gmail.com
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[31merror[39m: [authController-module] Login error: Missing credentials
+[32minfo[39m: [passport-module] Attempting to find user by email: ianastewart1021@gmail.com
+[32minfo[39m: [passport-module] User found in database: ianastewart1021@gmail.com
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [passport-module] Attempting to find user by email: ian@mail.com
+[32minfo[39m: [passport-module] User found in database: ian@mail.com
+[32minfo[39m: [passport-module] Login successful: ian@mail.com
+[32minfo[39m: [postController-module] Found 2 posts for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] Found friends record for user: 665f5c69d9622e88039eab12
+[32minfo[39m: [postController-module] User 665f5c69d9622e88039eab12 has 1 friends
+[32minfo[39m: [postController-module] Found 1 posts from friends of user: 665f5c69d9622e88039eab12
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [passport-module] Attempting to find user by email: ian@mail.com
+[32minfo[39m: [passport-module] User found in database: ian@mail.com
+[33mwarn[39m: [passport-module] Incorrect password: ian@mail.com
+[31merror[39m: [authController-module] Login error: Incorrect password
+[32minfo[39m: [passport-module] Attempting to find user by email: ianastewart1021@gmail.com
+[32minfo[39m: [passport-module] User found in database: ianastewart1021@gmail.com
+[31merror[39m: [authController-module] Login error: Please log in with Google or Github
+[31merror[39m: [passport-module] Password comparison failed. User may need to log in with OAuth: ianastewart1021@gmail.com {data and hash arguments required}
+[32minfo[39m: [passport-module] Attempting to find user by email: ianastewart1021@gmail.com
+[32minfo[39m: [passport-module] User found in database: ianastewart1021@gmail.com
+[31merror[39m: [authController-module] Login error: Please log in with Google or Github
+[31merror[39m: [passport-module] Password comparison failed. User may need to log in with OAuth: ianastewart1021@gmail.com {data and hash arguments required}

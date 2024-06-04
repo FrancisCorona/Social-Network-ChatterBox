@@ -29,7 +29,7 @@ passport.use(new LocalStrategy(
             logger.info(`User found in database: ${email}`);
 			
 			// Salt the given password and compare to the DB
-			const isMatch = bcrypt.compare(password, user.password);
+			const isMatch = await bcrypt.compare(password, user.password);
 			if (isMatch) {
 				// We're good here!
 				logger.info(`Login successful: ${email}`);
@@ -67,7 +67,7 @@ passport.use(new GoogleStrategy({
             await user.save();
             logger.info(`New user created with Google OAuth: ${user}`);
         }
-        logger.info(`User authenticated with Google OAuth: ${email}`);
+        logger.info(`User authenticated with Google OAuth: ${user}`);
         return done(null, user);
     } catch (err) {
         logger.error(`Error during Google OAuth authentication: {${err.message}}`);
