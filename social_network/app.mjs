@@ -9,7 +9,9 @@ import passport from './app/config/passport.mjs';
 import connectDB from './app/config/db.mjs';
 import sessionMiddleware from './app/config/session.mjs';
 import Routes from './app/routes/routes.mjs';
-import logger from './app/config/logger.mjs';
+import createLogger from './app/config/logger.mjs';
+
+const logger = createLogger('app-module');
 
 const app = express(); // Create an instance of Express
 const port = 80; // Set port number for the server

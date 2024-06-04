@@ -10,40 +10,42 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { Strategy as GithubStrtegy } from 'passport-github2';
 import bcrypt from 'bcrypt';
 import User from '../models/user.mjs';
-import logger from './logger.mjs';
+import createLogger from './logger.mjs';
+
+const logger = createLogger('passport-module');
 
 // Passport Local Strategy for authentication
 passport.use(new LocalStrategy(
     async (email, password, done) => {
         try {
-			logger.info(`Attempting to find email: ${email}`);
+			logger.info(`Attempting to find user by email: ${email}`);
             const user = await User.findOne({ email }); // Find user by username
             if (!user) { // If user not found
-				logger.info('User not found');
+				logger.warn(`User not found in database: ${email}`);
                 return done(null, false, { message: 'User not found' }); // Return error message
             }
 
 			// If we get here, the email is in the DB
-            logger.info('Email found:', email);
+            logger.info(`User found in database: ${email}`);
 			
 			// Salt the given password and compare to the DB
-			const isMatch = await bcrypt.compare(password, user.password);
+			const isMatch = bcrypt.compare(password, user.password);
 			if (isMatch) {
 				// We're good here!
-				logger.info('Login successful');
+				logger.info(`Login successful: ${email}`);
 				return done(null, user);
 			} else {
 				// Bad password
-				logger.info('Incorrect password');
+				logger.warn(`Incorrect password: ${email}`);
 				return done(null, false, { message: 'Incorrect password' });
 			}
         } catch (err) {
             // Check for specific bcrypt error and handle accordingly
             if (err.message.includes('data and hash arguments required')) {
-                logger.info('Password comparison failed since they don\'t exist in db. User may need to log in with OAuth.');
+                logger.error(`Password comparison failed. User may need to log in with OAuth: ${email} {${err.message}}`);
                 return done(null, false, { message: 'Please log in with Google or Github' });
             }
-			logger.info('Error during authentication:', err);
+			logger.error(`Error during authentication. ${email} {${err.message}}`);
             return done(err); // Error during authentication
         }
     }
@@ -63,9 +65,12 @@ passport.use(new GoogleStrategy({
                 email: profile.emails[0].value,
             });
             await user.save();
+            logger.info(`New user created with Google OAuth: ${user}`);
         }
+        logger.info(`User authenticated with Google OAuth: ${email}`);
         return done(null, user);
     } catch (err) {
+        logger.error(`Error during Google OAuth authentication: {${err.message}}`);
         return done(err);
     }
 }));
@@ -84,9 +89,12 @@ passport.use(new GithubStrtegy({
                 email: profile.emails[0].value,
             });
             await user.save();
+            logger.info(`New user created with GitHub OAuth: ${email}`);
         }
+        logger.info(`User authenticated with GitHub OAuth: ${user}`);
         return done(null, user);
     } catch (err) {
+        logger.error(`Error during GitHub OAuth authentication: {${err.message}}`);
         return done(err);
     }
 }));
@@ -103,6 +111,7 @@ passport.deserializeUser(async (id, done) => {
 		const user = await User.findById(id); // Find user by ID from DB
 		done(null, user);
 	} catch (err) {
+        logger.error(`Error during deserialization: {${err.message}}`);
 		done(err); // Error during deserialization
 	}
 });

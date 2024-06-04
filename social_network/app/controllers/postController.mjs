@@ -7,7 +7,9 @@
 import Post from '../models/post.mjs';
 import User from '../models/user.mjs';
 import Friends from '../models/friends.mjs';
-import logger from '../config/logger.mjs';
+import createLogger from '../config/logger.mjs';
+
+const logger = createLogger('postController-module');
 
 export const createPost = async (req, res) => {
 	const {title, caption, content} = req.body;
@@ -30,7 +32,7 @@ export const createPost = async (req, res) => {
                 errorMessage = 'Post content required'; // Specific error message for missing content
             }
         }
-		logger.error('Post Error:', errorMessage);
+		logger.error(`Post Error: ${req.user._id} {${errorMessage}}`);
 		// Redirect to profile page with error message if authentication fails
 		res.redirect(`/profile?error=${encodeURIComponent(errorMessage)}`);
     }
@@ -39,7 +41,7 @@ export const createPost = async (req, res) => {
 export const getProfile = async (req, res) => {
     try {
 		// Find posts by user ID and sort by timestamp
-        const userPosts = await Post.find({ user: req.user._id }).sort({ timestamp: -1 }).populate('user', 'name'); //
+        const userPosts = await Post.find({ user: req.user._id }).sort({ timestamp: -1 }).populate('user', 'name');
         
         logger.info(`Found ${userPosts.length} posts for user: ${req.user._id}`);
 
@@ -130,7 +132,7 @@ export const getProfile = async (req, res) => {
         `); // Display profile, posts, and any error messages
 		
     } catch (err) {
-        logger.error('Error fetching posts:', err);
+        logger.error(`Error fetching posts: {${err.message}}`);
         res.status(500).send('Error fetching posts'); // Display error message if there's an issue fetching posts
     }
 }

@@ -6,8 +6,10 @@
 
 import passport from 'passport';
 import bcrypt from 'bcrypt';
-import logger from '../config/logger.mjs';
 import User from '../models/user.mjs';
+import createLogger from '../config/logger.mjs';
+
+const logger = createLogger('authController-module');
 
 export const registerUser = async (req, res) => {
     const { name, email, password, password2 } = req.body;
@@ -29,7 +31,7 @@ export const registerUser = async (req, res) => {
         });
 
         await user.save(); // Save the new user to the database
-		logger.info('Successfully registered email:', email);
+		logger.info(`Successfully registered email: ${email}`);
         res.redirect('/login'); // Redirect to login page on successful registration
     } catch (err) {
         let errorMessage = 'Error registering user'; // Default error message
@@ -48,7 +50,7 @@ export const registerUser = async (req, res) => {
         } else if (err.message === 'mismatched passwords') {
             errorMessage = 'Passwords do not match'; // Specific error message for mismatched passwords
         }
-        logger.error(`Registration Error (${errorMessage}): ${err}`);
+        logger.error(`Registration Error (${errorMessage}): {${err}}`);
         // Redirect to registration page with error message if error
         res.redirect(`/register?error=${encodeURIComponent(errorMessage)}`);
     }
@@ -60,7 +62,7 @@ export const loginUser = (req, res, next) => {
             return next(err); // Handle error
         }
         if (!user) {
-            logger.error("Login error: " + info.message);
+            logger.error(`Login error: ${info.message}`);
             // Redirect to login with error message if authentication fails
             return res.redirect(`/login?error=${encodeURIComponent(info.message)}`);
         }

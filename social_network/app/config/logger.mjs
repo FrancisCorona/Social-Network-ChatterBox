@@ -6,14 +6,21 @@
 
 import winston from 'winston';
 
-const logger = winston.createLogger({
-	level: 'info',
-	format: winston.format.json(),
-	defaultMeta: { service: 'user-service' },
-	transports: [
-		new winston.transports.File({ filename: 'logs/combined.log' }),
-		new winston.transports.Console({ format: winston.format.simple(), }),
-	],
-});
+const createLogger = (moduleName) => {
+    return winston.createLogger({
+        level: 'info',
+        format: winston.format.combine(
+			winston.format.colorize(),
+            winston.format.label({ label: moduleName }),
+            winston.format.printf(({ level, message, label }) => {
+                return `${level}: [${label}] ${message}`;
+            })
+        ),
+        transports: [
+			new winston.transports.File({ filename: 'logs/combined.log' }),
+            new winston.transports.Console()
+        ],
+    });
+};
 
-export default logger;
+export default createLogger;

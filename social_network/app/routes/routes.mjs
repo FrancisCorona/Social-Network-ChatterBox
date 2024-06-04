@@ -10,7 +10,9 @@ import isAuthenticated from '../middleware/auth.mjs';
 import { registerUser, loginUser } from '../controllers/authController.mjs';
 import { getProfile, createPost } from '../controllers/postController.mjs';
 import { addFriend, removeFriend } from '../controllers/friendsController.mjs';
-import logger from '../config/logger.mjs';
+import createLogger from '../config/logger.mjs';
+
+const logger = createLogger('routes-module');
 
 const router = express.Router();
 
@@ -104,7 +106,7 @@ router.get('/auth/github/callback',
 router.get('/logout', (req, res) => {
     req.logout(err => {
         if (err) {
-            logger.into('Logout error:', err);
+            logger.into(`Logout error: {${err}}`);
             return res.status(500).send('Logout error');
         }
         res.redirect('/login');

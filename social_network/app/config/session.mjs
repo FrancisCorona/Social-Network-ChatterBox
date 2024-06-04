@@ -6,7 +6,9 @@
 
 import session from 'express-session';
 import MongoDBStoreFactory from 'connect-mongodb-session';
-import logger from './logger.mjs';
+import createLogger from './logger.mjs';
+
+const logger = createLogger('sessions-module');
 
 const MongoDBStore = MongoDBStoreFactory(session);
 
@@ -22,8 +24,8 @@ const store = new MongoDBStore({
 });
 
 // Catch errors from MongoDBStore
-store.on('error', function(error) {
-	logger.error('MongoDBStore error:', error);
+store.on('error', function(err) {
+	logger.error(`MongoDBStore error: {${err}}`);
 });
 
 // Configure express-session middleware

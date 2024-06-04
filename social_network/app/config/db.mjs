@@ -7,7 +7,9 @@
 import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoDBStoreFactory from 'connect-mongodb-session';
-import logger from './logger.mjs';
+import createLogger from './logger.mjs';
+
+const logger = createLogger('db-module');
 
 const MongoDBStore = MongoDBStoreFactory(session);
 
@@ -19,9 +21,10 @@ const dbName = 'mobileapp';
 async function connectDB() {
 	try {
 		await mongoose.connect(uri, { dbName: dbName }); // Connect to MongoDB with the specified URI and database name
-		logger.info('Connected to MongoDB!');
-	} catch (error) {
-		logger.error('Connection error', error);
+		logger.info('Connected to MongoDB');
+	} catch (err) {
+		//logger.error(`MongoDB connection error: {${err.message}}`);
+		logger.error(`MongoDB connection error: {${err.message}}`);
 	}
 }
 

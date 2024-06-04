@@ -327,3 +327,126 @@
 {"level":"info","message":"Ian Stewart added to jeff's friend list","service":"user-service"}
 {"level":"info","message":"fred removed from jeff's friend list","service":"user-service"}
 {"level":"info","message":"Ian Stewart removed from jeff's friend list","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Found 1 posts for user: 665ccfc292b0041d3ba167e5","service":"user-service"}
+{"level":"info","message":"Found friends record for user: 665ccfc292b0041d3ba167e5","service":"user-service"}
+{"level":"info","message":"User 665ccfc292b0041d3ba167e5 has 2 friends","service":"user-service"}
+{"level":"info","message":"Found 3 posts from friends of user: 665ccfc292b0041d3ba167e5","service":"user-service"}
+{"level":"info","message":"Todd  added to jeff's friend list","service":"user-service"}
+{"level":"info","message":"Found 1 posts for user: 665ccfc292b0041d3ba167e5","service":"user-service"}
+{"level":"info","message":"Found friends record for user: 665ccfc292b0041d3ba167e5","service":"user-service"}
+{"level":"info","message":"User 665ccfc292b0041d3ba167e5 has 3 friends","service":"user-service"}
+{"level":"info","message":"Found 4 posts from friends of user: 665ccfc292b0041d3ba167e5","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Attempting to find email: fred@mail.com","service":"user-service"}
+{"level":"info","message":"Email found in databse:","service":"user-service"}
+{"level":"info","message":"Login successful","service":"user-service"}
+{"level":"info","message":"Found 0 posts for user: 665cc28f469f6be561db4f1e","service":"user-service"}
+{"level":"info","message":"Found friends record for user: 665cc28f469f6be561db4f1e","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+{"level":"info","message":"Our app is listening on port 80","service":"user-service"}
+{"level":"info","message":"Connected to MongoDB!","service":"user-service"}
+2024-06-04T04:28:56.953Z [app-module]] info: Our app is listening on port 80
+2024-06-04T04:41:07.809Z [app-module]] info: Our app is listening on port 80
+2024-06-04T04:46:00.821Z [app-module]] info: Our app is listening on port 80
+2024-06-04T04:48:47.561Z [app-module]] info: Our app is listening on port 80
+2024-06-04T04:48:48.473Z [db-module]] info: Connected to MongoDB!
+2024-06-04T04:49:10.688Z [postController-module]] info: Found 0 posts for user: 665cc28f469f6be561db4f1e
+2024-06-04T04:49:10.769Z [postController-module]] info: Found friends record for user: 665cc28f469f6be561db4f1e
+2024-06-04T04:49:15.689Z [postController-module]] info: Found 0 posts for user: 665cc28f469f6be561db4f1e
+2024-06-04T04:49:15.751Z [postController-module]] info: Found friends record for user: 665cc28f469f6be561db4f1e
+2024-06-04T04:51:36.308Z [app-module]] info: Our app is listening on port 80
+2024-06-04T04:51:37.566Z [db-module]] info: Connected to MongoDB!
+2024-06-04T04:55:15.653Z [app-module]] info: Our app is listening on port 80
+2024-06-04T04:55:16.413Z [db-module]] info: Connected to MongoDB!
+2024-06-04T04:56:28.960Z [app-module]] info: Our app is listening on port 80
+2024-06-04T04:56:29.693Z [db-module]] info: Connected to MongoDB!
+2024-06-04T04:56:44.200Z [app-module]] info: Our app is listening on port 80
+2024-06-04T04:56:44.869Z [db-module]] info: Connected to MongoDB!
+2024-06-04T04:58:51.521Z [app-module]] info: Our app is listening on port 80
+2024-06-04T04:58:52.387Z [db-module] info: Connected to MongoDB!
+2024-06-04T04:59:22.675Z [app-module]] info: Our app is listening on port 80
+2024-06-04T04:59:23.411Z [db-module] info: Connected to MongoDB!
+2024-06-04T05:01:12.272Z [app-module]] info: Our app is listening on port 80
+2024-06-04T05:01:13.123Z [db-module] info: Connected to MongoDB!
+2024-06-04T05:03:06.783Z [app-module]] [32minfo[39m: Our app is listening on port 80
+2024-06-04T05:03:07.945Z [db-module] [32minfo[39m: Connected to MongoDB!
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB!
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [app-module] Our app is listening on port 80
+[31merror[39m: [db-module] Connection error | metadata: {"error":"bad auth : authentication failed"}
+[32minfo[39m: [app-module] Our app is listening on port 80
+[31merror[39m: [db-module] Connection error | metadata: {"error":{"errorResponse":{"ok":0,"errmsg":"bad auth : authentication failed","code":8000,"codeName":"AtlasError"},"ok":0,"code":8000,"codeName":"AtlasError","connectionGeneration":0}}
+[32minfo[39m: [app-module] Our app is listening on port 80
+[31merror[39m: [db-module] Connection error | metadata: {"error":"bad auth : authentication failed"}
+[32minfo[39m: [app-module] Our app is listening on port 80
+[31merror[39m: [db-module] Connection error
+[32minfo[39m: [app-module] Our app is listening on port 80
+[31merror[39m: [db-module] MongoDB connection error: bad auth : authentication failed
+[32minfo[39m: [app-module] Our app is listening on port 80
+[31merror[39m: [db-module] MongoDB connection error: {bad auth : authentication failed}
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [app-module] Our app is listening on port 80 {[object Object]}
+[32minfo[39m: [db-module] Connected to MongoDB {[object Object]}
+[32minfo[39m: [app-module] Our app is listening on port 80 {[object Object]}
+[31merror[39m: [db-module] MongoDB connection error: {[object Object]}
+[32minfo[39m: [app-module] Our app is listening on port 80 {[object Object]}
+[32minfo[39m: [db-module] Connected to MongoDB {[object Object]}
+[32minfo[39m: [app-module] Our app is listening on port 80 {{}}
+[32minfo[39m: [db-module] Connected to MongoDB {{}}
+[32minfo[39m: [app-module] Our app is listening on port 80 {{}}
+[31merror[39m: [db-module] MongoDB connection error: {{"error":"bad auth : authentication failed"}}
+[32minfo[39m: [app-module] Our app is listening on port 80 {}
+[32minfo[39m: [db-module] Connected to MongoDB {}
+[32minfo[39m: [app-module] Our app is listening on port 80 {}
+[31merror[39m: [db-module] MongoDB connection error: {"error":"bad auth : authentication failed"}
+[32minfo[39m: [app-module] Our app is listening on port 80 {}
+[32minfo[39m: [db-module] Connected to MongoDB {}
+[32minfo[39m: [app-module] Our app is listening on port 80 {}
+[32minfo[39m: [db-module] Connected to MongoDB {}
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [app-module] Our app is listening on port 80
+[31merror[39m: [db-module] MongoDB connection error: {bad auth : authentication failed}
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [postController-module] Found 0 posts for user: 665cc28f469f6be561db4f1e
+[32minfo[39m: [postController-module] Found friends record for user: 665cc28f469f6be561db4f1e
+[32minfo[39m: [postController-module] Found 0 posts for user: 665cc28f469f6be561db4f1e
+[32minfo[39m: [postController-module] Found friends record for user: 665cc28f469f6be561db4f1e
+[31merror[39m: [passport-module] Error during GitHub OAuth authentication
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [passport-module] User authenticated with GitHub OAuth
+[32minfo[39m: [postController-module] Found 3 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 4 friends
+[32minfo[39m: [postController-module] Found 5 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [passport-module] User authenticated with GitHub OAuth: {
+  _id: new ObjectId('665cc163017e337e21378c33'),
+  name: 'Ian Stewart',
+  email: 'ianastewart1021@gmail.com',
+  __v: 0
+}
+[32minfo[39m: [postController-module] Found 3 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 4 friends
+[32minfo[39m: [postController-module] Found 5 posts from friends of user: 665cc163017e337e21378c33
+[31merror[39m: [postController-module] Post Error: 665cc163017e337e21378c33 {Post content required}
+[32minfo[39m: [postController-module] Found 3 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 4 friends
+[32minfo[39m: [postController-module] Found 5 posts from friends of user: 665cc163017e337e21378c33

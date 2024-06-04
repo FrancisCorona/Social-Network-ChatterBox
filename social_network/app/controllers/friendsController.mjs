@@ -6,7 +6,9 @@
 
 import Friends from '../models/friends.mjs';
 import User from '../models/user.mjs';
-import logger from '../config/logger.mjs';
+import createLogger from '../config/logger.mjs';
+
+const logger = createLogger('friendsController-module');
 
 export const addFriend = async (req, res) => {
     try {
@@ -16,7 +18,7 @@ export const addFriend = async (req, res) => {
         // Ensure the friend exists in the User collection
         const friend = await User.findById(req.params.id);
         if (!friend) {
-            logger.error('User tried friending invalid user');
+            logger.error(`${req.user._id} tried friending invalid user`);
             return res.status(404).send({ message: 'Friend not found' });
         }
 
@@ -37,7 +39,7 @@ export const addFriend = async (req, res) => {
         res.redirect('/profile');
         logger.info(`${friend.name} added to ${req.user.name}'s friend list`);
     } catch (err) {
-        logger.error('Error adding friend: ' + err);
+        logger.error(`Error adding friend: ${req.user._id} {${err}}`);
         res.status(500).send({ message: 'Error adding friend: ', error: err });
     }
 }
@@ -50,7 +52,7 @@ export const removeFriend = async (req, res) => {
         // Ensure the friend exists in the User collection
         const friend = await User.findById(req.params.id);
         if (!friend) {
-            logger.error('User tried unfriending invalid user');
+            logger.error(`${req.user._id} tried unfriending invalid user`);
             return res.status(404).send({ message: 'Friend not found' });
         }
 
@@ -62,11 +64,11 @@ export const removeFriend = async (req, res) => {
             res.redirect('/profile');
             logger.info(`${friend.name} removed from ${req.user.name}'s friend list`);
         } else {
-            logger.info('Friends record not found');
+            logger.info(`Friends record not found for: ${req.user._id}`);
             res.status(404).send({ message: 'Friends record not found' });
         }
     } catch (err) {
-        logger.error('Error removing friend: ' + err);
+        logger.error(`Error removing friend: ${req.user._id} {${err}}`);
         res.status(500).send({ message: 'Error removing friend', error: err });
     }
 }
