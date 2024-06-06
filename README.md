@@ -14,4 +14,4 @@
 8. You should use your chosen CSS framework for most of the design work. You may add your own CSS (and should), but let the framework carry the load.
 9. CSS should be applied to any "major" element, forms, images, sections, articles, buttons, etc.
 10. All spelling and grammar is correct. Feel free to run it through Grammarly or other AI assistant.
-11. You use Pug or some other templating engine.
+11. ~~You use Pug or some other templating engine.~~

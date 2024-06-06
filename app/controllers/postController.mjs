@@ -48,7 +48,7 @@ export const getProfile = async (req, res) => {
         const friendsRecord = await Friends.findOne({ user: req.user._id }).populate('friends');
         logger.info(`Found friends record for user: ${req.user._id}`);
         
-        // Initialize an array to store friends' posts
+        // Initialize an array to store friends' posts.
         let friendsPosts = [];
 
         if (friendsRecord && friendsRecord.friends.length > 0) {
@@ -66,12 +66,18 @@ export const getProfile = async (req, res) => {
         // Find friends (all users)
         const users = await User.find({ _id: { $ne: req.user._id } }).sort({ name: 1 });
 
-        // Send profile page to pug render
+        // Determine if each user is a friend
+        const friendsList = users.map(user => ({
+            _id: user._id,
+            name: user.name,
+            isFriend: friendsRecord && friendsRecord.friends.some(friend => friend._id.equals(user._id))
+        }));
+
+        // Render the profile page with posts and friends list
         res.render('profile', {
-            title: 'Profile',
-            user: req.user,
+            user: req.user.name,
             posts: allPosts,
-            friends: users,
+            friends: friendsList,
             errorMessage: req.query.error
         });
 

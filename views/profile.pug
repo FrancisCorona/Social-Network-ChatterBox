@@ -1,8 +1,7 @@
 extends layout
 
 block content
-  h1 Hello #{user.name}! &#128515
-  a(href='/logout') Logout
+  h1 Hello #{user}! 😃
   if errorMessage
     span(style='color:red') Error: #{errorMessage}
 
@@ -22,7 +21,7 @@ block content
 
   h1 Friends
   if friends.length === 0
-    p You have no friends &#128557
+    p You have no friends 😭
   else
     ul
       each friend in friends
@@ -37,7 +36,7 @@ block content
 
   h1 Posts
   if posts.length === 0
-    p No posts available &#128546
+    p No posts available 😢
   else
     ul
       each post in posts
