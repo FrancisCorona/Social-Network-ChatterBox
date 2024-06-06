@@ -17,7 +17,10 @@ const app = express(); // Create an instance of Express
 const port = 80; // Set port number for the server
 
 app.set('view engine', 'pug'); // set view engine to pug
-app.set('views', './views') // Tell pug where to find views
+app.set('views', './views'); // Tell pug where to find views
+
+app.use(express.static('css')); // Serve static files
+
 
 connectDB(); // Call the function to connect to MongoDB
 
