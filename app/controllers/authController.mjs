@@ -14,8 +14,8 @@ const logger = createLogger('authController-module');
 export const registerUser = async (req, res) => {
     const { name, email, password, password2 } = req.body;
     try {
-		if (!password) { // Check if the password is empty
-        	throw new Error('password required');
+        if (!password) { // Check if the password is empty
+            throw new Error('password required');
         } else if (password !== password2) { // Check if the passwords match
             throw new Error('mismatched passwords');
         }
@@ -31,7 +31,7 @@ export const registerUser = async (req, res) => {
         });
 
         await user.save(); // Save the new user to the database
-		logger.info(`Successfully registered email: ${email}`);
+        logger.info(`Successfully registered email: ${email}`);
         res.redirect('/login'); // Redirect to login page on successful registration
     } catch (err) {
         let errorMessage = 'Error registering user'; // Default error message

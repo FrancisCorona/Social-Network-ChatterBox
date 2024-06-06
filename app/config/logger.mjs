@@ -10,14 +10,14 @@ const createLogger = (moduleName) => {
     return winston.createLogger({
         level: 'info',
         format: winston.format.combine(
-			winston.format.colorize(),
+            winston.format.colorize(),
             winston.format.label({ label: moduleName }),
             winston.format.printf(({ level, message, label }) => {
                 return `${level}: [${label}] ${message}`;
             })
         ),
         transports: [
-			new winston.transports.File({ filename: 'logs/combined.log' }),
+            new winston.transports.File({ filename: 'logs/combined.log' }),
             new winston.transports.Console()
         ],
     });

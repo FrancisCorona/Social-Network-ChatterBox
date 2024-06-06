@@ -18,34 +18,34 @@ const logger = createLogger('passport-module');
 passport.use(new LocalStrategy(
     async (email, password, done) => {
         try {
-			logger.info(`Attempting to find user by email: ${email}`);
+            logger.info(`Attempting to find user by email: ${email}`);
             const user = await User.findOne({ email }); // Find user by username
             if (!user) { // If user not found
-				logger.warn(`User not found in database: ${email}`);
+                logger.warn(`User not found in database: ${email}`);
                 return done(null, false, { message: 'User not found' }); // Return error message
             }
 
-			// If we get here, the email is in the DB
+            // If we get here, the email is in the DB
             logger.info(`User found in database: ${email}`);
-			
-			// Salt the given password and compare to the DB
-			const isMatch = await bcrypt.compare(password, user.password);
-			if (isMatch) {
-				// We're good here!
-				logger.info(`Login successful: ${email}`);
-				return done(null, user);
-			} else {
-				// Bad password
-				logger.warn(`Incorrect password: ${email}`);
-				return done(null, false, { message: 'Incorrect password' });
-			}
+            
+            // Salt the given password and compare to the DB
+            const isMatch = await bcrypt.compare(password, user.password);
+            if (isMatch) {
+                // We're good here!
+                logger.info(`Login successful: ${email}`);
+                return done(null, user);
+            } else {
+                // Bad password
+                logger.warn(`Incorrect password: ${email}`);
+                return done(null, false, { message: 'Incorrect password' });
+            }
         } catch (err) {
             // Check for specific bcrypt error and handle accordingly
             if (err.message.includes('data and hash arguments required')) {
                 logger.error(`Password comparison failed. User may need to log in with OAuth: ${email} {${err.message}}`);
                 return done(null, false, { message: 'Please log in with Google or Github' });
             }
-			logger.error(`Error during authentication. ${email} {${err.message}}`);
+            logger.error(`Error during authentication. ${email} {${err.message}}`);
             return done(err); // Error during authentication
         }
     }
@@ -54,7 +54,7 @@ passport.use(new LocalStrategy(
 // Google OAuth Strategy
 passport.use(new GoogleStrategy({
     clientID: '282243348983-1o0t5lssu3gnh0oga6mvem9q0vm5cof4.apps.googleusercontent.com',
-	clientSecret: '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',
+    clientSecret: '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',
     callbackURL: 'http://localhost/auth/google/callback'
 }, async (accessToken, refreshToken, profile, done) => {
     try {
@@ -102,18 +102,18 @@ passport.use(new GithubStrtegy({
 
 // Serialize user to store in session
 passport.serializeUser((user, done) => {
-	done(null, user.id); // Just storing the id in the session.
+    done(null, user.id); // Just storing the id in the session.
 });
 
 // Deserialize user from session
 passport.deserializeUser(async (id, done) => {
-	try {
-		const user = await User.findById(id); // Find user by ID from DB
-		done(null, user);
-	} catch (err) {
+    try {
+        const user = await User.findById(id); // Find user by ID from DB
+        done(null, user);
+    } catch (err) {
         logger.error(`Error during deserialization: {${err.message}}`);
-		done(err); // Error during deserialization
-	}
+        done(err); // Error during deserialization
+    }
 });
 
 export default passport;

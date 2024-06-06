@@ -582,3 +582,9 @@
 [32minfo[39m: [passport-module] User found in database: ianastewart1021@gmail.com
 [31merror[39m: [authController-module] Login error: Please log in with Google or Github
 [31merror[39m: [passport-module] Password comparison failed. User may need to log in with OAuth: ianastewart1021@gmail.com {data and hash arguments required}
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB

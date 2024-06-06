@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  h1 Hello #{user.name}! &#128515
+  a(href='/logout') Logout
+  if errorMessage
+    span(style='color:red') Error: #{errorMessage}
+
+  form(action='/post', method='post')
+    br
+    label(for='title') Title:
+    input(type='text', name='title')
+    br
+    label(for='caption') Caption:
+    input(type='text', name='caption')
+    br
+    label(for='content') Content:
+    input(type='text', name='content')
+    br
+    button(type='submit') Post
+    br
+
+  h1 Friends
+  if friends.length === 0
+    p You have no friends &#128557
+  else
+    ul
+      each friend in friends
+        li
+          strong #{friend.name}
+          if friend.isFriend
+            form(action=`/unfriend/${friend._id}`, method='post')
+              input(type='submit', name='unfriend', value='unfriend')
+          else
+            form(action=`/friend/${friend._id}`, method='post')
+              input(type='submit', name='friend', value='friend')
+
+  h1 Posts
+  if posts.length === 0
+    p No posts available &#128546
+  else
+    ul
+      each post in posts
+        li
+          h2 #{post.title}
+          if post.caption
+            p
+              strong Caption:
+              | #{post.caption}
+          p
+            strong Content:
+            | #{post.content}
+          p
+            em Posted by: #{post.user.name}

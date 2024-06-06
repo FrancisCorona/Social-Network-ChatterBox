@@ -35,19 +35,9 @@ router.post('/unfriend/:id', isAuthenticated, removeFriend);
 
 // Route to display registration form
 router.get('/register', (req, res) => {
-	// Get any error messages from the query string
-	const errorMessage = req.query.error ? `<span style="color:red;">Error: ${req.query.error}</span>` : '';
-    res.send(`
-		${errorMessage}
-        <form action="/register" method="post">
-            <br>Name: <input type="text" name="name">
-			<br>Email: <input type="email" name="email">
-            <br>Password: <input type="password" name="password">
-            <br>Retype Password: <input type="password" name="password2">
-            <br><button type="submit">Register</button>
-        </form>
-		<a href="/login">Return to Login</a>
-    `); // Display registration form and any error messages
+    // Get any error messages from the query string
+    const errorMessage = req.query.error ? `<span style="color:red;">Error: ${req.query.error}</span>` : '';
+    res.render('register', { errorMessage });
 });
 
 // Handle registration requests
@@ -55,20 +45,9 @@ router.post('/register', registerUser);
 
 // Route to display login form
 router.get('/login', (req, res) => {
-	// Get any error messages from the query string
-	const errorMessage = req.query.error ? `<span style="color:red;">Error: ${req.query.error}</span>` : '';
-	res.send(`
-        Welcome!! Please log in! &#128526
-		<br>${errorMessage}
-		<form action="/login" method="post">
-			<br>Email: <input type="email" name="username">
-			<br>Password: <input type="password" name="password">
-			<br><button type="submit">Login</button>
-		</form>
-        <a href="/register">Click to Register</a>&nbsp|
-		<a href="/auth/google">Log in with Google</a>&nbsp|
-        <a href="/auth/github">Log in with Github</a>
-	`); // Display login form and any error messages
+    // Get any error messages from the query string
+    const errorMessage = req.query.error ? `<span style="color:red;">Error: ${req.query.error}</span>` : '';
+    res.render('login', { errorMessage });
 });
 
 // Handle login requests

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  if errorMessage
+    span(style='color:red') Error: #{errorMessage}
+  form(action='/register', method='post')
+    br
+    label(for='name') Name:
+    input(type='text', name='name')
+    br
+    label(for='email') Email:
+    input(type='email', name='email')
+    br
+    label(for='password') Password:
+    input(type='password', name='password')
+    br
+    label(for='password2') Retype Password:
+    input(type='password', name='password2')
+    br
+    button(type='submit') Register
+  br
+  a(href='/login') Return to Login
