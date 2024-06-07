@@ -1,9 +1,23 @@
+html {
+	margin: 0;
+	padding: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
+    color: #555753; 
+	background: #fff;
+	margin: 0; 
+	padding: 0;
+}
+
+p { 
+	margin-top: 0; 
+	text-align: justify;
 }
 
 h1 {
-    color: #333;
+    color: #1a7236;
 }
 
 ul {
