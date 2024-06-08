@@ -880,3 +880,390 @@
 [32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
 [32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
 [32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [app-module] Our app is listening on port 80
+[32minfo[39m: [db-module] Connected to MongoDB
+[32minfo[39m: [passport-module] User authenticated with GitHub OAuth: {
+  _id: new ObjectId('665cc163017e337e21378c33'),
+  name: 'Ian Stewart',
+  email: 'ianastewart1021@gmail.com',
+  __v: 0
+}
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[31merror[39m: [postController-module] Post Error: 665cc163017e337e21378c33 {Post title required}
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found 4 posts for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] Found friends record for user: 665cc163017e337e21378c33
+[32minfo[39m: [postController-module] User 665cc163017e337e21378c33 has 1 friends
+[32minfo[39m: [postController-module] Found 4 posts from friends of user: 665cc163017e337e21378c33
