@@ -1,4 +1,4 @@
-social_network/node_modules
-social_network/package-lock.json
-social_network/logs
+node_modules
+ackage-lock.json
+logs
 .DS_Store
