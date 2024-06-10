@@ -1,20 +1,13 @@
 doctype html
 html(lang="en")
-  head
-    title= 'Social Network: A CIS 371 Project'
-    meta(name='description' content='A CIS 371 social network app using REST')
-    meta(name='author' content='Francis Corona, Ian Stewart')
-    link(rel='icon', href='https://img.icons8.com/?size=96&id=19527&format=png', type='image/png')
-    link(rel='stylesheet', href='/common.css')
-    link(rel='stylesheet', href='/profile.css')
+  include head.pug
   body
-  .container
-    .header
-      header
-        h1 ChatterBox
-    .content
-      block content
-    .footer
-      footer
-        p &copy; 2024 ChatterBox. All rights reserved.
-lr
+    .container
+      .header
+        header
+          h1 ChatterBox
+      .content
+        block content
+      .footer
+        footer
+          p &copy; 2024 ChatterBox. All rights reserved.

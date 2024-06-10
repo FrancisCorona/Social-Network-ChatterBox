@@ -3,7 +3,7 @@ extends layout
 block content
   h1 Welcome!! Please log in! 😎
   if errorMessage
-    span(style='color:red') Error: #{errorMessage}
+    span(class='error') Error: #{errorMessage}
   form(action='/login', method='post')
     br
     label(for='username') Email:
