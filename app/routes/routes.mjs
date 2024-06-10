@@ -36,7 +36,7 @@ router.post('/unfriend/:id', isAuthenticated, removeFriend);
 // Route to display registration form
 router.get('/register', (req, res) => {
     // Get any error messages from the query string
-    const errorMessage = req.query.error ? `<span style="color:red;">Error: ${req.query.error}</span>` : '';
+    const errorMessage = req.query.error ? req.query.error : '';
     res.render('register', { errorMessage });
 });
 
@@ -46,7 +46,7 @@ router.post('/register', registerUser);
 // Route to display login form
 router.get('/login', (req, res) => {
     // Get any error messages from the query string
-    const errorMessage = req.query.error ? `<span style="color:red;">Error: ${req.query.error}</span>` : '';
+    const errorMessage = req.query.error ? req.query.error : '';
     res.render('login', { errorMessage });
 });
 

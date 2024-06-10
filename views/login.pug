@@ -5,8 +5,7 @@ block content
     .form-container
       h1 Welcome!! Please log in! 😎
       if errorMessage
-        span(class='error') Error: #{errorMessage}
-
+        .error Error: #{errorMessage}
       form(action='/login', method='post')
         .form-group
           label(for="exampleInputEmail1") Email address
