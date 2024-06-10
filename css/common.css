@@ -39,16 +39,6 @@ body {
     width: 25%;
 }
 
-.post-feed {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 75%;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
 .footer {
     width: 100%;
     height: 50px;
@@ -68,25 +58,4 @@ h1, h2, h3 {
     color: #333;
     margin: 0;
     padding: 10px 0;
-}
-
-/* Flexbox styles for posts */
-.posts-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    padding: 20px;
-}
-
-.post-box {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    box-sizing: border-box;
 }
