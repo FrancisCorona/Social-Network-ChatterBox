@@ -3,20 +3,29 @@ extends layout
 block content
   .centered-form
     .form-container
-      h1 Log In!
+      // Heading for the login form
+      h1 Login
+      // Conditional block to display error message if it exists
       if errorMessage
+        // Display the error message
         .error Error: #{errorMessage}
+      // Form for login with POST method
       form(action='/login', method='post')
+        // Paragraph asking if the user is new
         p New to ChatterBox?
+          // Link to create a new account
           a(href='/register')  Create Account
-        .form-group
-          label(for="exampleInputEmail1")
-          input.form-control#exampleInputEmail1(type="email", name='username', aria-describedby="emailHelp", placeholder="Enter email")
-        .form-group
-          label(for="exampleInputPassword1")
-          input.form-control#exampleInputPassword1(type="password", name='password', placeholder="Password")
+        // Include common elements from another Pug file
+        include common-elements.pug
+        // Include email input field
+        +emailInput()
+        // Include password input field
+        +passwordInput()
         .form-group.button-container
+          // Login button
           button.btn.btn-primary(type="submit") Login
         .social-buttons
+          // Button for Google login
           button(type="button" class="btn btn-google btn-sm" onclick="window.location.href='/auth/google'") Google Login
+          // Button for GitHub login
           button(type="button" class="btn btn-github btn-sm" onclick="window.location.href='/auth/github'") GitHub Login

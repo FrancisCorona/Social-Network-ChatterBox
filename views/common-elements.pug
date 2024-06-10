@@ -1,0 +1,17 @@
+// Mixin for email input field
+mixin emailInput
+  .form-group
+    // Email input field with Bootstrap classes and attributes
+    input.form-control#exampleInputEmail1(type="email", name='email', aria-describedby="emailHelp", placeholder="Enter email")
+
+// Mixin for password input field
+mixin passwordInput
+  .form-group
+    // Password input field with Bootstrap classes and attributes
+    input.form-control#exampleInputPassword1(type="password", name='password', placeholder="Password")
+
+// Mixin for register button
+mixin registerButton
+  .form-group.button-container
+    // Register button with Bootstrap classes and attributes
+    button.btn.btn-primary(type="submit") Register

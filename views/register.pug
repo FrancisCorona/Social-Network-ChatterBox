@@ -1,22 +1,29 @@
 extends layout
 
 block content
-  if errorMessage
-    span(class='error') Error: #{errorMessage}
-  form(action='/register', method='post')
-    br
-    label(for='name') Name:
-    input(type='text', name='name')
-    br
-    label(for='email') Email:
-    input(type='email', name='email')
-    br
-    label(for='password') Password:
-    input(type='password', name='password')
-    br
-    label(for='password2') Retype Password:
-    input(type='password', name='password2')
-    br
-    button(type='submit') Register
-  br
-  a(href='/login') Return to Login
+  .centered-form
+    .form-container
+      // Heading for the registration form
+      h1 Register
+      // Conditional block to display error message if it exists
+      if errorMessage
+        // Display the error message
+        .error Error: #{errorMessage}
+      // Form for registration with POST method
+      form(action='/register', method='post')
+        // Include common elements from another Pug file
+        include common-elements.pug
+        .form-group
+          // Input field for name
+          input.form-control(type='text', name='name', placeholder="Enter name")
+        // Include email input field
+        +emailInput()
+        // Include password input field
+        +passwordInput()
+        .form-group
+          // Input field to retype password
+          input.form-control(type='password', name='password2', placeholder="Retype Password")
+        // Include register button
+        +registerButton()
+      // Link to return to the login page
+      a.return-link(href='/login') Return to Login

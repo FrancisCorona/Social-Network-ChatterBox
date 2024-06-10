@@ -1,22 +1,22 @@
 /* Centering the form */
 body.login-page {
-  overflow: hidden; /* Prevent scrolling on the login page */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full height of the viewport */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
+  overflow: hidden !important; /* Prevent scrolling on the login page */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100vh !important; /* Full height of the viewport */
+  margin: 0 !important; /* Remove default margin */
+  padding: 0 !important; /* Remove default padding */
 }
 
 .centered-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%; /* Full height of the container */
-  width: 100%; /* Full width of the container */
-  margin: 0; /* Remove any default margin */
-  padding: 0; /* Remove any default padding */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100% !important; /* Full height of the container */
+  width: 100% !important; /* Full width of the container */
+  margin: 0 !important; /* Remove any default margin */
+  padding: 0 !important; /* Remove any default padding */
 }
 
 .centered-form .form-container {
@@ -36,8 +36,8 @@ body.login-page {
 }
 
 .centered-form .form-container form .button-container {
-  display: flex;
-  justify-content: center; /* Center the button */
+  display: flex !important;
+  justify-content: center !important; /* Center the button */
 }
 
 .centered-form .form-container form .btn {

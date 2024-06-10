@@ -1,16 +1,32 @@
 doctype html
+
+// English
 html(lang="en")
   include head.pug
-  body
+  
+  // Start the body element with a class for login page styling
+  body(class="login-page")
+    
+    // Container for the main layout
     .container-fluid
+      
+      // Header section
       .header
         header
+          // Main heading for the application
           h1 ChatterBox
+      
+      // Content section where the main content of the page will be injected
       .content
         block content
+      
+      // Footer section
       .footer
         footer
+          // Footer text with the copyright information
           p &copy; 2024 ChatterBox. All rights reserved.
+    
+    // Include jQuery library, Popper.js library, Bootstrap JavaScript library
     script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
     script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js")
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
