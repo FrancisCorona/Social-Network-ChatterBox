@@ -1,21 +1,28 @@
 /* Centering the form */
 body.login-page {
   overflow: hidden; /* Prevent scrolling on the login page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
 }
 
 .centered-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full height of the viewport */
-  width: 100%; /* Full width of the viewport */
+  height: 100%; /* Full height of the container */
+  width: 100%; /* Full width of the container */
   margin: 0; /* Remove any default margin */
   padding: 0; /* Remove any default padding */
 }
 
 .centered-form .form-container {
   width: 100%;
-  max-width: 400px; /* Adjust the max width as needed */
+  max-width: 700px; /* Adjust the max width as needed */
+  max-height: 400px;
   padding: 20px;
   background-color: white; /* Optional: Add background color to the form */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
