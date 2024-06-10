@@ -3,7 +3,7 @@ extends layout
 block content
   .centered-form
     .form-container
-      h1 Log In! 
+      h1 Log In!
       if errorMessage
         .error Error: #{errorMessage}
       form(action='/login', method='post')
@@ -12,14 +12,11 @@ block content
         .form-group
           label(for="exampleInputEmail1")
           input.form-control#exampleInputEmail1(type="email", name='username', aria-describedby="emailHelp", placeholder="Enter email")
-          
         .form-group
           label(for="exampleInputPassword1")
           input.form-control#exampleInputPassword1(type="password", name='password', placeholder="Password")
         .form-group.button-container
           button.btn.btn-primary(type="submit") Login
-
-      br
-      a(href='/auth/google') Log in with Google
-      br
-      a(href='/auth/github') Log in with Github
+        .social-buttons
+          button(type="button" class="btn btn-google btn-sm" onclick="window.location.href='/auth/google'") Google Login
+          button(type="button" class="btn btn-github btn-sm" onclick="window.location.href='/auth/github'") GitHub Login

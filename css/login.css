@@ -21,18 +21,23 @@ body.login-page {
 
 .centered-form .form-container {
   width: 100%;
-  max-width: 700px; /* Adjust the max width as needed */
+  max-width: 700px;
   max-height: 400px;
   padding: 20px;
-  background-color: white; /* Optional: Add background color to the form */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-  border-radius: 8px; /* Optional: Add rounded corners */
+  background-color: white; /* background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* shadow */
+  border-radius: 30px; /* rounded corners */
+  text-align: center; /* Center text within the form container */
 }
 
 .centered-form .form-container form .form-group {
+  width: 100%; /* Ensure full width for input fields */
+  margin-bottom: 15px;
+}
+
+.centered-form .form-container form .button-container {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Center the button */
+  justify-content: center; /* Center the button */
 }
 
 .centered-form .form-container form .btn {
@@ -46,4 +51,31 @@ body.login-page {
   display: block;
   margin-bottom: 15px;
   text-align: center;
+}
+
+/* Centering additional text */
+.centered-form .form-container p {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.centered-form .form-container .social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Add space between the buttons */
+  margin-top: 10px; /* Add space above the social buttons */
+}
+
+.centered-form .form-container .social-buttons .btn-google {
+  background-color: #EA4335; /* Change Google button color to red */
+  border-color: #EA4335; /* Match the border color */
+  color: white; /* Change the text color to white */
+  width: 145px; /* Set a specific width for the Google button */
+}
+
+.centered-form .form-container .social-buttons .btn-github {
+  background-color: #6c757d; /* Default secondary button color */
+  border-color: #6c757d; /* Match the border color */
+  color: white; /* Ensure the text color is white */
+  width: 145px; /* Set a specific width for the GitHub button */
 }
