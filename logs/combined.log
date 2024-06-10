@@ -1413,3 +1413,13 @@
 [32minfo[39m: [postController-module] Found friends record for user: 665d0a6561164ca03acaa9dc
 [32minfo[39m: [postController-module] User 665d0a6561164ca03acaa9dc has 2 friends
 [32minfo[39m: [postController-module] Found 5 posts from friends of user: 665d0a6561164ca03acaa9dc
+[32minfo[39m: [passport-module] User authenticated with Google OAuth: {
+  _id: new ObjectId('665d0a6561164ca03acaa9dc'),
+  name: 'Francis Corona',
+  email: 'coronaf@mail.gvsu.edu',
+  __v: 0
+}
+[32minfo[39m: [postController-module] Found 4 posts for user: 665d0a6561164ca03acaa9dc
+[32minfo[39m: [postController-module] Found friends record for user: 665d0a6561164ca03acaa9dc
+[32minfo[39m: [postController-module] User 665d0a6561164ca03acaa9dc has 2 friends
+[32minfo[39m: [postController-module] Found 5 posts from friends of user: 665d0a6561164ca03acaa9dc
