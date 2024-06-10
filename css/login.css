@@ -67,15 +67,15 @@ body.login-page {
 }
 
 .centered-form .form-container .social-buttons .btn-google {
-  background-color: #EA4335; /* Change Google button color to red */
-  border-color: #EA4335; /* Match the border color */
-  color: white; /* Change the text color to white */
-  width: 145px; /* Set a specific width for the Google button */
+  background-color: #EA4335; /* Google button red */
+  border-color: #EA4335;
+  color: white; /* Text color white */
+  width: 145px; /* Google button width*/
 }
 
 .centered-form .form-container .social-buttons .btn-github {
-  background-color: #6c757d; /* Default secondary button color */
-  border-color: #6c757d; /* Match the border color */
-  color: white; /* Ensure the text color is white */
-  width: 145px; /* Set a specific width for the GitHub button */
+  background-color: #6c757d; /* GitHub button gray */
+  border-color: #6c757d;
+  color: white; /* Text color is white */
+  width: 145px; /* GitHub button width */
 }
