@@ -1,21 +1,28 @@
 extends layout
 
 block content
-  h1 Welcome!! Please log in! 😎
-  if errorMessage
-    span(class='error') Error: #{errorMessage}
-  form(action='/login', method='post')
-    br
-    label(for='username') Email:
-    input(type='email', name='username')
-    br
-    label(for='password') Password:
-    input(type='password', name='password')
-    br
-    button(type='submit') Login
-  br
-  a(href='/register') Click to Register
-  br
-  a(href='/auth/google') Log in with Google
-  br
-  a(href='/auth/github') Log in with Github
+  .centered-form
+    .form-container
+      h1 Welcome!! Please log in! 😎
+      if errorMessage
+        span(class='error') Error: #{errorMessage}
+
+      form(action='/login', method='post')
+        .form-group
+          label(for="exampleInputEmail1") Email address
+          input.form-control#exampleInputEmail1(type="email", name='username', aria-describedby="emailHelp", placeholder="Enter email")
+          small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+        .form-group
+          label(for="exampleInputPassword1") Password
+          input.form-control#exampleInputPassword1(type="password", name='password', placeholder="Password")
+        .form-group.form-check
+          input.form-check-input#exampleCheck1(type="checkbox", name='remember')
+          label.form-check-label(for="exampleCheck1") Remember me
+        button.btn.btn-primary(type="submit") Login
+
+      br
+      a(href='/register') Click to Register
+      br
+      a(href='/auth/google') Log in with Google
+      br
+      a(href='/auth/github') Log in with Github
