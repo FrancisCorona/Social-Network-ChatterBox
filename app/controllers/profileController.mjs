@@ -1,3 +1,9 @@
+/*
+* Group: Francis Corona, Ian Stewart
+* Project: Social Network - Phase 3
+* Due: 6/11/24, 11:59 PM EDT
+*/
+
 import sharp from 'sharp';
 import multer from 'multer';
 import fs from 'fs/promises';
