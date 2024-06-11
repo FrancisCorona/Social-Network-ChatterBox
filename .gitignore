@@ -1,6 +1,4 @@
 logs
 .DS_Store
-logs/combined.log
-node_modules/bcrypt/lib/binding/napi-v3/bcrypt_lib.node
-node_modules/.package-lock.json
+node_modules
 package-lock.json
