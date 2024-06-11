@@ -9,11 +9,38 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 75%;
+    width: 80%;
     padding: 20px;
     box-sizing: border-box;
 }
 
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+    justify-content: flex-start;
+    min-width: 400px;
+    width: 20%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.sidebar H1 {
+    font-size: 30pt;
+}
+
+.post-feed H1 {
+    margin: 15px 10px 5px;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+}
 
 /* Flexbox styles for posts */
 .posts-container {
@@ -22,10 +49,9 @@
     align-items: center;
     gap: 20px;
     width: 100%;
-    padding: 20px;
 }
 
-.post-box {
+.post-box, .post-creation {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -34,4 +60,75 @@
     width: 100%;
     max-width: 600px;
     box-sizing: border-box;
+}
+
+.friends {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.post-creation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friend-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+    gap: 10px;
+}
+
+.post-creation form {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-group label {
+    margin-right: 10px;
+}
+
+.post-creation button {
+    align-self: center;
+}
+
+.profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.welcome, a.logout-link {
+    text-align: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.upload-button {
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    background-color: #EFEFEF;
+}
+
+.upload-button label {
+    margin-bottom: 0;
 }

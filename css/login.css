@@ -4,47 +4,45 @@
 * Due: 6/11/24, 11:59 PM EDT
 */
 
-/* Centering the form */
-body.login-page {
-  overflow: hidden !important; /* Prevent scrolling on the login page */
-  display: flex !important;
-  height: 100vh !important; /* Full height of the viewport */
-  margin: 10 !important; /* Remove default margin */
-  padding: 0 !important; /* Remove default padding */
+body.login-page, body.registration-page {
+  overflow: hidden; /* Prevent scrolling on the page */
+  display: flex;
+  height: 100vh; /* Full height of the viewport */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
 }
 
 .centered-form {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  height: 100% !important; /* Full height of the container */
-  width: 100% !important; /* Full width of the container */
-  margin: 0 !important; /* Remove any default margin */
-  padding: 0 !important; /* Remove any default padding */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Full height of the container */
+  width: 100%; /* Full width of the container */
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
 }
 
 .centered-form .form-container {
   width: 100%;
   max-width: 700px;
-  max-height: 400px;
   padding: 20px;
-  background-color: white; /* background color */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* shadow */
-  border-radius: 30px; /* rounded corners */
+  background-color: white; /* Background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow */
+  border-radius: 30px; /* Rounded corners */
   text-align: center; /* Center text within the form container */
 }
 
-.centered-form .form-container form .form-group {
+.centered-form .form-container .form-group {
   width: 100%; /* Ensure full width for input fields */
   margin-bottom: 15px;
 }
 
-.centered-form .form-container form .button-container {
-  display: flex !important;
-  justify-content: center !important; /* Center the button */
+.centered-form .form-container .button-container {
+  display: flex;
+  justify-content: center; /* Center the button */
 }
 
-.centered-form .form-container form .btn {
+.centered-form .form-container .btn {
   width: 100%; /* Make the button full width */
   max-width: 300px; /* Set a max width for the button */
 }
@@ -63,23 +61,24 @@ body.login-page {
   margin-bottom: 15px;
 }
 
+/* Social buttons styling */
 .centered-form .form-container .social-buttons {
   display: flex;
   justify-content: center;
-  gap: 10px; /* Add space between the buttons */
   margin-top: 10px; /* Add space above the social buttons */
+  gap: 10px; /* Add space between the buttons */
 }
 
 .centered-form .form-container .social-buttons .btn-google {
   background-color: #EA4335; /* Google button red */
   border-color: #EA4335;
   color: white; /* Text color white */
-  width: 145px; /* Google button width*/
+  width: 145px; /* Google button width */
 }
 
 .centered-form .form-container .social-buttons .btn-github {
   background-color: #6c757d; /* GitHub button gray */
   border-color: #6c757d;
-  color: white; /* Text color is white */
+  color: white; /* Text color white */
   width: 145px; /* GitHub button width */
 }

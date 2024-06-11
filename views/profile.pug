@@ -7,37 +7,14 @@ block variables
 block content
   .sidebar
     .welcome
-      h1 Hello #{user}! 😃
-      .error
-        if errorMessage
-          strong Error: #{errorMessage}
+      h1 Hello #{user}!
 
     .profile-picture
-      form(method="post" action="/updateAccount" class="p-8 border border-solid" enctype="multipart/form-data")
-        p Visible Name:
-          input(class="border" type="text" name="name")
-        p Profile Picture:
-          if image
-          img(class="h-64 w-64" src="data:image/png;base64," + image)
-          input(class="border" type="file" name="profilePic")
-        br
-        input(class='border' type="submit" value="Submit")
-
-
-    .post-creation
-      form(action='/post', method='post')
-        br
-        label(for='title') Title:
-        input(type='text', name='title')
-        br
-        label(for='caption') Caption:
-        input(type='text', name='caption')
-        br
-        label(for='content') Content:
-        input(type='text', name='content')
-        br
-        button(type='submit') Post
-        br
+      if image
+        img(src="data:image/png;base64," + image)
+      form(method="post" action="/updateAccount" class="upload-button" enctype="multipart/form-data")
+        input(type="file" id="fileUpload" onchange="this.form.submit()" name="profilePic")
+        label(for="fileUpload") Upload New Pic
 
     .friends
       h1 Friends
@@ -47,15 +24,36 @@ block content
         ul
           each friend in friends
             li
-              strong #{friend.name}
-              if friend.isFriend
-                form(action=`/unfriend/${friend._id}`, method='post')
-                  input(type='submit', name='unfriend', value='unfriend')
-              else
-                form(action=`/friend/${friend._id}`, method='post')
-                  input(type='submit', name='friend', value='friend')
+              .friend-info
+                strong #{friend.name}
+                if friend.isFriend
+                  form(action=`/unfriend/${friend._id}`, method='post')
+                    input(type='submit', name='unfriend', value='unfriend')
+                else
+                  form(action=`/friend/${friend._id}`, method='post')
+                    input(type='submit', name='friend', value='friend')
+
+    a.logout-link(href='/logout') Logout
+
 
   .post-feed
+    .post-creation
+      h2 Share a post!
+      .error
+        if errorMessage
+          strong Error: #{errorMessage}
+      form(action='/post', method='post')
+        .form-group
+          label(for='title') Title: 
+          input(type='text', name='title')
+        .form-group
+          label(for='caption') Caption: 
+          input(type='text', name='caption')
+        .form-group
+          label(for='content') Content: 
+          input(type='text', name='content')
+        button(type='submit') Post
+
     h1 Posts
     if posts.length === 0
       p No posts available 😢
