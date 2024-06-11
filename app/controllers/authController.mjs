@@ -12,6 +12,7 @@ import createLogger from '../config/logger.mjs';
 const logger = createLogger('authController-module');
 
 export const registerUser = async (req, res) => {
+    console.log('Request Body:', req.body); // Debugging log
     const { name, email, password, password2 } = req.body;
     try {
         if (!password) { // Check if the password is empty
@@ -57,6 +58,7 @@ export const registerUser = async (req, res) => {
 };
 
 export const loginUser = (req, res, next) => {
+    console.log('Request Body:', req.body); // Debugging log
     passport.authenticate('local', (err, user, info) => {
         if (err) {
             return next(err); // Handle error
