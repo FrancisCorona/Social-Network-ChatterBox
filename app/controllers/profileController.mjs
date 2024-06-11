@@ -24,8 +24,8 @@ var upload = multer({ storage: storage });
 
 export const uploadMiddleware = upload.single('profilePic')
 
-export const updateProfilePic =  async (req, res) => {
-	try {
+export const updateProfilePic = async (req, res) => {
+    try {
         const user = req.user;
 
         // Check if file was uploaded when user clicks submit
@@ -49,7 +49,11 @@ export const updateProfilePic =  async (req, res) => {
         // Redirect to the profile page
         res.redirect('/profile');
     } catch (err) {
-        logger.error(`Error updating profile picture: ${req.user._id} {${err}}`);
-        res.status(500).send({ message: 'Error updating profile picture: ', error: err });
+        let errorMessage = 'Error updating profile picture';
+        if (err.message === 'No file uploaded') {
+            errorMessage = 'No file uploaded';
+        }
+        logger.error(`Error updating profile picture: ${req.user._id} ${err}`);
+        res.status(500).send({ message: errorMessage, error: err });
     }
 };

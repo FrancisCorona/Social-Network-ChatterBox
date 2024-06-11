@@ -8,9 +8,10 @@ block content
   .sidebar
     .welcome
       h1 Hello #{user}! 😃
-      .error
-        if errorMessage
-          strong Error: #{errorMessage}
+      // Conditional block to display error message if it exists
+      if errorMessage
+        .error-message
+          p Error: #{errorMessage}
 
     .profile-picture
       form(method="post" action="/updateAccount" class="p-8 border border-solid" enctype="multipart/form-data")
@@ -22,7 +23,6 @@ block content
           input(class="border" type="file" name="profilePic")
         br
         input(class='border' type="submit" value="Submit")
-
 
     .post-creation
       form(action='/post', method='post')

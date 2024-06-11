@@ -12,7 +12,8 @@ block content
       // Conditional block to display error message if it exists
       if errorMessage
         // Display the error message
-        .error Error: #{errorMessage}
+        .error-message
+          p #{errorMessage}
       // Form for registration with POST method
       form(action='/register', method='post')
         // Include common elements from another Pug file
@@ -31,4 +32,3 @@ block content
         +registerButton()
       // Link to return to the login page
       a.return-link(href='/login') Return to Login
-
