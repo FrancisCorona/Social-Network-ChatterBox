@@ -78,6 +78,7 @@ export const getProfile = async (req, res) => {
             user: req.user.name,
             posts: allPosts,
             friends: friendsList,
+            image: req.user.profilePic,
             errorMessage: req.query.error
         });
 

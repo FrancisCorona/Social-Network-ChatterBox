@@ -2,7 +2,7 @@
 1. ~~Ensure all routes are working correctly and return an error message object if they need to fail~~
 2. ~~Display any error messages to the user if they occur~~
 3. Update your account settings to allow a profile picture. Store the picture directly in the database, resized to no bigger than 512x512 (keeping in mind our CSS can scale down easily), as base64 encoded text.
-4. Design all pages on your site using Google Jamboards or some other mockup tool.
+4. ~~Design all pages on your site using Google Jamboards or some other mockup tool.~~
 5. ~~Pick a CSS framework. Use either Bootstrap or Tailwind~~
 6. Create a cohesive, responsive (meaning it responds to size changes and looks good on all screen types), theme for your site.
 7. Every page in your site must have:

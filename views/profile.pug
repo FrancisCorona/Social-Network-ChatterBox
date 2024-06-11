@@ -8,6 +8,18 @@ block content
         if errorMessage
           strong Error: #{errorMessage}
 
+    .profile-picture
+      form(method="post" action="/updateAccount" class="p-8 border border-solid" enctype="multipart/form-data")
+        p Visible Name:
+          input(class="border" type="text" name="name")
+        p Profile Picture:
+          if image
+          img(class="h-64 w-64" src="data:image/png;base64," + image)
+          input(class="border" type="file" name="profilePic")
+        br
+        input(class='border' type="submit" value="Submit")
+
+
     .post-creation
       form(action='/post', method='post')
         br

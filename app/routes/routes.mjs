@@ -11,6 +11,7 @@ import { registerUser, loginUser } from '../controllers/authController.mjs';
 import { getProfile, createPost } from '../controllers/postController.mjs';
 import { addFriend, removeFriend } from '../controllers/friendsController.mjs';
 import createLogger from '../config/logger.mjs';
+import { uploadMiddleware, updateProfilePic } from '../controllers/profileController.mjs';
 
 const logger = createLogger('routes-module');
 
@@ -32,6 +33,9 @@ router.post('/friend/:id', isAuthenticated, addFriend);
 
 // Handle removing friends
 router.post('/unfriend/:id', isAuthenticated, removeFriend);
+
+// Handle updating profile picture
+router.post('/updateAccount', isAuthenticated, uploadMiddleware, updateProfilePic);
 
 // Route to display registration form
 router.get('/register', (req, res) => {

@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 // Define the user schema
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
+    profilePic: { type: Buffer },
     password: { type: String },
     salt: { type: String },
     email: { type: String, required: true, unique: true, match: [/.+\@.+\..+/, 'Please fill a valid email address'] } // Email must match the specified regex pattern
