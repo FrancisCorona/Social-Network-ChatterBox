@@ -8,10 +8,8 @@
 body.login-page {
   overflow: hidden !important; /* Prevent scrolling on the login page */
   display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
   height: 100vh !important; /* Full height of the viewport */
-  margin: 0 !important; /* Remove default margin */
+  margin: 10 !important; /* Remove default margin */
   padding: 0 !important; /* Remove default padding */
 }
 
@@ -85,4 +83,3 @@ body.login-page {
   color: white; /* Text color is white */
   width: 145px; /* GitHub button width */
 }
-

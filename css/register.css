@@ -5,11 +5,9 @@
 */
 
 /* Centering the form */
-body.login-page {
-  overflow: hidden !important; /* Prevent scrolling on the register page */
+body.registration-page {
+  overflow: hidden !important; /* Prevent scrolling on the login page */
   display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
   height: 100vh !important; /* Full height of the viewport */
   margin: 0 !important; /* Remove default margin */
   padding: 0 !important; /* Remove default padding */
