@@ -2,3 +2,4 @@ node_modules
 ackage-lock.json
 logs
 .DS_Store
+logs/combined.log
