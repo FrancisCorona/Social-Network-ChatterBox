@@ -39,8 +39,8 @@ export const addFriend = async (req, res) => {
         res.redirect('/profile');
         logger.info(`${friend.name} added to ${req.user.name}'s friend list`);
     } catch (err) {
-        logger.error(`Error adding friend: ${req.user._id} {${err}}`);
-        res.status(500).send({ message: 'Error adding friend: ', error: err });
+        logger.error(`Error adding friend: ${req.user._id} ${err}`);
+        res.status(500).send({ message: 'Error adding friend', error: err });
     }
 }
 
@@ -68,7 +68,7 @@ export const removeFriend = async (req, res) => {
             res.status(404).send({ message: 'Friends record not found' });
         }
     } catch (err) {
-        logger.error(`Error removing friend: ${req.user._id} {${err}}`);
+        logger.error(`Error removing friend: ${req.user._id} ${err}`);
         res.status(500).send({ message: 'Error removing friend', error: err });
     }
 }

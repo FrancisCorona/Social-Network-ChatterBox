@@ -7,7 +7,7 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import { Strategy as GithubStrtegy } from 'passport-github2';
+import { Strategy as GithubStrategy } from 'passport-github2';
 import bcrypt from 'bcrypt';
 import User from '../models/user.mjs';
 import createLogger from './logger.mjs';
@@ -16,10 +16,13 @@ const logger = createLogger('passport-module');
 
 // Passport Local Strategy for authentication
 passport.use(new LocalStrategy(
+    { usernameField: 'email', passwordField: 'password' }, // Explicitly specifying the fields
     async (email, password, done) => {
+        logger.info(`Received email: ${email}`); // Log received email
+        logger.info(`Received password: ${password}`); // Log received password
         try {
             logger.info(`Attempting to find user by email: ${email}`);
-            const user = await User.findOne({ email }); // Find user by username
+            const user = await User.findOne({ email }); // Find user by email
             if (!user) { // If user not found
                 logger.warn(`User not found in database: ${email}`);
                 return done(null, false, { message: 'User not found' }); // Return error message
@@ -28,24 +31,19 @@ passport.use(new LocalStrategy(
             // If we get here, the email is in the DB
             logger.info(`User found in database: ${email}`);
             
-            // Salt the given password and compare to the DB
+            // Compare the password
             const isMatch = await bcrypt.compare(password, user.password);
             if (isMatch) {
-                // We're good here!
+                // Password matches
                 logger.info(`Login successful: ${email}`);
                 return done(null, user);
             } else {
-                // Bad password
+                // Password does not match
                 logger.warn(`Incorrect password: ${email}`);
                 return done(null, false, { message: 'Incorrect password' });
             }
         } catch (err) {
-            // Check for specific bcrypt error and handle accordingly
-            if (err.message.includes('data and hash arguments required')) {
-                logger.error(`Password comparison failed. User may need to log in with OAuth: ${email} {${err.message}}`);
-                return done(null, false, { message: 'Please log in with Google or Github' });
-            }
-            logger.error(`Error during authentication. ${email} {${err.message}}`);
+            logger.error(`Error during authentication: ${email} {${err.message}}`);
             return done(err); // Error during authentication
         }
     }
@@ -76,7 +74,7 @@ passport.use(new GoogleStrategy({
 }));
 
 // Github OAuth Strategy
-passport.use(new GithubStrtegy({
+passport.use(new GithubStrategy({
     clientID: 'Ov23limxUBHk46MOeoUt',
     clientSecret: '5a2653cae5c0f1f538c94a75d4642cd9b9049ec9',
     callbackURL: 'http://localhost/auth/github/callback'
@@ -89,7 +87,7 @@ passport.use(new GithubStrtegy({
                 email: profile.emails[0].value,
             });
             await user.save();
-            logger.info(`New user created with GitHub OAuth: ${email}`);
+            logger.info(`New user created with GitHub OAuth: ${profile.emails[0].value}`);
         }
         logger.info(`User authenticated with GitHub OAuth: ${user}`);
         return done(null, user);
@@ -98,7 +96,6 @@ passport.use(new GithubStrtegy({
         return done(err);
     }
 }));
-
 
 // Serialize user to store in session
 passport.serializeUser((user, done) => {

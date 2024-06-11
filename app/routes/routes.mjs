@@ -89,7 +89,7 @@ router.get('/auth/github/callback',
 router.get('/logout', (req, res) => {
     req.logout(err => {
         if (err) {
-            logger.into(`Logout error: {${err}}`);
+            logger.error(`Logout error: ${err}`);
             return res.status(500).send('Logout error');
         }
         res.redirect('/login');

@@ -12,7 +12,7 @@ import createLogger from '../config/logger.mjs';
 const logger = createLogger('postController-module');
 
 export const createPost = async (req, res) => {
-    const {title, caption, content} = req.body;
+    const { title, caption, content } = req.body;
     try {
         // Create a new instance of the model
         const post = new Post({
@@ -32,11 +32,11 @@ export const createPost = async (req, res) => {
                 errorMessage = 'Post content required'; // Specific error message for missing content
             }
         }
-        logger.error(`Post Error: ${req.user._id} {${errorMessage}}`);
+        logger.error(`Post Error: ${req.user._id} ${errorMessage} - ${err}`);
         // Redirect to profile page with error message if authentication fails
         res.redirect(`/profile?error=${encodeURIComponent(errorMessage)}`);
     }
-}
+};
 
 export const getProfile = async (req, res) => {
     try {
@@ -83,7 +83,7 @@ export const getProfile = async (req, res) => {
         });
 
     } catch (err) {
-        logger.error(`Error fetching posts: {${err.message}}`);
+        logger.error(`Error fetching posts: ${err.message}`);
         res.status(500).send('Error fetching posts'); // Display error message if there's an issue fetching posts
     }
-}
+};
