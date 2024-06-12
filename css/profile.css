@@ -39,9 +39,16 @@
     margin: 15px 10px 5px;
 }
 
-img {
+.profile-picture img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+}
+
+.profile-header img {
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     border: 1px solid #ddd;
 }
@@ -119,6 +126,13 @@ img {
     gap: 10px;
 }
 
+.profile-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
 .welcome, a.logout-link {
     text-align: center;
 }
@@ -127,12 +141,46 @@ input[type="file"] {
     display: none;
 }
 
-.upload-button {
-    border: 1px solid #ddd;
-    padding: 6px 12px;
+input[type="submit"] {
     background-color: #EFEFEF;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
 }
 
+button[type="submit"] {
+    background-color: #EFEFEF;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 1px 40px;
+}
+
+.upload-button {
+    display: inline-block;
+}
+  
 .upload-button label {
+    display: inline-block;
+    padding: 1px 6px;
     margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #EFEFEF;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    line-height: 24px;
+}
+  
+.upload-button label:hover {
+    background-color: #e6e6e6;
 }

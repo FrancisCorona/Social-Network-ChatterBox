@@ -12,12 +12,11 @@ import createLogger from '../config/logger.mjs';
 const logger = createLogger('postController-module');
 
 export const createPost = async (req, res) => {
-    const { title, caption, content } = req.body;
+    const { title, content } = req.body;
     try {
         // Create a new instance of the model
         const post = new Post({
             title: title,
-            caption: caption,
             content: content,
             user: req.user._id // Set the user to the authenticated user's ID
         });
@@ -41,7 +40,7 @@ export const createPost = async (req, res) => {
 export const getProfile = async (req, res) => {
     try {
         // Find posts by user ID and sort by timestamp
-        const userPosts = await Post.find({ user: req.user._id }).sort({ timestamp: -1 }).populate('user', 'name');
+        const userPosts = await Post.find({ user: req.user._id }).sort({ timestamp: -1 }).populate('user', 'name profilePic');
         logger.info(`Found ${userPosts.length} posts for user: ${req.user._id}`);
 
         // Find the user's friends
@@ -56,7 +55,7 @@ export const getProfile = async (req, res) => {
             logger.info(`User ${req.user._id} has ${friendsIds.length} friends`);
             
             // Find the posts of all friends
-            friendsPosts = await Post.find({ user: { $in: friendsIds } }).sort({ timestamp: -1 }).populate('user', 'name');
+            friendsPosts = await Post.find({ user: { $in: friendsIds } }).sort({ timestamp: -1 }).populate('user', 'name profilePic');
             logger.info(`Found ${friendsPosts.length} posts from friends of user: ${req.user._id}`);
         }
 
