@@ -59,11 +59,12 @@ block content
         each post in posts
           .post-box
             .profile-header
-                if post.user.profilePic
-                  img(src="data:image/png;base64," + post.user.profilePic)
-                else
-                  img(src="images/defaultpfp.jpg")
+              if post.user.profilePic
+                img(src="data:image/png;base64," + post.user.profilePic)
+              else
+                img(src="images/defaultpfp.jpg")
+              .profile-details
                 h3 #{post.user.name}
-            h2 #{post.title}
-            p
-            | #{post.content}
+                p.timestamp #{post.formattedTimestamp}
+            h2.post-title #{post.title}
+            p.post-content #{post.content}

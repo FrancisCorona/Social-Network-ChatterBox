@@ -1,13 +1,14 @@
 /*
 * Group: Francis Corona, Ian Stewart
 * Project: Social Network - Phase 3
-* Due: 6/11/24, 11:59 PM EDT
+* Due: 6/13/24, 11:59 PM EDT
 */
 
 import Post from '../models/post.mjs';
 import User from '../models/user.mjs';
 import Friends from '../models/friends.mjs';
 import createLogger from '../config/logger.mjs';
+import { formatTimestamp } from '../utils/formatTimestamp.mjs';
 
 const logger = createLogger('postController-module');
 
@@ -62,6 +63,12 @@ export const getProfile = async (req, res) => {
         // Combine user's posts and friends' posts and sort them by timestamp
         const allPosts = userPosts.concat(friendsPosts).sort((a, b) => b.timestamp - a.timestamp); 
 
+        // Map formatted timestamp to the posts
+        const formattedPosts = allPosts.map(post => ({
+            ...post._doc,
+            formattedTimestamp: formatTimestamp(post.timestamp)
+        }));
+
         // Find friends (all users)
         const users = await User.find({ _id: { $ne: req.user._id } }).sort({ name: 1 });
 
@@ -75,7 +82,7 @@ export const getProfile = async (req, res) => {
         // Render the profile page with posts and friends list
         res.render('profile', {
             user: req.user.name,
-            posts: allPosts,
+            posts: formattedPosts,
             friends: friendsList,
             image: req.user.profilePic,
             errorMessage: req.query.error
