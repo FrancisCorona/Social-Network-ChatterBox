@@ -12,7 +12,7 @@ block content
       // Conditional block to display error message if it exists
       if errorMessage
         // Display the error message
-        .error-message
+        .error
           p #{errorMessage}
       // Form for registration with POST method
       form(action='/register', method='post')
@@ -27,7 +27,7 @@ block content
         +passwordInput()
         .form-group
           // Input field to retype password
-          input.form-control(type='password', name='password2', placeholder="Retype Password")
+          input.form-control(type='password', name='password2', placeholder="Retype Password", required)
         // Include register button
         +registerButton()
       // Link to return to the login page

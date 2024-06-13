@@ -71,14 +71,22 @@ body.login-page, body.registration-page {
 
 .centered-form .form-container .social-buttons .btn-google {
   background-color: #EA4335; /* Google button red */
-  border-color: #EA4335;
+  border-color: #ce3d2f;
   color: white; /* Text color white */
   width: 145px; /* Google button width */
 }
 
+.centered-form .form-container .social-buttons .btn-google:hover {
+  background-color: #d23c2e; /* Button color when hovered over */
+}
+
 .centered-form .form-container .social-buttons .btn-github {
   background-color: #6c757d; /* GitHub button gray */
-  border-color: #6c757d;
+  border-color: #616970;
   color: white; /* Text color white */
   width: 145px; /* GitHub button width */
+}
+
+.centered-form .form-container .social-buttons .btn-github:hover {
+  background-color: #596067; /* Button color when hovered over */
 }

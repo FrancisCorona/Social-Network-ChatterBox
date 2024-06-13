@@ -73,7 +73,7 @@ router.get('/auth/google/callback',
 
 // Route to start Github OAuth auth
 router.get('/auth/github',
-    passport.authenticate('github', { scope: [ 'user:email' ] })
+    passport.authenticate('github', { scope: [ 'user:email', 'read:user' ] })
 );
 
 // Route to handle the callback from Github OAuth

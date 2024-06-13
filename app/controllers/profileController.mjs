@@ -4,23 +4,24 @@
 * Due: 6/13/24, 11:59 PM EDT
 */
 
-import sharp from 'sharp';
-import multer from 'multer';
 import fs from 'fs/promises';
+import multer from 'multer';
 import createLogger from '../config/logger.mjs';
+import { convertPhoto } from '../utils/convertPhoto.mjs';
 
 const logger = createLogger('profileController');
 
-var storage = multer.diskStorage({
+// Configure multer storage
+const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads')
+        cb(null, 'uploads');
     },
     filename: (req, file, cb) => {
-        cb(null, 'ProfilePic' + req.user._id)
+        cb(null, 'ProfilePic' + req.user._id);
     }
 });
- 
-var upload = multer({ storage: storage });
+
+const upload = multer({ storage: storage });
 
 export const uploadMiddleware = upload.single('profilePic')
 
@@ -33,15 +34,8 @@ export const updateProfilePic = async (req, res) => {
             throw new Error('No file uploaded');
         }
 
-        // Read the uploaded file
-        const data = await fs.readFile(req.file.path);
-
-        // Resize the image and convert to PNG
-        const resized = await sharp(data).resize(256).png().toBuffer();
-
-        // Convert image to base64
-        const b64 = Buffer.from(resized).toString('base64');
-        user.profilePic = b64; // Store the base64 string directly as a buffer
+        // Convert photo to base64
+        user.profilePic = await convertPhoto(req.file.path);
 
         // Save user
         await user.save();

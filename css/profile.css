@@ -102,7 +102,7 @@
     align-items: center;
 }
 
-.form-group {
+.post-creation .form-group {
     display: flex;
     flex-direction: row;
     align-items: center;

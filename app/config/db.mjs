@@ -23,7 +23,6 @@ async function connectDB() {
         await mongoose.connect(uri, { dbName: dbName }); // Connect to MongoDB with the specified URI and database name
         logger.info('Connected to MongoDB');
     } catch (err) {
-        //logger.error(`MongoDB connection error: {${err.message}}`);
         logger.error(`MongoDB connection error: {${err.message}}`);
     }
 }

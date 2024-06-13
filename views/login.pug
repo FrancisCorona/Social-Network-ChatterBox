@@ -12,7 +12,7 @@ block content
       // Conditional block to display error message if it exists
       if errorMessage
         // Display the error message
-        .error-message
+        .error
           p #{errorMessage}
       // Form for login with POST method
       form(action='/login', method='post')
@@ -31,6 +31,6 @@ block content
           button.btn.btn-primary(type="submit") Login
         .social-buttons
           // Button for Google login
-          button(type="button" class="btn btn-google btn-sm" onclick="window.location.href='/auth/google'") Google Login
+          button(type="button" class="btn btn-google btn-primary btn-sm" onclick="window.location.href='/auth/google'") Google Login
           // Button for GitHub login
-          button(type="button" class="btn btn-github btn-sm" onclick="window.location.href='/auth/github'") GitHub Login
+          button(type="button" class="btn btn-github btn-primary btn-sm" onclick="window.location.href='/auth/github'") GitHub Login

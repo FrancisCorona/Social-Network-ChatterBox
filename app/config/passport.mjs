@@ -8,6 +8,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { Strategy as GithubStrategy } from 'passport-github2';
+import { getBase64 } from '../utils/convertPhoto.mjs';
 import bcrypt from 'bcrypt';
 import User from '../models/user.mjs';
 import createLogger from './logger.mjs';
@@ -43,6 +44,11 @@ passport.use(new LocalStrategy(
                 return done(null, false, { message: 'Incorrect password' });
             }
         } catch (err) {
+             // Catches specific bcrypt error where MongoDB document doesn't contain password and hash fields due to user initially creating account with oauth
+            if (err.message.includes('data and hash arguments required')) {
+                logger.error(`Password comparison failed. User may need to log in with OAuth: ${email} {${err.message}}`);
+                return done(null, false, { message: 'Please log in with Google or Github' });
+            }
             logger.error(`Error during authentication: ${email} {${err.message}}`);
             return done(err); // Error during authentication
         }
@@ -57,15 +63,20 @@ passport.use(new GoogleStrategy({
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         let user = await User.findOne({ email: profile.emails[0].value });
+        const profilePicURL = profile.photos[0].value;
+        const updatedURL = profilePicURL.replace('=s96-c', '=s256-c');
+        let profilePic = await getBase64(updatedURL);
+
         if (!user) {
             user = new User({
                 name: profile.displayName,
                 email: profile.emails[0].value,
+                profilePic: profilePic
             });
             await user.save();
-            logger.info(`New user created with Google OAuth: ${user}`);
+            logger.info(`New user created with Google OAuth: ${profile.emails[0].value}`);
         }
-        logger.info(`User authenticated with Google OAuth: ${user}`);
+        logger.info(`User authenticated with Google OAuth: ${user.email}`);
         return done(null, user);
     } catch (err) {
         logger.error(`Error during Google OAuth authentication: {${err.message}}`);
@@ -81,15 +92,17 @@ passport.use(new GithubStrategy({
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         let user = await User.findOne({ email: profile.emails[0].value });
+        const profilePic = await getBase64(profile.photos[0].value);
         if (!user) {
             user = new User({
                 name: profile.displayName,
                 email: profile.emails[0].value,
+                profilePic: profilePic
             });
             await user.save();
             logger.info(`New user created with GitHub OAuth: ${profile.emails[0].value}`);
         }
-        logger.info(`User authenticated with GitHub OAuth: ${user}`);
+        logger.info(`User authenticated with GitHub OAuth: ${user.email}`);
         return done(null, user);
     } catch (err) {
         logger.error(`Error during GitHub OAuth authentication: {${err.message}}`);
