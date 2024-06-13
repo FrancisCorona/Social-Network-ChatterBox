@@ -4,7 +4,6 @@
 * Due: 6/13/24, 11:59 PM EDT
 */
 
-import fs from 'fs/promises';
 import multer from 'multer';
 import createLogger from '../config/logger.mjs';
 import { convertPhoto } from '../utils/convertPhoto.mjs';
