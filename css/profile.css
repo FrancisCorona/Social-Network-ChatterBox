@@ -4,6 +4,7 @@
 * Due: 6/13/24, 11:59 PM EDT
 */
 
+/* Styles for the post feed container */
 .post-feed {
     display: flex;
     flex-direction: column;
@@ -14,11 +15,13 @@
     box-sizing: border-box;
 }
 
+/* Styles for the main container to ensure full viewport height */
 .container-fluid {
     display: flex;
     min-height: 100vh;
 }
 
+/* Styles for the sidebar */
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -31,14 +34,17 @@
     border-right: 1px solid #ddd;
 }
 
+/* Sidebar header style */
 .sidebar H1 {
     font-size: 30pt;
 }
 
+/* Post feed header style */
 .post-feed H1 {
     margin: 15px 10px 5px;
 }
 
+/* Styles for profile picture in the profile page */
 .profile-picture img {
     height: 200px;
     width: 200px;
@@ -46,6 +52,7 @@
     border: 1px solid #ddd;
 }
 
+/* Styles for profile picture in the post headers */
 .profile-header img {
     height: 50px;
     width: 50px;
@@ -53,6 +60,7 @@
     border: 1px solid #ddd;
 }
 
+/* Container for posts */
 .posts-container {
     display: flex;
     flex-direction: column;
@@ -61,6 +69,7 @@
     width: 100%;
 }
 
+/* Styles for individual post boxes and post creation form */
 .post-box, .post-creation {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -72,6 +81,7 @@
     box-sizing: border-box;
 }
 
+/* Styles for the friends section in the sidebar */
 .friends {
     display: flex;
     flex-direction: column;
@@ -80,12 +90,14 @@
     margin-bottom: 40px;
 }
 
+/* Styles for the post creation form container */
 .post-creation {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Styles for each friend info container */
 .friend-info {
     display: flex;
     align-items: center;
@@ -94,6 +106,7 @@
     gap: 10px;
 }
 
+/* Styles for the form within the post creation container */
 .post-creation form {
     width: 100%;
     max-width: 600px;
@@ -102,6 +115,7 @@
     align-items: center;
 }
 
+/* Styles for form groups within the post creation form */
 .post-creation .form-group {
     display: flex;
     flex-direction: row;
@@ -111,16 +125,19 @@
     padding-right: 40px;
 }
 
+/* Styles for form labels */
 .form-group label {
     margin-right: 10px;
     align-items: center;
     margin-bottom: 0;
 }
 
+/* Styles for the submit button within the post creation form */
 .post-creation button {
     align-self: center;
 }
 
+/* Styles for the profile picture section */
 .profile-picture {
     display: flex;
     flex-direction: column;
@@ -128,37 +145,44 @@
     gap: 10px;
 }
 
+/* Styles for the profile header section */
 .profile-header {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+/* Styles for the profile details section */
 .profile-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+/* Styles for the profile name in profile details */
 .profile-details h3 {
     margin: 0;
     padding: 0;
 }
 
+/* Styles for the timestamp in profile details */
 .profile-details p.timestamp {
     font-size: 12px;
     color: gray;
     margin: 0;
 }
 
+/* Styles for the welcome message and logout link */
 .welcome, a.logout-link {
     text-align: center;
 }
 
+/* Styles to hide the file input */
 input[type="file"] {
     display: none;
 }
 
+/* Styles for the submit input button */
 input[type="submit"] {
     background-color: #EFEFEF;
     border: 1px solid #ddd;
@@ -168,6 +192,12 @@ input[type="submit"] {
     font-weight: 400;
 }
 
+/* Hover styles for the submit input button */
+input[type="submit"]:hover {
+    background-color: #e6e6e6;
+}
+
+/* Styles for the submit button */
 button[type="submit"] {
     background-color: #EFEFEF;
     border: 1px solid #ddd;
@@ -178,10 +208,17 @@ button[type="submit"] {
     padding: 1px 40px;
 }
 
+/* Hover styles for the submit button */
+button[type="submit"]:hover {
+    background-color: #e6e6e6;
+}
+
+/* Styles for the upload button */
 .upload-button {
     display: inline-block;
 }
-  
+
+/* Styles for the label within the upload button */
 .upload-button label {
     display: inline-block;
     padding: 1px 6px;
@@ -198,7 +235,8 @@ button[type="submit"] {
     color: #333;
     line-height: 24px;
 }
-  
+
+/* Hover styles for the label within the upload button */
 .upload-button label:hover {
     background-color: #e6e6e6;
 }

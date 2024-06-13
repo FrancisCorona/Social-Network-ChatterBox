@@ -11,11 +11,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4; /* Background color */
-    /* background-image: url('../images/abstract-blur-background-wallpaper-party-design-defocused-soft-light-bokeh-illustration-vector.jpg'); /* Path to your image */
-    /* background-size: cover; /* Ensures the background image covers the entire viewport */
-    /* background-repeat: no-repeat; /* Prevents the background image from repeating */
-    /* background-attachment: fixed; /* Keeps the background image fixed during scrolling */
-    /* background-position: center; /* Centers the background image */
     display: flex; 
     flex-direction: column; /* Arranges child elements in a column */
     min-height: 100vh; /* Body is at least the height of the viewport */
@@ -76,6 +71,7 @@ h1, h2, h3 {
 }
 
 /*
+* --Color Themes--
 * Teal Green #4297A0
 * Ivory #F4EAE6
 * Coral #E57F84

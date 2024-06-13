@@ -14,7 +14,7 @@ const logger = createLogger('db-module');
 const MongoDBStore = MongoDBStoreFactory(session);
 
 // MongoDB connection URI and database name
-const uri = 'mongodb+srv://stewian:0zxyte7v7Oj6cQwp@cluster0.olbot2z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const uri = process.env.MONGODB_URI;
 const dbName = 'mobileapp';
 
 // Connect to MongoDB

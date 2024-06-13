@@ -12,6 +12,9 @@ import { getBase64 } from '../utils/convertPhoto.mjs';
 import bcrypt from 'bcrypt';
 import User from '../models/user.mjs';
 import createLogger from './logger.mjs';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load environement variables
 
 const logger = createLogger('passport-module');
 
@@ -57,8 +60,8 @@ passport.use(new LocalStrategy(
 
 // Google OAuth Strategy
 passport.use(new GoogleStrategy({
-    clientID: '282243348983-1o0t5lssu3gnh0oga6mvem9q0vm5cof4.apps.googleusercontent.com',
-    clientSecret: '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',
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: 'http://localhost/auth/google/callback'
 }, async (accessToken, refreshToken, profile, done) => {
     try {
@@ -71,7 +74,7 @@ passport.use(new GoogleStrategy({
             user = new User({
                 name: profile.displayName,
                 email: profile.emails[0].value,
-                profilePic: profilePic
+                profilePic: profilePic 
             });
             await user.save();
             logger.info(`New user created with Google OAuth: ${profile.emails[0].value}`);
@@ -86,8 +89,8 @@ passport.use(new GoogleStrategy({
 
 // Github OAuth Strategy
 passport.use(new GithubStrategy({
-    clientID: 'Ov23limxUBHk46MOeoUt',
-    clientSecret: '5a2653cae5c0f1f538c94a75d4642cd9b9049ec9',
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: 'http://localhost/auth/github/callback'
 }, async (accessToken, refreshToken, profile, done) => {
     try {

@@ -11,7 +11,9 @@ block content
 
     .profile-picture
       if image
+        // Display the user's profile picture if available
         img(src="data:image/png;base64," + image)
+      // Form to upload a new profile picture
       form(method="post" action="/updateAccount" class="upload-button" enctype="multipart/form-data")
         input(type="file" id="fileUpload" onchange="this.form.submit()" name="profilePic")
         label(for="fileUpload") Upload New Pic
@@ -19,39 +21,48 @@ block content
     .friends
       h1 Friends
       if friends.length === 0
+        // Message displayed if the user has no friends
         p You have no friends 😭
       else
         ul
           each friend in friends
             li
               .friend-info
+                // Display each friend's name
                 strong #{friend.name}
                 if friend.isFriend
+                  // Form to unfriend a user
                   form(action=`/unfriend/${friend._id}`, method='post')
                     input(type='submit', name='unfriend', value='unfriend')
                 else
+                  // Form to friend a user
                   form(action=`/friend/${friend._id}`, method='post')
                     input(type='submit', name='friend', value='friend')
 
+    // Logout link
     a.logout-link(href='/logout') Logout
-
 
   .post-feed
     .post-creation
       h2 Share a post!
       .error
         if errorMessage
+          // Display an error message if there is one
           strong Error: #{errorMessage}
       form(action='/post', method='post')
         .form-group
+          // Input for post title
           label(for='title') Title: 
-          input(type='text', name='title')
+          input(type='text', name='title', required)
         .form-group
+          // Input for post content
           label(for='content') Content: 
-          input(type='text', name='content')
+          input(type='text', name='content', required)
+        // Submit button for creating a post
         button(type='submit') Post
 
     h1 Posts
+    // Message displayed if there are no posts
     if posts.length === 0
       p No posts available 😢
     else
@@ -60,11 +71,16 @@ block content
           .post-box
             .profile-header
               if post.user.profilePic
+                // Display the user's profile picture in the post header
                 img(src="data:image/png;base64," + post.user.profilePic)
               else
+                // Display a default profile picture if the user has none
                 img(src="images/defaultpfp.jpg")
               .profile-details
                 h3 #{post.user.name}
+                // Display the user's name and the formatted timestamp
                 p.timestamp #{post.formattedTimestamp}
+            // Display the post title
             h2.post-title #{post.title}
+            // Display the post content
             p.post-content #{post.content}
