@@ -14,7 +14,7 @@ block content
         // Display the user's profile picture if available
         img(src="data:image/png;base64," + image)
       // Form to upload a new profile picture
-      form(method="post" action="/updateAccount" class="upload-button" enctype="multipart/form-data")
+      form(method="post" action="/updateAccount" class="btn btn-light" enctype="multipart/form-data")
         input(type="file" id="fileUpload" onchange="this.form.submit()" name="profilePic")
         label(for="fileUpload") Upload New Pic
 
@@ -33,11 +33,11 @@ block content
                 if friend.isFriend
                   // Form to unfriend a user
                   form(action=`/unfriend/${friend._id}`, method='post')
-                    input(type='submit', name='unfriend', value='unfriend')
+                    input(type='submit' class='btn btn-light btn-sm' name='unfriend' value='unfriend')
                 else
                   // Form to friend a user
                   form(action=`/friend/${friend._id}`, method='post')
-                    input(type='submit', name='friend', value='friend')
+                    input(type='submit' class='btn btn-light btn-sm' name='friend' value='friend')
 
     // Logout link
     a.logout-link(href='/logout') Logout
@@ -53,13 +53,13 @@ block content
         .form-group
           // Input for post title
           label(for='title') Title: 
-          input(type='text', name='title', required)
+          input(type='text' class='form-control' name='title' required)
         .form-group
           // Input for post content
           label(for='content') Content: 
-          input(type='text', name='content', required)
+          input(type='text' class='form-control' name='content' required)
         // Submit button for creating a post
-        button(type='submit') Post
+        button(type='submit' class='btn btn-light btn-submit') Post
 
     h1 Posts
     // Message displayed if there are no posts

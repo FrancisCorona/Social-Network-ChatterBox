@@ -198,45 +198,44 @@ input[type="submit"]:hover {
 }
 
 /* Styles for the submit button */
-button[type="submit"] {
+.btn-submit {
+    padding: 2px 40px;
+}
+
+/* Style template for buttons */
+.btn-light {
+    color: #333;
     background-color: #EFEFEF;
     border: 1px solid #ddd;
-    border-radius: 4px;
+}
+
+/* Style template for buttons when hovered */
+.btn-light:hover {
     color: #333;
-    font-size: 20px;
-    font-weight: 400;
-    padding: 1px 40px;
-}
-
-/* Hover styles for the submit button */
-button[type="submit"]:hover {
     background-color: #e6e6e6;
+    border: 1px solid #ddd;
 }
 
-/* Styles for the upload button */
-.upload-button {
-    display: inline-block;
+/* Style template for buttons when active */
+.btn-light:not(:disabled):not(.disabled):active {
+    color: #333;
+    background-color: #e6e6e6;
+    border: 1px solid #ddd;
 }
 
-/* Styles for the label within the upload button */
-.upload-button label {
-    display: inline-block;
-    padding: 1px 6px;
+/* Style template for buttons when focused */
+.btn-light:focus {
+    color: #333;
+    background-color: #e6e6e6;
+    border: 1px solid #ddd;
+}
+
+/* Shrink text padding for small buttons */
+.friend-info .btn-sm {
+    padding: 2px 8px;
+}
+
+/* Clear bottom margin from button */
+.profile-picture label {
     margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    background-color: #EFEFEF;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    color: #333;
-    line-height: 24px;
-}
-
-/* Hover styles for the label within the upload button */
-.upload-button label:hover {
-    background-color: #e6e6e6;
 }
