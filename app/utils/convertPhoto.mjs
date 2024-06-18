@@ -2,7 +2,6 @@ import axios from 'axios';
 import fs from 'fs/promises';
 import sharp from 'sharp';
 
-
 export const convertPhoto = async (filePath) => {
     try {
         // Read the uploaded file

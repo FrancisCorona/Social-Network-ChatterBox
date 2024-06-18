@@ -12,6 +12,7 @@ import { getProfile, createPost } from '../controllers/postController.mjs';
 import { addFriend, removeFriend } from '../controllers/friendsController.mjs';
 import createLogger from '../config/logger.mjs';
 import { uploadMiddleware, updateProfilePic } from '../controllers/profileController.mjs';
+import { expandContent } from '../controllers/postHelperController.mjs';
 
 const logger = createLogger('routes-module');
 
@@ -27,6 +28,9 @@ router.get('/profile', isAuthenticated, getProfile);
 
 // Handle post creation requests
 router.post('/post', isAuthenticated, createPost);
+
+// Handle AI content expanding requests
+router.post('/expandcontent', isAuthenticated, expandContent);
 
 // Handle adding friends
 router.post('/friend/:id', isAuthenticated, addFriend);

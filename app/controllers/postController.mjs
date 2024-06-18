@@ -79,13 +79,22 @@ export const getProfile = async (req, res) => {
             isFriend: friendsRecord && friendsRecord.friends.some(friend => friend._id.equals(user._id))
         }));
 
+        // Retrieve the generated text and title from the session
+        const generatedText = req.session.generatedText;
+        const title = req.session.title;
+        // Clear the session values
+        delete req.session.generatedText;
+        delete req.session.title;
+
         // Render the profile page with posts and friends list
         res.render('profile', {
             user: req.user.name,
             posts: formattedPosts,
             friends: friendsList,
             image: req.user.profilePic,
-            errorMessage: req.query.error
+            errorMessage: req.query.error,
+            generatedText,
+            title,
         });
 
     } catch (err) {

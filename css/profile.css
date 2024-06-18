@@ -121,15 +121,29 @@
     flex-direction: row;
     align-items: center;
     justify-content: end;
-    width: 300px;
-    padding-right: 40px;
+}
+
+/* Style to fix title form-group location */
+.post-creation .form-group:first-child {
+    margin-left: 26.4px;
 }
 
 /* Styles for form labels */
 .form-group label {
     margin-right: 10px;
     align-items: center;
+    text-wrap: nowrap;
     margin-bottom: 0;
+}
+
+/* Style for title textbox */
+.form-group input {
+    width: 400px;
+}
+
+/* Style for content textbox */
+.form-group textarea {
+    width: 400px;
 }
 
 /* Styles for the submit button within the post creation form */
@@ -199,7 +213,13 @@ input[type="submit"]:hover {
 
 /* Styles for the submit button */
 .btn-submit {
-    padding: 2px 40px;
+    padding: 4px 40px;
+    margin-bottom: 20px;
+}
+
+/* Styles for the elaborate button */
+.btn-posthelper {
+    padding: 4px 40px;
 }
 
 /* Style template for buttons */

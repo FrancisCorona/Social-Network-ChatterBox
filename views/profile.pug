@@ -49,17 +49,19 @@ block content
         if errorMessage
           // Display an error message if there is one
           strong Error: #{errorMessage}
-      form(action='/post', method='post')
+      form(id='post-form', method='post')
         .form-group
           // Input for post title
           label(for='title') Title: 
-          input(type='text' class='form-control' name='title' required)
+          input(type='text' class='form-control' name='title' value=title required)
         .form-group
           // Input for post content
           label(for='content') Content: 
-          input(type='text' class='form-control' name='content' required)
-        // Submit button for creating a post
-        button(type='submit' class='btn btn-light btn-submit') Post
+          textarea(class="form-control" id="content" name='content' rows="4" required)= generatedText
+        // Submit buttons for different routes
+        button(type='submit' class='btn btn-light btn-submit' id='post-button') Post
+        em Check out our new AI tools to elaborate your post!
+        button(type='submit' class='btn btn-light btn-posthelper' id='expandcontent-button') Elaborate
 
     h1 Posts
     // Message displayed if there are no posts
@@ -84,3 +86,19 @@ block content
             h2.post-title #{post.title}
             // Display the post content
             p.post-content #{post.content}
+
+  // Script to route submit buttons to different places with the same data
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('post-form');
+      var postButton = document.getElementById('post-button');
+      var expandContentButton = document.getElementById('expandcontent-button');
+
+      postButton.addEventListener('click', function() {
+        form.action = '/post';
+      });
+
+      expandContentButton.addEventListener('click', function() {
+        form.action = '/expandcontent';
+      });
+    });
