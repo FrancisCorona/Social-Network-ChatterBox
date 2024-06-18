@@ -86,68 +86,28 @@ passport.use(new GoogleStrategy({
     }
 }));
 
-// Github OAuth Strategy
 passport.use(new GithubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: 'http://localhost/auth/github/callback',
-    scope: ['user:email'] // Request user email scope
+    callbackURL: 'http://localhost/auth/github/callback'
 }, async (accessToken, refreshToken, profile, done) => {
     try {
-        // Log the entire profile object to inspect its structure
-        logger.info(`Received profile: ${JSON.stringify(profile, null, 2)}`);
-
-        let email = profile.emails && profile.emails.length > 0 ? profile.emails[0].value : null;
-
-        // If email is not provided in the profile, fetch it using GitHub API
-        if (!email) {
-            const emailsResponse = await fetch('https://api.github.com/user/emails', {
-                headers: {
-                    'Authorization': `token ${accessToken}`,
-                    'User-Agent': 'Node.js'
-                }
-            });
-            const emails = await emailsResponse.json();
-            email = emails.find(e => e.primary && e.verified).email;
-        }
-
-        // Log the email and photo information for debugging
-        logger.info(`Email extracted: ${email}`);
-        const photo = profile.photos && profile.photos.length > 0 ? profile.photos[0].value : null;
-        logger.info(`Photo URL extracted: ${photo}`);
-
-        // If email is still not provided by GitHub, throw an error
-        if (!email) {
-            throw new Error('Email not provided by GitHub');
-        }
-
-        // Find the user in the database by email
-        let user = await User.findOne({ email });
-
-        // If photo is provided, convert it to base64
-        let profilePic = null;
-        if (photo) {
-            profilePic = await getBase64(photo);
-        }
-
-        // If user is not found, create a new user
+        let user = await User.findOne({ email: profile.emails[0].value });
+        const profilePic = await getBase64(profile.photos[0].value);
         if (!user) {
             user = new User({
-                name: profile.displayName || profile.username,
-                email: email,
+                name: profile.displayName,
+                email: profile.emails[0].value,
                 profilePic: profilePic
             });
-            await user.save(); // Save the new user to the database
-            logger.info(`New user created with GitHub OAuth: ${email}`);
+            await user.save();
+            logger.info(`New user created with GitHub OAuth: ${profile.emails[0].value}`);
         }
-
-        // Log successful authentication
         logger.info(`User authenticated with GitHub OAuth: ${user.email}`);
-        return done(null, user); // Return the authenticated user
+        return done(null, user);
     } catch (err) {
-        // Log any errors that occur during authentication
-        logger.error(`Error during GitHub OAuth authentication: ${err.message}`);
-        return done(err); // Return the error
+        logger.error(`Error during GitHub OAuth authentication: {${err.message}}`);
+        return done(err);
     }
 }));
 
