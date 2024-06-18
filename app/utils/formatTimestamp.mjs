@@ -1,7 +1,6 @@
 /*
-* Group: Francis Corona, Ian Stewart
-* Project: Social Network - Phase 3
-* Due: 6/13/24, 11:59 PM EDT
+* Francis Corona & Ian Stewart
+* Social Network - Final Project
 */
 
 export const formatTimestamp = (timestamp) => {

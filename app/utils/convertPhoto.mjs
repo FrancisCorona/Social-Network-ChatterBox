@@ -1,3 +1,8 @@
+/*
+* Francis Corona & Ian Stewart
+* Social Network - Final Project
+*/
+
 import axios from 'axios';
 import fs from 'fs/promises';
 import sharp from 'sharp';
