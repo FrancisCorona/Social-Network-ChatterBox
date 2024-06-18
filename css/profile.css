@@ -13,6 +13,8 @@
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    margin: 0 auto; /* Center the post feed */
+    max-width: 800px; /* Add max width to center the content */
 }
 
 /* Styles for the main container to ensure full viewport height */
@@ -21,26 +23,45 @@
     min-height: 100vh;
 }
 
-/* Styles for the sidebar */
+/* Ensure the body uses flex for fixed sidebar */
+body {
+    display: flex;
+}
+
+/* Style for the sidebar */
 .sidebar {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    height: calc(100vh - 150px);
+    overflow-y: auto; /* Allow vertical scrolling within the sidebar */
+    width: 380px; 
+    padding: 20px; /* Add padding */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    background-color: #f9f9f9; /* Add background color */
+    border-right: 1px solid #ddd; /* Add right border */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    min-height: 100vh;
-    width: 500px;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: #f9f9f9;
-    border-right: 1px solid #ddd;
+    align-items: center; /* Center items in the sidebar */
+}
+
+/* Ensure the content is offset to accommodate the fixed sidebar */
+.content {
+    margin-left: 380px;
+    width: calc(100% - 380px);
+    padding-top: 5px; 
+    padding-bottom: 50px; 
+    display: flex;
+    justify-content: center; /* Center the content */
 }
 
 /* Sidebar header style */
-.sidebar H1 {
+.sidebar h1 {
     font-size: 30pt;
 }
 
 /* Post feed header style */
-.post-feed H1 {
+.post-feed h1 {
     margin: 15px 10px 5px;
 }
 
@@ -79,6 +100,7 @@
     width: 100%;
     max-width: 600px;
     box-sizing: border-box;
+    margin-top: 5px;
 }
 
 /* Styles for the friends section in the sidebar */
