@@ -1,6 +1,6 @@
 /*
 * Francis Corona & Ian Stewart
-* Social Network - Final Project
+* Social Network - Final Project 
 */
 
 import passport from 'passport';
