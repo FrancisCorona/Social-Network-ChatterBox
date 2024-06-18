@@ -45,7 +45,7 @@ body {
 }
 
 /* Ensure the content is offset to accommodate the fixed sidebar */
-.content {
+.post-feed-content {
     margin-left: 380px;
     width: calc(100% - 380px);
     padding-top: 5px; 
@@ -150,7 +150,7 @@ body {
 }
 
 /* Styles for form labels */
-.form-group label {
+.post-creation .form-group label {
     margin-right: 10px;
     align-items: center;
     text-wrap: nowrap;
@@ -158,12 +158,12 @@ body {
 }
 
 /* Style for title textbox */
-.form-group input {
+.post-creation .form-group input {
     width: 400px;
 }
 
 /* Style for content textbox */
-.form-group textarea {
+.post-creation .form-group textarea {
     width: 400px;
 }
 
