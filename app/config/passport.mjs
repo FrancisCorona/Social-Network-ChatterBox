@@ -89,14 +89,17 @@ passport.use(new GoogleStrategy({
 passport.use(new GithubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: 'http://localhost/auth/github/callback'
-}, async (accessToken, refreshToken, profile, done) => {
+    callbackURL: 'http://localhost/auth/github/callback',
+    passReqToCallback: true,
+    scope: [ 'user:email' ]
+}, async (req, accessToken, refreshToken, profile, done) => {
     try {
         let user = await User.findOne({ email: profile.emails[0].value });
         const profilePic = await getBase64(profile.photos[0].value);
+        const profileName = profile.displayName || profile.username; // If user have set a display name, use that, otherwise use username
         if (!user) {
             user = new User({
-                name: profile.displayName,
+                name: profileName,
                 email: profile.emails[0].value,
                 profilePic: profilePic
             });
